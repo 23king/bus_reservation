@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>reservation</name>
-	<description>Demo project for Spring Boot</description>
+	<name>busReservation</name>
+	<description>bus reservation system</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

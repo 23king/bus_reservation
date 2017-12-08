@@ -1,4 +1,4 @@
-package com.bus.reservation.reservation;
+package com.bus.reservation;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
