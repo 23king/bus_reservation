@@ -18,7 +18,7 @@ public class User implements Serializable {
     private long id;
     private String userId;
     private String userName;
-    private String phone;
+    private String userPhone;
 
     @Column(name = "use_yn", insertable = false, columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
     private String useYn;

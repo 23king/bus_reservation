@@ -16,7 +16,7 @@ public class UserRole implements Serializable {
     @GeneratedValue
     private long id;
     @Id
-    private long member_id;
+    private long user_id;
     private String role_name;
     private String role_code;
     @DateTimeFormat

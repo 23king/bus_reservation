@@ -26,7 +26,7 @@ public class MemberRepositoryTest {
         User user = new User();
         user.setUserId("ssamzie101");
         user.setUserName("이세왕");
-        user.setPhone("111-111-1111");
+        user.setUserPhone("111-111-1111");
         user = memberRepository.save(user);
         log.info(user.toString());
 

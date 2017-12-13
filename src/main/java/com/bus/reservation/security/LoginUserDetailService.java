@@ -25,14 +25,14 @@ public class LoginUserDetailService implements UserDetailsService {
     }
 
     public UserDetail loadUserByUserInfo(String userId, String userName, String phone){
-        User user = memberRepository.findByUserIdAndUserNameAndPhone(userId, userName, phone);
+        User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phone);
 
         if(user == null){
             // TODO: 사용자 정보가 없으면 join 시켜 버린다
             User newUser = new User();
             newUser.setUserId(userId);
             newUser.setUserName(userName);
-            newUser.setPhone(phone);
+            newUser.setUserPhone(phone);
             user = memberRepository.save(newUser);
         }
 
