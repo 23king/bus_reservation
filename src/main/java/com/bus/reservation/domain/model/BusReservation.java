@@ -4,13 +4,14 @@ package com.bus.reservation.domain.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "bus_reservation")
-public class BusReservation {
+public class BusReservation implements Serializable {
 
     @Id
     @GeneratedValue

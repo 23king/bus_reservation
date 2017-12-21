@@ -3,13 +3,14 @@ package com.bus.reservation.domain.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "bus_template")
-public class BusTemplate {
+public class BusTemplate implements Serializable {
 
     @Id
     @GeneratedValue

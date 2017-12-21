@@ -3,16 +3,14 @@ package com.bus.reservation.domain.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "bus_reservation_detail")
-public class BusReservationDetail {
+public class BusReservationDetail implements Serializable {
 
     @Id
     @GeneratedValue
@@ -22,8 +20,12 @@ public class BusReservationDetail {
     private long reserv_group_id;
     private String user_id;
     private long bus_seat_no;
-    private String reserv_yn;
+    private String reserv_status;
     private Date create_date;
     private Date update_date;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "reserv_group_id")
+    private BusReservationRefund refundData;
 
 }
