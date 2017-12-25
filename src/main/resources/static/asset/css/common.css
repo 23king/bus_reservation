@@ -168,3 +168,85 @@ h6,
 .blog-footer p:last-child {
     margin-bottom: 0;
 }
+
+
+
+
+.bus_area .seat {
+    width:100%;
+    height: 274px;
+    border: 3px solid #a7a7a7;
+    border-radius: 25px;
+    padding:10px;
+}
+
+
+.bus_area .seat .td_1{
+    width:48px;
+    height:48px;
+}
+
+.bus_area .seat .td_2{
+    width:53px;
+    height:48px;
+}
+
+.bus_area .seat table tbody tr td {
+    padding-left:25px;
+}
+
+.bus_area .seat table tbody tr td div{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    font-size: 13px;
+    padding-top: 9px;
+    text-align: center;
+}
+
+.bus_area .seat .seat_1 {
+    background: url("../img/seat/seat_sel01.gif") no-repeat;
+}
+
+.bus_area .seat .seat_2 {
+    background: url("../img/seat/seat_sel02.gif") no-repeat;
+}
+
+.bus_area .seat .seat_3 {
+    background: url("../img/seat/seat_sel03.gif") no-repeat;
+}
+
+
+
+.bus_area .seat .driver {
+    float:right;
+}
+
+.bus_area .seat .enter {
+    float:left;
+}
+
+.bus_area .seat ul {
+    display:inline;
+    float:left;
+    height:100%;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+.bus_area .seat ul.info{
+    writing-mode: tb-rl;
+}
+
+.bus_area .seat li {
+    display:inline;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border : 0;
+    float: left;
+}
+
+.bus_area .seat ul.line4 li{
+
+}

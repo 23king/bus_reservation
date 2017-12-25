@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>산수산악회 산행 예약 시스템</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="./asset/css/common.css">
+</head>
+<body>
+<header>
+    <div class="blog-masthead">
+        <div class="container">
+            <nav class="nav">
+                <a class="nav-link" href="#"><span class="oi oi-home" aria-hidden="true"></span>&nbsp;홈</a>
+                <a class="nav-link active" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약조회</a>
+                <a class="nav-link" href="#"><span class="oi oi-briefcase" title="icon home" aria-hidden="true"></span>&nbsp;개인정보약관</a>
+                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;카페</a>
+            </nav>
+        </div>
+    </div>
+
+    <!--<div class="blog-header">-->
+        <!--<div class="container">-->
+            <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
+            <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
+        <!--</div>-->
+    <!--</div>-->
+</header>
+
+<main role="main" class="container">
+
+    <div class="row">
+
+        <div class="col-sm-10 blog-main">
+
+            <div class="blog-post">
+                <h3 class="blog-post-title">버스 예약</h3>
+                <p>산수산악회 버스 예약 시스템입니다.</p>
+                <hr>
+                <div class="bus_area">
+                    <div class="seat">
+                        <table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">
+                            <tbody>
+                            <tr style="border:2px;">
+                                <td style="width:29px;" rowspan="2"><img src="./asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>
+                                <td></td>
+                                <td class="td_2">
+                                    <div class="seat_3" id="1">1C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_3" id="2">2C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_2" id="3">3C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" id="4">4C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" id="5">5C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_3" id="6">6C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" id="7">7C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" id="8">8C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" id="9">9C</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" id="10">10D</div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="td_2">
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="12">1B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="13">2B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_2" onclick="" id="14" style="cursor: default;">3B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="15">4B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_3" id="16">5B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="17">6B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="18">7B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="19">8B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="20">9B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="21">10B</div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="td_2"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="11">10C</div>
+                                </td>
+                                <!--		<div class="seat_1" onclick="setSeat31(this.id, this);" id='11'>10C</div></td>-->
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2"><img src="./asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>
+
+                                <td></td>
+                                <td class="td_2">
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="12">1B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="13">2B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_2" onclick="" id="14" style="cursor: default;">3B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="15">4B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_3" id="16">5B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="17">6B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="18">7B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="19">8B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="20">9B</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="21">10B</div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="22">1A</div>
+                                </td>
+                                <td class="td_2">
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="23">2A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_2" onclick="" id="24" style="cursor: default;">3A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="25">4A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="26">5A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="27">6A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="28">7A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="29">8A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="30">9A</div>
+                                </td>
+                                <td>
+                                    <div class="seat_1" onclick="setSeat31(this.id, this);" id="31">10A</div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <table style="width:618px;border:0;cellspacing:0;cellpadding:0;margin-top:5px;">
+                        <tbody><tr>
+                            <td style="width:31px;align:left;"><img src="./asset/img/seat/seat_box_01.gif" width="16" height="16"></td>
+                            <td style="width:80px;align:left;" class="set01">선택가능</td>
+                            <td style="width:31px;align:left;"><img src="./asset/img/seat/seat_box_02.gif" alt="" width="16" height="16"></td>
+                            <td style="width:55px;align:left;"><strong class="set01">선택</strong></td>
+                            <td style="width:31px;align:left;"><img src="./asset/img/seat/seat_box_03.gif" alt="" width="16" height="16"></td>
+                            <td style="width:80px;align:left;"><strong class="set01">2인전용</strong></td>
+                            <td style="width:32px;align:left;"><img src="./asset/img/seat/seat_box_04.gif" alt="" width="16" height="16"></td>
+                            <td style="width:217px;align:left;"><strong class="set01">선택불가</strong></td>
+                            <td style="width:26px;">&nbsp;</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>*일부 버스의 경우 실제 좌석배치와 다를 수 있습니다.</p>
+                </div>
+            </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+
+
+    </div><!-- /.row -->
+
+</main>
+
+<!--<footer class="blog-footer">-->
+    <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+    <!--<p>-->
+        <!--<a href="#">Back to top</a>-->
+    <!--</p>-->
+<!--</footer>-->
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="./asset/js/html5shiv.js"></script>
+<script src="./asset/js/jquery-3.2.1.min.js"></script>
+<script src="./asset/js/bootstrap.min.js"></script>
+</body>
+</html>
