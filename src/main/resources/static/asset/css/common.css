@@ -170,6 +170,10 @@ h6,
 }
 
 
+.bus_area {
+    margin-bottom:10px;
+}
+
 
 
 .bus_area .seat {
@@ -179,6 +183,14 @@ h6,
     border-radius: 25px;
     padding:10px;
 }
+.bus_area .seat.type2 {
+    width:100%;
+    height: 222px;
+    border: 3px solid #a7a7a7;
+    border-radius: 25px;
+    padding:10px;
+}
+
 
 
 .bus_area .seat .td_1{
@@ -217,36 +229,8 @@ h6,
 }
 
 
-
-.bus_area .seat .driver {
-    float:right;
-}
-
-.bus_area .seat .enter {
-    float:left;
-}
-
-.bus_area .seat ul {
-    display:inline;
-    float:left;
-    height:100%;
-    list-style-type:none;
-    margin:0;
-    padding:0;
-}
-
-.bus_area .seat ul.info{
-    writing-mode: tb-rl;
-}
-
-.bus_area .seat li {
-    display:inline;
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    border : 0;
-    float: left;
-}
-
-.bus_area .seat ul.line4 li{
-
+.bus_info .set01 {
+    color: #515151;
+    font-size: 15px;
+    font-weight: bold;
 }
