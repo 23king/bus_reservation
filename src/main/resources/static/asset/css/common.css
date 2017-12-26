@@ -218,14 +218,22 @@ h6,
 
 .bus_area .seat .seat_1 {
     background: url("../img/seat/seat_sel01.gif") no-repeat;
+    cursor: pointer;
 }
 
 .bus_area .seat .seat_2 {
     background: url("../img/seat/seat_sel02.gif") no-repeat;
+    cursor: pointer;
 }
 
 .bus_area .seat .seat_3 {
     background: url("../img/seat/seat_sel03.gif") no-repeat;
+    /*cursor: none;*/
+}
+
+.bus_area .seat .seat_4 {
+    background: url("../img/seat/seat_sel04.gif") no-repeat;
+    cursor: pointer;
 }
 
 
