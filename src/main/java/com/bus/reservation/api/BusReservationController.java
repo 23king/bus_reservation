@@ -7,7 +7,6 @@ import com.bus.reservation.domain.repository.BusTemplateRepository;
 import com.bus.reservation.domain.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,7 +25,7 @@ public class BusReservationController {
         return memberRepository.findByUserNameAndUserPhone(user_name, user_phone);
     }
 
-    @GetMapping(value="/findReservations")
+    @RequestMapping(value="/findReservations")
     public BusReservation findBusReservations(){
         return null;
     }
