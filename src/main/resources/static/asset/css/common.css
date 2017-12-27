@@ -24,7 +24,8 @@ h4,
 h5,
 .h5,
 h6,
-.h6 {
+.h6,
+p{
     font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     color: #333;
@@ -245,4 +246,14 @@ h6,
 
 .hidden {
     display : none;
+}
+
+.blog-post table tr th.title{
+    text-align: center;
+    vertical-align: middle;
+}
+.blog-post table tr .title {
+    color: #495057;
+    background-color: #e9ecef;
+    border-color: #e9ecef;
 }

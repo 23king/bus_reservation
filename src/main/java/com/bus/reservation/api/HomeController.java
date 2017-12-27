@@ -17,4 +17,18 @@ public class HomeController {
         model.put("message","Hello Sansu!!");
         return "index";
     }
+
+
+    @RequestMapping(value = "/reservation", method = RequestMethod.GET)
+    public String reservation(ModelMap model){
+//        model.put("message","Hello Sansu!!");
+        return "reservation";
+    }
+
+    @RequestMapping(value = "/temp", method = RequestMethod.GET)
+    public String temp(ModelMap model){
+//        model.put("message","Hello Sansu!!");
+        return "admin_template";
+    }
+
 }
