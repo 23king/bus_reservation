@@ -1,6 +1,7 @@
 spring:
   profiles:
     active: local
-  view:
-    prefix: /WEB-INF/jsp/
-    suffix: .jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
