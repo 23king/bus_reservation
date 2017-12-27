@@ -28,7 +28,7 @@ public class BusReservationController {
         return memberRepository.findByUserNameAndUserPhone(user_name, user_phone);
     }
 
-    @GetMapping(value="/findReservations")
+    @RequestMapping(value="/findReservations")
     public BusReservation findBusReservations(){
         return null;
     }
