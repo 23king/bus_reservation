@@ -15,7 +15,6 @@ public class HomeController {
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String main(ModelMap model){
         model.put("message","Hello Sansu!!");
-        return "test";
-
+        return "index";
     }
 }
