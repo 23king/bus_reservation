@@ -25,7 +25,7 @@ public class BusReservationDetail implements Serializable {
     private Date update_date;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "reserv_group_id")
+    @JoinColumn(name = "group_id", referencedColumnName="reserv_id")
     private BusReservationRefund refundData;
 
 }

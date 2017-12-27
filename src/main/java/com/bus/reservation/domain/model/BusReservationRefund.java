@@ -15,12 +15,13 @@ public class BusReservationRefund implements Serializable {
     @GeneratedValue
     private long seq;
 
-    private long reserv_group_id;
+    private long reserv_id;
     private Date refund_request_date;
     private Date refund_complete_date;
     private String refund_bank_name;
     private String refund_bank_account;
     private String refund_bank_no;
+    private long refund_amount;
     private String refund_status;
 
 }

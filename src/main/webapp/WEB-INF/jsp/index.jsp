@@ -1,4 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
     <title>산수산악회 산행 예약 시스템</title>
@@ -7,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./asset/css/common.css">
@@ -31,10 +33,10 @@
     </div>
 
     <!--<div class="blog-header">-->
-        <!--<div class="container">-->
-            <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
-            <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
-        <!--</div>-->
+    <!--<div class="container">-->
+    <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
+    <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
+    <!--</div>-->
     <!--</div>-->
 </header>
 
@@ -44,7 +46,7 @@
 
         <div class="col-sm-10 blog-main">
 
-            산수산악회
+            ${message}
         </div><!-- /.blog-main -->
 
 
@@ -53,16 +55,16 @@
 </main>
 
 <!--<footer class="blog-footer">-->
-    <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
-    <!--<p>-->
-        <!--<a href="#">Back to top</a>-->
-    <!--</p>-->
+<!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+<!--<p>-->
+<!--<a href="#">Back to top</a>-->
+<!--</p>-->
 <!--</footer>-->
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="./asset/js/html5shiv.js"></script>
-<script src="./asset/js/jquery-3.2.1.min.js"></script>
-<script src="./asset/js/bootstrap.min.js"></script>
+<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
 </html>

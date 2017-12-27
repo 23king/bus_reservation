@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./asset/css/common.css">
+    <link rel="stylesheet" href="./asset/css/jquery-ui.css">
 </head>
 <body>
 <header>
@@ -22,19 +23,19 @@
                 <a class="nav-link" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약조회</a>
                 <a class="nav-link" href="#"><span class="oi oi-briefcase" title="icon home" aria-hidden="true"></span>&nbsp;산행취소하기</a>
                 <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;아이디(ID)찾기</a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 예약리스트 </a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 취소리스트</a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 회원정보</a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 배차</a>
+                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 예약리스트 </a>
+                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 취소리스트</a>
+                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 회원정보</a>
+                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 배차</a>
             </nav>
         </div>
     </div>
 
     <!--<div class="blog-header">-->
-        <!--<div class="container">-->
-            <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
-            <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
-        <!--</div>-->
+    <!--<div class="container">-->
+    <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
+    <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
+    <!--</div>-->
     <!--</div>-->
 </header>
 
@@ -44,8 +45,14 @@
 
         <div class="col-sm-10 blog-main">
 
-            산수산악회
-        </div><!-- /.blog-main -->
+            <div class="blog-post">
+                <form>
+                    <label for="start_date">출발 날짜 : </label><input type="text" id="start_date">
+                    <button type="button" onclick="searchReservation()">검색</button>
+                </form>
+            </div>
+        </div><!-- /.blog-post -->
+    </div><!-- /.blog-main -->
 
 
     </div><!-- /.row -->
@@ -53,16 +60,29 @@
 </main>
 
 <!--<footer class="blog-footer">-->
-    <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
-    <!--<p>-->
-        <!--<a href="#">Back to top</a>-->
-    <!--</p>-->
+<!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+<!--<p>-->
+<!--<a href="#">Back to top</a>-->
+<!--</p>-->
 <!--</footer>-->
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="./asset/js/html5shiv.js"></script>
 <script src="./asset/js/jquery-3.2.1.min.js"></script>
+<script src="./asset/js/jquery-ui.js"></script>
 <script src="./asset/js/bootstrap.min.js"></script>
+<script>
+    $( function() {
+        $("#start_date").datepicker();
+    });
+    function searchReservation(){
+        if($("#start_date").val() == ''){
+            alert('날짜를 선택해 주세요');
+            return;
+        }
+
+    }
+</script>
 </body>
 </html>
