@@ -20,19 +20,24 @@ public class User implements Serializable {
     private String userName;
     private String userPhone;
 
-    @Column(name = "use_yn", insertable = false, columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
+    @Column(name = "useYn", insertable = false, columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
     private String useYn;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="create_date", insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name="createDate", insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date createDate;
 
-    @Column(name="update_date", updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name="updateDate", updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
-    @Column(name="last_login_date", updatable = false, insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name="lastLoginDate", updatable = false, insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoginDate;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="user_role", referencedColumnName = "userId")
+    private UserRole userRole;
+
 
 }

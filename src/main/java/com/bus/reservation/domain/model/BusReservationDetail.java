@@ -16,16 +16,11 @@ public class BusReservationDetail implements Serializable {
     @GeneratedValue
     private long seq;
 
-    private long reserv_id;
-    private long reserv_group_id;
+    private long trabelSeq;
     private String user_id;
     private long bus_seat_no;
     private String reserv_status;
     private Date create_date;
     private Date update_date;
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "group_id", referencedColumnName="reserv_id")
-    private BusReservationRefund refundData;
 
 }

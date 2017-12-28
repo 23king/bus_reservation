@@ -13,13 +13,10 @@ import java.io.Serializable;
 public class UserRole implements Serializable {
 
     @Id
-    @GeneratedValue
-    private long id;
-    @Id
-    private long user_id;
-    private String role_name;
-    private String role_code;
+    private long userId;
+    private String roleName;
+    private String roleCode;
     @DateTimeFormat
-    private String create_date;
+    private String createDate;
 
 }
