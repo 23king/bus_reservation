@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="./asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./asset/css/common.css">
+    <style>
+        #list table tr td {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -46,7 +51,7 @@
     <h3 class="blog-post-title">내 예약 확인하기</h3>
     <p>산수산악회 버스 예약 시스템입니다.</p>
     <hr>
-    <div>
+    <div id="list">
         <table class="table">
             <tr>
                 <%--<th class="title" scope="col">성명</th>--%>
@@ -71,7 +76,7 @@
                 <td scope="col">1호차 1,2,3</td>
                 <%--<td scope="col">31,000원</td>--%>
                 <%--<td scope="col">3</td>--%>
-                <td scope="col">93,000</td>
+                <td scope="col">93,000원</td>
                 <td scope="col">확인대기</td>
                 <td scope="col">-</td>
                 <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
@@ -85,7 +90,7 @@
                 <td scope="col">1호차 1,2,3</td>
                 <%--<td scope="col">31,000원</td>--%>
                 <%--<td scope="col">3</td>--%>
-                <td scope="col">93,000</td>
+                <td scope="col">93,000원</td>
                 <td scope="col">확인대기</td>
                 <td scope="col">-</td>
                 <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
@@ -99,7 +104,7 @@
                 <td scope="col">1호차 1,2,3</td>
                 <%--<td scope="col">31,000원</td>--%>
                 <%--<td scope="col">3</td>--%>
-                <td scope="col">93,000</td>
+                <td scope="col">93,000원</td>
                 <td scope="col">확인대기</td>
                 <td scope="col">-</td>
                 <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
