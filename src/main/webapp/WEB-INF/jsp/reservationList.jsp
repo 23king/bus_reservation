@@ -63,46 +63,46 @@
                 <th class="title" scope="col">취소</th>
             </tr>
             <tr>
-                <th scope="col">홍길동</th>
-                <th scope="col">2017.12.29</th>
-                <th scope="col">홍길동</th>
-                <th scope="col">2018.01.02(수)</th>
-                <th scope="col">지리산</th>
-                <th scope="col">1호차 1,2,3</th>
-                <th scope="col">31,000원</th>
-                <th scope="col">3</th>
-                <th scope="col">93,000</th>
-                <th scope="col">확인대기</th>
-                <th scope="col">-</th>
-                <th scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></th>
+                <td scope="col">홍길동</td>
+                <td scope="col">2017.12.29</td>
+                <td scope="col">홍길동</td>
+                <td scope="col">2018.01.02(수)</td>
+                <td scope="col">지리산</td>
+                <td scope="col">1호차 1,2,3</td>
+                <td scope="col">31,000원</td>
+                <td scope="col">3</td>
+                <td scope="col">93,000</td>
+                <td scope="col">확인대기</td>
+                <td scope="col">-</td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
             </tr>
             <tr>
-                <th scope="col">홍길동</th>
-                <th scope="col">2017.12.29</th>
-                <th scope="col">홍길동</th>
-                <th scope="col">2018.01.02(수)</th>
-                <th scope="col">지리산</th>
-                <th scope="col">1호차 1,2,3</th>
-                <th scope="col">31,000원</th>
-                <th scope="col">3</th>
-                <th scope="col">93,000</th>
-                <th scope="col">확인대기</th>
-                <th scope="col">-</th>
-                <th scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></th>
+                <td scope="col">홍길동</td>
+                <td scope="col">2017.12.29</td>
+                <td scope="col">홍길동</td>
+                <td scope="col">2018.01.02(수)</td>
+                <td scope="col">지리산</td>
+                <td scope="col">1호차 1,2,3</td>
+                <td scope="col">31,000원</td>
+                <td scope="col">3</td>
+                <td scope="col">93,000</td>
+                <td scope="col">확인대기</td>
+                <td scope="col">-</td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
             </tr>
             <tr>
-                <th scope="col">홍길동</th>
-                <th scope="col">2017.12.29</th>
-                <th scope="col">홍길동</th>
-                <th scope="col">2018.01.02(수)</th>
-                <th scope="col">지리산</th>
-                <th scope="col">1호차 1,2,3</th>
-                <th scope="col">31,000원</th>
-                <th scope="col">3</th>
-                <th scope="col">93,000</th>
-                <th scope="col">확인대기</th>
-                <th scope="col">-</th>
-                <th scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></th>
+                <td scope="col">홍길동</td>
+                <td scope="col">2017.12.29</td>
+                <td scope="col">홍길동</td>
+                <td scope="col">2018.01.02(수)</td>
+                <td scope="col">지리산</td>
+                <td scope="col">1호차 1,2,3</td>
+                <td scope="col">31,000원</td>
+                <td scope="col">3</td>
+                <td scope="col">93,000</td>
+                <td scope="col">확인대기</td>
+                <td scope="col">-</td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
             </tr>
 
         </table>

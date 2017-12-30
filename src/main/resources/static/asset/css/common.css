@@ -207,6 +207,7 @@ p{
 
 .bus_area .seat table tbody tr td {
     padding-left:25px;
+    font-weight:bold;
 }
 
 .bus_area .seat table tbody tr td div{

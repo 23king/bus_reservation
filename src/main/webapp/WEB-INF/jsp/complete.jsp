@@ -54,7 +54,7 @@
                     <table class="table">
                         <tr>
                             <th class="title" scope="col">산행일자</th>
-                            <th scope="col">2018.1.1 (월)</th>
+                            <td scope="col">2018.1.1 (월)</td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">산행지역</th>

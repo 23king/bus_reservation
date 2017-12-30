@@ -50,9 +50,9 @@
         <table class="table">
             <tr>
                 <th class="title" scope="col">산행일자</th>
-                <th scope="col">2018.01.01(월</th>
+                <td scope="col">2018.01.01(월</td>
                 <th class="title" scope="col">산행금액</th>
-                <th scope="col">32,000원</th>
+                <td scope="col">32,000원</td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행지</th>

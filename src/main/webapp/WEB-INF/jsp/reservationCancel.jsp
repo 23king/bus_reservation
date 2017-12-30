@@ -58,12 +58,12 @@
                 <th class="title" scope="col">예약금액</th>
             </tr>
             <tr>
-                <th scope="col">홍길동</th>
-                <th scope="col">2018.01.02(수)</th>
-                <th scope="col">2018.01.02(수)</th>
-                <th scope="col">지리산</th>
-                <th scope="col">1호차 1,2,3</th>
-                <th scope="col">93,000</th>
+                <td scope="col">홍길동</td>
+                <td scope="col">2018.01.02(수)</td>
+                <td scope="col">2018.01.02(수)</td>
+                <td scope="col">지리산</td>
+                <td scope="col">1호차 1,2,3</td>
+                <td scope="col">93,000</td>
             </tr>
 
         </table>
