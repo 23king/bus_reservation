@@ -55,4 +55,20 @@ public class HomeController {
         return "admin_template";
     }
 
+
+    @RequestMapping(value = "/admin/list", method = RequestMethod.GET)
+    public String adminList(ModelMap model){
+        return "admin_list";
+    }
+
+    @RequestMapping(value = "/admin/detail", method = RequestMethod.GET)
+    public String adminDetail(ModelMap model){
+        return "admin_detail";
+    }
+
+    @RequestMapping(value = "/admin/modify", method = RequestMethod.GET)
+    public String adminModify(ModelMap model){
+        return "admin_modify";
+    }
+
 }
