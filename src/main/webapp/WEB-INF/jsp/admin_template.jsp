@@ -55,7 +55,7 @@
                 <div>
                     <table class="table">
                         <tr>
-                            <th class="title" scope="col">산행일정</th>
+                            <th class="title" scope="col">산행일자</th>
                             <th scope="col"><input type="text" class="form-control" id="datepicker" /></th>
                             <th class="title" scope="col">산행금액</th>
                             <th scope="col"><input type="text" class="form-control" id="priceBox" onclick="clearBox(this.id)" onchange="numberWithCommas(this.id)" /></th>
