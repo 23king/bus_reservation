@@ -58,73 +58,73 @@
                                 <td style="width:29px;" rowspan="2"><img src="./asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>
                                 <td></td>
                                 <td class="td_2">
-                                    <div class="seat_3" onclick="setSeat41(1, this.id, false, this);" id="4">4</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_4">4</div>
                                 </td>
                                 <td>
-                                    <div class="seat_3" onclick="setSeat41(1, this.id, false, this);" id="8">8</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_8">8</div>
                                 </td>
                                 <td>
-                                    <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="12">12</div>
+                                    <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="1_12">12</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="16">16</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_16">16</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="20">20</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_20">20</div>
                                 </td>
                                 <td>
-                                    <div class="seat_3" onclick="setSeat41(1, this.id, false, this);" id="24">24</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_24">24</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="28">28</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_28">28</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="32">32</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_32">32</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="36">36</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_36">36</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="40">40</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_40">40</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="44">44</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_44">44</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td class="td_2">
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="3">3</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_3">3</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="7">7</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_7">7</div>
                                 </td>
                                 <td>
-                                    <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="11">11</div>
+                                    <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="1_11">11</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="15">15</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_15">15</div>
                                 </td>
                                 <td>
-                                    <div class="seat_3" onclick="setSeat41(1, this.id, false, this);" id="19">19</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_19">19</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id,false, this);" id="23">23</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id,false, this);" id="1_23">23</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="27">27</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_27">27</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="31">31</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_31">31</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="35">35</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_35">35</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="39">39</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_39">39</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="43">43</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_43">43</div>
                                 </td>
                             </tr>
                             <tr>
@@ -141,7 +141,7 @@
                                 <td></td>
                                 <td></td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="45">45</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_45">45</div>
                                 </td>
                             </tr>
                             <tr>
@@ -149,73 +149,73 @@
 
                                 <td></td>
                                 <td class="td_2">
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="2">2</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_2">2</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="6">6</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_6">6</div>
                                 </td>
                                 <td>
-                                    <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="10">10</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, true, this);" id="1_10">10</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="14">14</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_14">14</div>
                                 </td>
                                 <td>
-                                    <div class="seat_3" onclick="setSeat41(1, this.id, false, this);" id="18">18</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_18">18</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="22">22</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_22">22</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="26">26</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_26">26</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="30">30</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_30">30</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="34">34</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_34">34</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="38">38</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_38">38</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="42">42</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_42">42</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1">1</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_1">1</div>
                                 </td>
                                 <td class="td_2">
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="5">5</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_5">5</div>
                                 </td>
                                 <td>
-                                    <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="9">9</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, true, this);" id="1_9">9</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="13">13</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_13">13</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="17">17</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_17">17</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="21">21</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_21">21</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="25">25</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_25">25</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="29">29</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_29">29</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="33">33</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_33">33</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="37">37</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_37">37</div>
                                 </td>
                                 <td>
-                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="41">41</div>
+                                    <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_41">41</div>
                                 </td>
                             </tr>
                         </tbody>
@@ -260,39 +260,39 @@
 <script src="webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
-    var list =[];
+    var list ={};
     function setSeat41(busNum, seatNum, multiFlag) {
+        list[busNum] = list[busNum] === undefined ? []: list[busNum];
+
         var seatEl = document.getElementById(seatNum);
         if(seatEl.className === "seat_3") {
             return ;
         } else if(seatEl.className === "seat_1") {
             seatEl.className = "seat_4";
-            list.push(parseInt(seatNum));
+            list[busNum].push(parseInt(seatNum));
         } else if(seatEl.className === "seat_2" && multiFlag == true) {
-            var seatNum2 = (seatNum % 2 == 0)?parseInt(seatNum)-1 : parseInt(seatNum)+1;
+            var seatNum2 = (parseInt(seatNum.split("_")[1]) % 2 == 0)?parseInt(seatNum.split("_")[1])-1 : parseInt(seatNum.split("_")[1])+1;
 
             seatEl.className = "seat_4";
-            document.getElementById(seatNum2).className = "seat_4";
+            document.getElementById(busNum+"_"+seatNum2).className = "seat_4";
 
-            list.push(parseInt(seatNum));
-            list.push(parseInt(seatNum2));
+            list[busNum].push(seatNum.split("_")[1]);
+            list[busNum].push(seatNum2.toString());
         } else if(seatEl.className === "seat_4"){
             if(multiFlag == true) {
-                var seatNum2 = (seatNum % 2 == 0)?parseInt(seatNum)-1 : parseInt(seatNum)+1;
+                var seatNum2 = (parseInt(seatNum.split("_")[1]) % 2 == 0)?parseInt(seatNum.split("_")[1])-1 : parseInt(seatNum.split("_")[1])+1;
 
                 seatEl.className = "seat_2";
-                document.getElementById(seatNum2).className = "seat_2";
+                document.getElementById(busNum+"_"+seatNum2).className = "seat_2";
+                list[busNum].splice(list[busNum].indexOf(seatNum2.toString()),1);
             } else {
                 seatEl.className = "seat_1";
             }
 
-            list.splice(list.indexOf(parseInt(seatNum)),1);
-            list.splice(list.indexOf(parseInt(seatNum2)),1);
+            list[busNum].splice(list[busNum].indexOf(seatNum.split("_")[1]),1);
         }
 
         console.log(list);
-        //== "seat_3";
-
     }
 </script>
 </body>

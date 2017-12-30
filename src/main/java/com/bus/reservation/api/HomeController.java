@@ -21,13 +21,37 @@ public class HomeController {
 
     @RequestMapping(value = "/reservation", method = RequestMethod.GET)
     public String reservation(ModelMap model){
-//        model.put("message","Hello Sansu!!");
         return "reservation";
     }
 
-    @RequestMapping(value = "/temp", method = RequestMethod.GET)
-    public String temp(ModelMap model){
-//        model.put("message","Hello Sansu!!");
+    @RequestMapping(value = "/reservationList", method = RequestMethod.GET)
+    public String reservationList(ModelMap model){
+        return "reservationList";
+    }
+
+    @RequestMapping(value = "/reservationCancel", method = RequestMethod.GET)
+    public String reservationCancel(ModelMap model){
+        return "reservationCancel";
+    }
+
+    @RequestMapping(value = "/complete", method = RequestMethod.GET)
+    public String complete(ModelMap model){
+        return "complete";
+    }
+
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(ModelMap model){
+        return "login";
+    }
+
+    @RequestMapping(value = "/findId", method = RequestMethod.GET)
+    public String findId(ModelMap model){
+        return "findId";
+    }
+
+    @RequestMapping(value = "/admin/bus", method = RequestMethod.GET)
+    public String adminBus(ModelMap model){
         return "admin_template";
     }
 

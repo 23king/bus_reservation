@@ -45,15 +45,11 @@
         <div class="col-sm-10 blog-main">
 
             <div class="blog-post">
-                <h3 class="blog-post-title">로그인</h3>
+                <h3 class="blog-post-title">아이디 찾기</h3>
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
                     <table class="table">
-                        <tr>
-                            <th class="title" scope="col">아이디</th>
-                            <th scope="col"><input type="text" id="userId" class="form-control"/></th>
-                        </tr>
                         <tr>
                             <th class="title" scope="row">성명</th>
                             <td colspan="3"><input type="text" id="userName" class="form-control" /></td>
@@ -65,7 +61,7 @@
 
                     </table>
                     <div style="margin-top: 23px;left: 50%;position: absolute;">
-                        <button type="button" class="btn btn-success" onclick="submit()">로그인</button>
+                        <button type="button" class="btn btn-success" onclick="submit()">아이디 찾기</button>
                     </div>
                 </div>
 
@@ -105,15 +101,8 @@
 
 
     function submit() {
-        var userId= document.getElementById("userId").value;
         var userName= document.getElementById("userName").value;
         var phoneNum= document.getElementById("phoneNum").value;
-
-        if(userId==="") {
-            alert("아이디를 입력하세요");
-            document.getElementById("userId").focus();
-            return false;
-        }
 
         if(userName==="") {
             alert("성명을 입력하세요");
@@ -121,7 +110,7 @@
             return false;
         }
 
-        console.log(userId, userName, phoneNum);
+        console.log(userName, phoneNum);
     }
 </script>
 </body>

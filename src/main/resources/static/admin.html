@@ -299,7 +299,8 @@
 <script src="./asset/js/bootstrap.min.js"></script>
 <script src="./asset/js/jquery-ui.js"></script>
 <script>
-    var emptyList =[], multiList=[];
+//    var emptyList =[], multiList=[];
+    var emptyList ={}, multiList={};
     var busNum =1;
 
 
@@ -311,32 +312,35 @@
 
 
     function setSeat41(busNum, seatNum, multiFlag) {
-        console.log(busNum, seatNum, multiFlag)
+        emptyList[busNum] = emptyList[busNum] === undefined ? []: emptyList[busNum];
+        multiList[busNum] = multiList[busNum] === undefined ? []: multiList[busNum];
+
         var seatEl = document.getElementById(seatNum);
 
         if(seatEl.className === "seat_1") {
             seatEl.className = "seat_4";
-            emptyList.push(seatNum);
+            emptyList[busNum].push(seatNum.split("_")[1]);
         } else if(seatEl.className === "seat_2") {
             var seatNum2 = (parseInt(seatNum.split("_")[1]) % 2 == 0)?parseInt(seatNum.split("_")[1])-1 : parseInt(seatNum.split("_")[1])+1;
 
             seatEl.className = "seat_1";
             document.getElementById(busNum+"_"+seatNum2).className = "seat_1";
 
-            multiList.splice(multiList.indexOf(seatNum),1);
-            multiList.splice(multiList.indexOf(busNum+"_"+seatNum2),1);
+            multiList[busNum].splice(multiList[busNum].indexOf(seatNum.split("_")[1]),1);
+            multiList[busNum].splice(multiList[busNum].indexOf(seatNum2.toString()),1);
         } else if(seatEl.className === "seat_4"){
             var seatNum2 = (parseInt(seatNum.split("_")[1]) % 2 == 0)?parseInt(seatNum.split("_")[1])-1 : parseInt(seatNum.split("_")[1])+1;
 
             seatEl.className = "seat_2";
             document.getElementById(busNum+"_"+seatNum2).className = "seat_2";
 
-            multiList.push(seatNum);
-            multiList.push(busNum+"_"+seatNum2);
 
-            emptyList.splice(emptyList.indexOf(seatNum),1);
-            if(emptyList.indexOf(seatNum2)>-1) {
-                emptyList.splice(emptyList.indexOf(busNum+"_"+seatNum2),1);
+            multiList[busNum].push(seatNum.split("_")[1]);
+            multiList[busNum].push(seatNum2.toString());
+
+            emptyList[busNum].splice(emptyList[busNum].indexOf(seatNum.split("_")[1]),1);
+            if(emptyList[busNum].indexOf(seatNum2.toString())>-1) {
+                emptyList[busNum].splice(emptyList[busNum].indexOf(seatNum2.toString()),1);
             }
         }
 

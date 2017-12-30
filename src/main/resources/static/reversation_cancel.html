@@ -40,40 +40,55 @@
 
 <main role="main" class="container">
 
-    <div class="row">
+    <h3 class="blog-post-title">내 예약 확인하기</h3>
+    <p>산수산악회 버스 예약 시스템입니다.</p>
+    <hr>
+    <div style="margin-bottom: 50px;">
+        <h5><span class="oi oi-chevron-right"></span>&nbsp;취소 신청 내용</h5>
+        <table class="table">
+            <tr>
+                <th class="title" scope="col">성명</th>
+                <th class="title" scope="col">취소일자</th>
+                <th class="title" scope="col">산행일자</th>
+                <th class="title" scope="col">산행지</th>
+                <th class="title" scope="col">좌석번호</th>
+                <th class="title" scope="col">예약금액</th>
+            </tr>
+            <tr>
+                <th scope="col">홍길동</th>
+                <th scope="col">2018.01.02(수)</th>
+                <th scope="col">2018.01.02(수)</th>
+                <th scope="col">지리산</th>
+                <th scope="col">1호차 1,2,3</th>
+                <th scope="col">93,000</th>
+            </tr>
 
-        <div class="col-sm-10 blog-main">
+        </table>
+    </div>
 
-            <div class="blog-post">
-                <h3 class="blog-post-title">로그인</h3>
-                <p>산수산악회 버스 예약 시스템입니다.</p>
-                <hr>
-                <div>
-                    <table class="table">
-                        <tr>
-                            <th class="title" scope="col">아이디</th>
-                            <th scope="col"><input type="text" id="userId" class="form-control"/></th>
-                        </tr>
-                        <tr>
-                            <th class="title" scope="row">성명</th>
-                            <td colspan="3"><input type="text" id="userName" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                            <th class="title" scope="row">휴대전화</th>
-                            <td colspan="3"><input type="text" class="form-control" id="phoneNum" placeholder="-를 포함한 전체 휴대전화 번호를 입력하세요" onchange="checkNum(this.id)"/></td>
-                        </tr>
+    <div>
+        <h5><span class="oi oi-chevron-right"></span>&nbsp;환불 신청 내용</h5>
+        <table class="table">
+            <tr>
+                <th class="title" scope="col">환불금액</th>
+                <th scope="col" colspan="5">환불 규정에 따라 환불 금액이 처리됩니다.</th>
+            </tr>
+            <tr>
+                <th class="title" scope="col">입금은행</th>
+                <th scope="col"><input type="text" class="form-control" /></th>
+                <th class="title" scope="col">입금계좌</th>
+                <th scope="col"><input type="text" class="form-control" /></th>
+                <th class="title" scope="col">예금주명</th>
+                <th scope="col"><input type="text" class="form-control" /></th>
+            </tr>
 
-                    </table>
-                    <div style="margin-top: 23px;left: 50%;position: absolute;">
-                        <button type="button" class="btn btn-success" onclick="submit()">로그인</button>
-                    </div>
-                </div>
+        </table>
+    </div>
 
-            </div><!-- /.blog-post -->
-        </div><!-- /.blog-main -->
-
-
-    </div><!-- /.row -->
+    <div style="margin-top: 23px;left: 45%;position: absolute;">
+        <button type="button" class="btn btn-danger">취소하기</button>
+        <button type="button" class="btn btn-success">취소안하기</button>
+    </div>
 
 </main>
 
@@ -90,39 +105,7 @@
 <script src="./asset/js/jquery-3.2.1.min.js"></script>
 <script src="./asset/js/bootstrap.min.js"></script>
 <script>
-    function checkNum(id) {
-        var x = document.getElementById(id).value;
 
-        var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-        if( !regExp.test(x)) {
-            alert("잘못된 휴대폰 번호입니다. 숫자, - 를 포함한 숫자만 입력하세요.");
-
-            document.getElementById(id).value = "";
-            document.getElementById(id).focus();
-        }
-
-    }
-
-
-    function submit() {
-        var userId= document.getElementById("userId").value;
-        var userName= document.getElementById("userName").value;
-        var phoneNum= document.getElementById("phoneNum").value;
-
-        if(userId==="") {
-            alert("아이디를 입력하세요");
-            document.getElementById("userId").focus();
-            return false;
-        }
-
-        if(userName==="") {
-            alert("성명을 입력하세요");
-            document.getElementById("userName").focus();
-            return false;
-        }
-
-        console.log(userId, userName, phoneNum);
-    }
 </script>
 </body>
 </html>

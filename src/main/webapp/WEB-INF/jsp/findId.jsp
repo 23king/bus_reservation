@@ -1,4 +1,7 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>산수산악회 산행 예약 시스템</title>
@@ -7,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="./asset/css/common.css">
@@ -17,24 +20,24 @@
     <div class="blog-masthead">
         <div class="container">
             <nav class="nav">
-                <a class="nav-link active" href="#"><span class="oi oi-home" aria-hidden="true"></span>&nbsp;홈(예약, 취소안내)</a>
-                <a class="nav-link" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약하기</a>
+                <a class="nav-link" href="#"><span class="oi oi-home" aria-hidden="true"></span>&nbsp;홈(예약, 취소안내)</a>
+                <a class="nav-link active" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약하기</a>
                 <a class="nav-link" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약조회</a>
                 <a class="nav-link" href="#"><span class="oi oi-briefcase" title="icon home" aria-hidden="true"></span>&nbsp;산행취소하기</a>
                 <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;아이디(ID)찾기</a>
-                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;[ADMIN] 예약리스트 </a>
-                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;[ADMIN] 취소리스트</a>
-                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;[ADMIN] 회원정보</a>
-                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;[ADMIN] 배차</a>
+                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 예약리스트 </a>
+                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 취소리스트</a>
+                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 회원정보</a>
+                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 배차</a>
             </nav>
         </div>
     </div>
 
     <!--<div class="blog-header">-->
-        <!--<div class="container">-->
-            <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
-            <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
-        <!--</div>-->
+    <!--<div class="container">-->
+    <!--<h1 class="blog-title">The Bootstrap Blog</h1>-->
+    <!--<p class="lead blog-description">An example blog template built with Bootstrap.</p>-->
+    <!--</div>-->
     <!--</div>-->
 </header>
 
@@ -43,17 +46,12 @@
     <div class="row">
 
         <div class="col-sm-10 blog-main">
-
             <div class="blog-post">
                 <h3 class="blog-post-title">로그인</h3>
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
                     <table class="table">
-                        <tr>
-                            <th class="title" scope="col">아이디</th>
-                            <th scope="col"><input type="text" id="userId" class="form-control"/></th>
-                        </tr>
                         <tr>
                             <th class="title" scope="row">성명</th>
                             <td colspan="3"><input type="text" id="userName" class="form-control" /></td>
@@ -65,7 +63,7 @@
 
                     </table>
                     <div style="margin-top: 23px;left: 50%;position: absolute;">
-                        <button type="button" class="btn btn-success" onclick="submit()">로그인</button>
+                        <button type="button" class="btn btn-success" onclick="submit()">아이디 찾기</button>
                     </div>
                 </div>
 
@@ -78,17 +76,17 @@
 </main>
 
 <!--<footer class="blog-footer">-->
-    <!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
-    <!--<p>-->
-        <!--<a href="#">Back to top</a>-->
-    <!--</p>-->
+<!--<p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>-->
+<!--<p>-->
+<!--<a href="#">Back to top</a>-->
+<!--</p>-->
 <!--</footer>-->
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="./asset/js/html5shiv.js"></script>
-<script src="./asset/js/jquery-3.2.1.min.js"></script>
-<script src="./asset/js/bootstrap.min.js"></script>
+<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
     function checkNum(id) {
         var x = document.getElementById(id).value;
@@ -105,15 +103,8 @@
 
 
     function submit() {
-        var userId= document.getElementById("userId").value;
         var userName= document.getElementById("userName").value;
         var phoneNum= document.getElementById("phoneNum").value;
-
-        if(userId==="") {
-            alert("아이디를 입력하세요");
-            document.getElementById("userId").focus();
-            return false;
-        }
 
         if(userName==="") {
             alert("성명을 입력하세요");
@@ -121,7 +112,7 @@
             return false;
         }
 
-        console.log(userId, userName, phoneNum);
+        console.log(userName, phoneNum);
     }
 </script>
 </body>
