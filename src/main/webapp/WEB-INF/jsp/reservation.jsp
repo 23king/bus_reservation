@@ -50,7 +50,7 @@
         <table class="table">
             <tr>
                 <th class="title" scope="col">산행일자</th>
-                <td scope="col">2018.01.01(월</td>
+                <td scope="col">2018.01.01(월)</td>
                 <th class="title" scope="col">산행금액</th>
                 <td scope="col">32,000원</td>
             </tr>
@@ -262,18 +262,10 @@
             </table>
             <p>*일부 실제 좌석배치와 다를 수 있습니다.</p>
         </div>
-
-    <%--<div class="row">--%>
-
-        <%--<div class="col-sm-10 blog-main">--%>
-            <%--<div class="blog-post">--%>
-                <%----%>
-            <%--</div>--%>
-        <%--</div><!-- /.blog-main -->--%>
-
-
-    <%--</div><!-- /.row -->--%>
-
+        <div style="margin-top: 23px;left: 45%;position: absolute;">
+            <button type="button" class="btn btn-success">예약하기</button>
+        </div>
+    </div>
 </main>
 
 <!--<footer class="blog-footer">-->
