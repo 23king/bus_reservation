@@ -19,9 +19,13 @@ public class AdminController {
     private TravelService travelService;
 
     @RequestMapping(value="/saveBusReservation")
-    public String saveTravel(@RequestBody Map<String, String> travelInfo){
-        travelService.saveTravel(travelInfo);
-        return "travelCreateComplete";
+    public String saveTravel(){
+        return "admin_template";
+    }
+
+    @RequestMapping(value="/saveBusReservationApply")
+    public String saveTravelApply(@RequestBody Map<String, String> travelInfo){
+        return "admin_list";
     }
 
 

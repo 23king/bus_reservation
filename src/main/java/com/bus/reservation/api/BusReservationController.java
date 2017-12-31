@@ -37,7 +37,7 @@ public class BusReservationController {
         return null;
     }
 
-    @RequestMapping(value="/findTravelAll")
+    @RequestMapping(value="/bus")
     public String findTravelAll(ModelMap model){
         model.put("travels", busReservationService.findTravelAll());
         return "";
