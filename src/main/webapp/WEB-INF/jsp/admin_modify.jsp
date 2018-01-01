@@ -10,29 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="webjars/jquery-ui/1.12.1/jquery-ui.css">
-    <link rel="stylesheet" href="./asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="/asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="./asset/css/common.css">
+    <link rel="stylesheet" href="/asset/css/common.css">
 </head>
 <body>
 <header>
-    <div class="blog-masthead">
-        <div class="container">
-            <nav class="nav">
-                <a class="nav-link" href="#"><span class="oi oi-home" aria-hidden="true"></span>&nbsp;홈(예약, 취소안내)</a>
-                <a class="nav-link active" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약하기</a>
-                <a class="nav-link" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약조회</a>
-                <a class="nav-link" href="#"><span class="oi oi-briefcase" title="icon home" aria-hidden="true"></span>&nbsp;산행취소하기</a>
-                <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;아이디(ID)찾기</a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 예약리스트 </a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 취소리스트</a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 회원정보</a>
-                <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 배차</a>
-            </nav>
-        </div>
-    </div>
+    <jsp:include page="/WEB-INF/jsp/include/top.jsp"/>
 
     <!--<div class="blog-header">-->
     <!--<div class="container">-->
@@ -91,7 +77,7 @@
                             <table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">
                                 <tbody>
                                 <tr>
-                                    <td style="width:29px;" rowspan="2"><img src="./asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>
+                                    <td style="width:29px;" rowspan="2"><img src="/asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>
                                     <td></td>
                                     <td class="td_2">
                                         <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_4">4</div>
@@ -181,7 +167,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="2"><img src="./asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>
+                                    <td rowspan="2"><img src="/asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>
 
                                     <td></td>
                                     <td class="td_2">
@@ -263,11 +249,11 @@
                     <table class="bus_info" style="width:618px;border:0;cellspacing:0;cellpadding:0;margin-top:5px;">
                         <tbody><tr>
                             <td style="width:12px;text-align:left;">&nbsp;</td>
-                            <td style="width:31px;text-align:left;"><img src="./asset/img/seat/seat_box_01.gif" width="16" height="16"></td>
+                            <td style="width:31px;text-align:left;"><img src="/asset/img/seat/seat_box_01.gif" width="16" height="16"></td>
                             <td style="width:80px;text-align:left;" class="set01">선택가능</td>
-                            <td style="width:31px;text-align:left;"><img src="./asset/img/seat/seat_box_02.gif" alt="" width="16" height="16"></td>
+                            <td style="width:31px;text-align:left;"><img src="/asset/img/seat/seat_box_02.gif" alt="" width="16" height="16"></td>
                             <td style="width:55px;text-align:left;"><strong class="set01">공석(인솔자)</strong></td>
-                            <td style="width:31px;text-align:left;"><img src="./asset/img/seat/seat_box_03.gif" alt="" width="16" height="16"></td>
+                            <td style="width:31px;text-align:left;"><img src="/asset/img/seat/seat_box_03.gif" alt="" width="16" height="16"></td>
                             <td style="width:80px;text-align:left;"><strong class="set01">2인전용</strong></td>
                             <td style="width:26px;">&nbsp;</td>
                         </tr>
@@ -297,10 +283,10 @@
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="./asset/js/html5shiv.js"></script>
-<script src="webjars/jquery/3.0.0/jquery.min.js"></script>
-<script src="webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-<script src="webjars/jquery-ui/1.12.1/jquery-ui.js"></script>
+<script src="/asset/js/html5shiv.js"></script>
+<script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.js"></script>
 <script>
     var emptyList ={}, multiList={};
     var busNum =1;
@@ -369,7 +355,7 @@
             '<table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">'+
             '<tbody>'+
             '<tr>'+
-            '<td style="width:29px;" rowspan="2"><img src="./asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>'+
+            '<td style="width:29px;" rowspan="2"><img src="/asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>'+
             '<td></td>'+
             '<td class="td_2">'+
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_4">4</div>'+
@@ -459,7 +445,7 @@
             '</td>'+
             '</tr>'+
             '<tr>'+
-            '<td rowspan="2"><img src="./asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>'+
+            '<td rowspan="2"><img src="/asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>'+
             '<td></td>'+
             '<td class="td_2">'+
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_2">2</div>'+

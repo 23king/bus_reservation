@@ -20,6 +20,9 @@ public class Travel implements Serializable {
     private String notice;
     private Date departureDate;
 
+    @Transient
+    private long reserv_cnt;
+
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "travelSeq")
