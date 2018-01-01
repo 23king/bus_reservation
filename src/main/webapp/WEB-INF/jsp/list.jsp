@@ -48,66 +48,46 @@
 
 <main role="main" class="container">
 
-    <h3 class="blog-post-title">내 예약 확인하기</h3>
+    <h3 class="blog-post-title">예약하기</h3>
     <p>산수산악회 버스 예약 시스템입니다.</p>
     <hr>
     <div id="list">
         <table class="table">
             <tr>
                 <%--<th class="title" scope="col">성명</th>--%>
-                <th class="title" scope="col">예약일자</th>
-                <th class="title" scope="col">입금자명</th>
                 <th class="title" scope="col">산행일자</th>
                 <th class="title" scope="col">산행지</th>
-                <th class="title" scope="col">좌석번호</th>
-                <%--<th class="title" scope="col">단가</th>--%>
-                <%--<th class="title" scope="col">배석수</th>--%>
-                <th class="title" scope="col">입금액</th>
-                <th class="title" scope="col">예약상태</th>
-                <th class="title" scope="col">취소상태</th>
-                <th class="title" scope="col">취소</th>
+                <th class="title" scope="col">전체좌석수</th>
+                <th class="title" scope="col">잔여좌석수</th>
+                <th class="title" scope="col">산행금액</th>
+                <th class="title" scope="col">예약</th>
             </tr>
             <tr>
                 <%--<td scope="col">홍길동</td>--%>
-                <td scope="col">2017.12.29</td>
-                <td scope="col">홍길동</td>
                 <td scope="col">2018.01.02(수)</td>
                 <td scope="col">지리산</td>
-                <td scope="col">1호차 1,2,3</td>
-                <%--<td scope="col">31,000원</td>--%>
-                <%--<td scope="col">3</td>--%>
-                <td scope="col">93,000원</td>
-                <td scope="col">확인대기</td>
-                <td scope="col">-</td>
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
+                <td scope="col">45명</td>
+                <td scope="col">30명</td>
+                <td scope="col">31,000원</td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">예약</button></td>
             </tr>
             <tr>
                 <%--<td scope="col">홍길동</td>--%>
-                <td scope="col">2017.12.29</td>
-                <td scope="col">홍길동</td>
                 <td scope="col">2018.01.02(수)</td>
                 <td scope="col">지리산</td>
-                <td scope="col">1호차 1,2,3</td>
-                <%--<td scope="col">31,000원</td>--%>
-                <%--<td scope="col">3</td>--%>
-                <td scope="col">93,000원</td>
-                <td scope="col">확인대기</td>
-                <td scope="col">-</td>
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
+                <td scope="col">45명</td>
+                <td scope="col">30명</td>
+                <td scope="col">31,000원</td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">예약</button></td>
             </tr>
             <tr>
                 <%--<td scope="col">홍길동</td>--%>
-                <td scope="col">2017.12.29</td>
-                <td scope="col">홍길동</td>
                 <td scope="col">2018.01.02(수)</td>
                 <td scope="col">지리산</td>
-                <td scope="col">1호차 1,2,3</td>
-                <%--<td scope="col">31,000원</td>--%>
-                <%--<td scope="col">3</td>--%>
-                <td scope="col">93,000원</td>
-                <td scope="col">확인대기</td>
-                <td scope="col">-</td>
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
+                <td scope="col">45명</td>
+                <td scope="col">30명</td>
+                <td scope="col">31,000원</td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">예약</button></td>
             </tr>
 
         </table>

@@ -276,7 +276,7 @@
                 </div>
 
                 <div style="margin-top: 23px;left: 50%;position: absolute;">
-                    <button type="button" class="btn btn-success" onClick="addBusTemplate()">등록</button>
+                    <button type="button" class="btn btn-success">수정하기</button>
                 </div>
 
 
