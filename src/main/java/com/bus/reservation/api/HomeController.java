@@ -18,6 +18,10 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String list(ModelMap model){
+        return "list";
+    }
 
     @RequestMapping(value = "/reservation", method = RequestMethod.GET)
     public String reservation(ModelMap model){
