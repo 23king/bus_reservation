@@ -48,21 +48,21 @@
                         </tr>
                         <tr>
                             <th class="title" scope="row">산행지</th>
-                            <td colspan="3"><input type="text" class="form-control" /></td>
+                            <td colspan="3"><input type="text" class="form-control" id="dest" /></td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">산행대장/차량</th>
-                            <td colspan="3"><input type="text" class="form-control" /></td>
+                            <td colspan="3"><input type="text" class="form-control" id="leaderInfo" /></td>
                         </tr>
                         <tr>
                             <th class="title" rowspan="2" scope="row">안내사항</th>
                             <td colspan="3">
-                                <input type="text" class="form-control" value="아래 [필독 : 예약,취소,변경,환불 안내]를 꼭 읽어 보시기 바랍니다."/>
+                                <input type="text" class="form-control" value="아래 [필독 : 예약,취소,변경,환불 안내]를 꼭 읽어 보시기 바랍니다." id="info1"/>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <input type="text" class="form-control" value="문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]" />
+                                <input type="text" class="form-control" value="문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]" id="indfo2" />
                             </td>
                         </tr>
                     </table>
@@ -262,7 +262,7 @@
                 </div>
 
                 <div style="margin-top: 23px;left: 50%;position: absolute;">
-                    <button type="button" class="btn btn-success" onClick="addBusTemplate()">등록</button>
+                    <button type="button" class="btn btn-success" onClick="submit()">등록</button>
                 </div>
 
 
@@ -294,6 +294,32 @@
 
     function addBusTemplate() {
         $('#busAreaBox').append(getBusTemplate());
+    }
+
+    function submit() {
+        console.log("emptyList", emptyList);
+        console.log("multiList", multiList);
+
+
+        $.ajax({
+            type: "POST",
+            url: "/admin/insert",
+            data: {
+                date : $("#datepicker").val(),
+                price: $("#priceBox").val(),
+                dest : $("#dest").val(),
+                leader : $("#leaderInfo").val(),
+                info1: $("#info1").val(),
+                info2: $("#info2").val(),
+                emptyList : emptyList,
+                multiList : multiList
+            },
+            success: function(data) {
+                alert("등록에 성공하였습니다");
+                location.href="/admin/list";
+            },
+            dataType: "application/json"
+        });
     }
 
 
@@ -331,11 +357,6 @@
                 emptyList[busNum].splice(emptyList[busNum].indexOf(seatNum2.toString()),1);
             }
         }
-
-        console.log("emptyList", emptyList);
-        console.log("multiList", multiList);
-        //== "seat_3";
-
     }
 
     function clearBox(id) {
@@ -364,7 +385,7 @@
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_8">8</div>'+
             '</td>'+
             '<td>'+
-            '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, true, this);" id="'+busNum+'_12">12</div>'+
+            '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_12">12</div>'+
             '</td>'+
             '<td>'+
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_16">16</div>'+
@@ -400,7 +421,7 @@
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_7">7</div>'+
             '</td>'+
             '<td>'+
-            '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, true, this);" id="'+busNum+'_11">11</div>'+
+            '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_11">11</div>'+
             '</td>'+
             '<td>'+
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_15">15</div>'+
@@ -490,7 +511,7 @@
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_5">5</div>'+
             '</td>'+
             '<td>'+
-            '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, true, this);" id="'+busNum+'_9">9</div>'+
+            '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_9">9</div>'+
             '</td>'+
             '<td>'+
             '<div class="seat_1" onclick="setSeat41('+busNum+', this.id, false, this);" id="'+busNum+'_13">13</div>'+
