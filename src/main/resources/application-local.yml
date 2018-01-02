@@ -3,8 +3,8 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://121.137.131.159:3306/reservation_dev?useUnicode=true
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:log4jdbc:mysql://121.137.131.159:3306/reservation_dev?useUnicode=true
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     username: sansu_dev
     password: sansu!123
     initialize: false
@@ -14,6 +14,7 @@ spring:
     hibernate:
 #      ddl-auto: create
       ddl-auto: none
+      debug: true
     properties:
       hibernate:
         format_sql: true

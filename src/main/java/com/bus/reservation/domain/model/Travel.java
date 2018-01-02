@@ -4,8 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,12 +23,9 @@ public class Travel implements Serializable {
     @Transient
     private long reserv_cnt;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "travel")
+    private List<BusReservation> buses;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "travelSeq")
-    private Collection<BusReservation> buses;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "travelSeq")
-    private Collection<BusReservationDetail> reservations;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "travel")
+    private List<BusReservationDetail> reservations;
 }

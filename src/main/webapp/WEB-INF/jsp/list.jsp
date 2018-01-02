@@ -45,13 +45,14 @@
                 <th class="title" scope="col">예약현황</th>
                 <th class="title" scope="col">예약</th>
             </tr>
-            <c:forEach var="list" items="${trabels}">
+            <c:forEach var="list" items="${travels}">
             <tr>
                     <%--<td scope="col">홍길동</td>--%>
                 <td scope="col"><c:out value="${list.departureDate}"/></td>
                 <td scope="col"><c:out value="${list.destination}"/></td>
+                <td scope="col"><c:out value="${list.reserv_cnt}"/></td>
 
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="submit()">취소</button></td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="reserv(${list.seq})">예약</button></td>
             </tr>
             </c:forEach>
         </table>
@@ -73,6 +74,9 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
+    function reserv(travel_id){
+        window.location = "/reservation/bus?travel_id="+travel_id;
+    }
 </script>
 </body>
 </html>

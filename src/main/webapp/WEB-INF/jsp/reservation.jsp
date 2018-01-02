@@ -60,6 +60,11 @@
         </table>
     </div>
     <div class="bus_area">
+        <form name="reservBus" method="post">
+            <input type="hidden" name="travel_id" value="${travel_id}"/>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <input type="hidden" name="userName" value="${userName}"/>
+            <input type="hidden" name="phoneNum" value="${phoneNum}"/>
         <div class="seat">
             <table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">
                 <tbody>
@@ -251,6 +256,7 @@
         <div style="margin-top: 23px;left: 45%;position: absolute;">
             <button type="button" class="btn btn-success">예약하기</button>
         </div>
+        </form>
     </div>
 </main>
 

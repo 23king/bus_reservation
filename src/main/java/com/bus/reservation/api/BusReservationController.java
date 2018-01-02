@@ -37,14 +37,34 @@ public class BusReservationController {
         return null;
     }
 
-    @RequestMapping(value="/bus")
+    @RequestMapping(value="/list")
     public String findTravelAll(ModelMap model){
-        model.put("travels", busReservationService.findTravelAll());
-        return "";
+        model.put("travels", travelService.findTravelAll());
+        return "list";
+    }
+
+    @RequestMapping(value="/busList")
+    public String reservList(ModelMap model){
+        model.put("travels", travelService.findTravelAll());
+        return "list";
+    }
+
+    @RequestMapping(value="/bus")
+    public String reservBus(ModelMap model, @RequestParam long travel_id){
+        travelService.checkSeat(travel_id);
+        model.put("travel_id",travel_id);
+        return "registerAccount";
+    }
+
+    @RequestMapping(value="/busSeatChoice")
+    public String busSeatChoice(ModelMap model, @RequestParam Map<String,String> param){
+        model.put("param", param);
+        model.put("travelInfo", travelService.findTravel(Long.parseLong(param.get("travel_id"))));
+        return "reservation";
     }
 
     @RequestMapping(value="/reserveTravel")
-    public String reservation(@RequestBody Map<String, String> travelInfo, ModelMap model){
+    public String reservation(@RequestBody Map<String, Object> travelInfo, ModelMap model){
         model.put("travel", travelService.reserveTravel(travelInfo));
         return "";
     }

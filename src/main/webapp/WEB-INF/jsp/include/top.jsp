@@ -3,8 +3,8 @@
     <div class="container">
         <nav class="nav">
             <a class="nav-link" href="#"><span class="oi oi-home" aria-hidden="true"></span>&nbsp;홈(예약, 취소안내)</a>
-            <a class="nav-link active" href="/reservation/bus"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약하기</a>
-            <a class="nav-link" href="#"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약조회</a>
+            <a class="nav-link active" href="/reservation/busList"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약하기</a>
+            <a class="nav-link" href="/reservation/busCheck"><span class="oi oi-person" aria-hidden="true"></span>&nbsp;예약조회</a>
             <a class="nav-link" href="#"><span class="oi oi-briefcase" title="icon home" aria-hidden="true"></span>&nbsp;산행취소하기</a>
             <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="true"></span>&nbsp;아이디(ID)찾기</a>
             <a class="nav-link hidden" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN]</a>

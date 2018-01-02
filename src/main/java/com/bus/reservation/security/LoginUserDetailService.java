@@ -29,11 +29,11 @@ public class LoginUserDetailService implements UserDetailsService {
 
         if(user == null){
             // TODO: 사용자 정보가 없으면 join 시켜 버린다
-            User newUser = new User();
-            newUser.setUserId(userId);
-            newUser.setUserName(userName);
-            newUser.setUserPhone(phone);
-            user = memberRepository.save(newUser);
+//            User newUser = new User();
+//            newUser.setUserId(userId);
+//            newUser.setUserName(userName);
+//            newUser.setUserPhone(phone);
+//            user = memberRepository.save(newUser);
         }
 
         UserDetail userDetail = new UserDetail(user);

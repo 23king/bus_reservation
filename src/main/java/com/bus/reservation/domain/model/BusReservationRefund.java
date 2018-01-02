@@ -25,6 +25,6 @@ public class BusReservationRefund implements Serializable {
     private String refundStatus;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "group_id", referencedColumnName="travelSeq")
+    @JoinColumn(name = "group_id", referencedColumnName="travel_seq")
     private BusReservationDetail reservationDetail;
 }

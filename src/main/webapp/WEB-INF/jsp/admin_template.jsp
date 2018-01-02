@@ -303,16 +303,18 @@
 
         $.ajax({
             type: "POST",
-            url: "/admin/insert",
+            url: "/admin/saveBusReservationApply",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: {
                 date : $("#datepicker").val(),
-                price: $("#priceBox").val(),
+                price: $("#priceBox").val().replace(/[^0-9]/g,''),
                 dest : $("#dest").val(),
                 leader : $("#leaderInfo").val(),
-                info1: $("#info1").val(),
-                info2: $("#info2").val(),
+//                info1: $("#info1").val(),
+//                info2: $("#info2").val(),
                 emptyList : emptyList,
-                multiList : multiList
+                multiList : multiList,
+                busNum : busNum
             },
             success: function(data) {
                 alert("등록에 성공하였습니다");
@@ -547,7 +549,7 @@
 
     $( function() {
         $( "#datepicker" ).datepicker({
-            dateFormat: 'yy.mm.dd(D)',
+            dateFormat: 'yy.mm.dd',
             closeText: '닫기',
             prevText: '이전달',
             nextText: '다음달',

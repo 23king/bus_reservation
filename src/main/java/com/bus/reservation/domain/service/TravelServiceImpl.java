@@ -1,28 +1,102 @@
 package com.bus.reservation.domain.service;
 
+import com.bus.reservation.domain.model.BusReservation;
 import com.bus.reservation.domain.model.Travel;
+import com.bus.reservation.domain.repository.BusReservationDetailRepository;
 import com.bus.reservation.domain.repository.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class TravelServiceImpl implements TravelService {
 
     @Autowired
     private TravelRepository travelRepository;
+    @Autowired
+    private BusReservationDetailRepository busReservationDetailRepository;
+
 
     @Override
-    public void saveTravel(Map<String, String> travelInfo) {
+    public void saveTravel(Map<String, Object> travelInfo, Map<String,String[]> params) {
         Travel travel = new Travel();
 
+        List<BusReservation> reservations = new ArrayList<>();
+
+        travel.setDepartureDate(covertToDate(String.valueOf(travelInfo.get("date"))));
+        travel.setPrice(Long.parseLong(String.valueOf(travelInfo.get("price"))));
+        travel.setNotice(String.valueOf(travelInfo.get("leader")));
+        travel.setDestination(String.valueOf(travelInfo.get("dest")));
+
+
+        int busNum = Integer.parseInt(String.valueOf(travelInfo.get("busNum")));
+
+        for (int i = 0; i < busNum; i++) {
+
+            List<String> emptySeats = Arrays.asList((String[])params.get("emptyList["+(i+1)+"][]"));
+            List<String> multiSeats = Arrays.asList((String[])params.get("multiList["+(i+1)+"][]"));
+
+            for(int k = 1; k <= 45; k ++){
+                BusReservation busReservation = new BusReservation();
+                busReservation.setBusNum(i);
+                busReservation.setSeatNum(k);
+                busReservation.setStatus(0);
+                if(emptySeats.contains(String.valueOf(k)))
+                    busReservation.setStatus(9);
+
+                if(multiSeats.contains(String.valueOf(k)))
+                    busReservation.setTwinSeat(true);
+
+                reservations.add(busReservation);
+            }
+        }
+
+        travel.setBuses(reservations);
+
         travelRepository.save(travel);
+    }
+
+    @Override
+    public Travel reserveTravel(Map<String, Object> travelInfo) {
+
+
+        return null;
+    }
+
+    @Override
+    public List<Travel> findTravelAll() {
+        List<Travel> travels = travelRepository.findAll();
+        travels.stream().forEach( v -> {
+            v.setReserv_cnt(busReservationDetailRepository.findAllByTravelSeq(v.getSeq()).size());
+        });
+        return travels;
+    }
+
+    @Override
+    public void checkSeat(long travel_id) {
+        long reserv_cnt = busReservationDetailRepository.countByTravelSeq(travel_id);
+
+        if(reserv_cnt >= 45)
+            throw new RuntimeException("이미 좌석예약이 완료되었습니다");
 
     }
 
     @Override
-    public Travel reserveTravel(Map<String, String> travelInfo) {
+    public Travel findTravel(long travel_id) {
+        return travelRepository.findOne(travel_id);
+    }
+
+    private Date covertToDate(String date){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        try {
+            return format.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 

@@ -37,24 +37,27 @@
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
+                    <form name="reservBus" method="post" action="/reservation/busSeatChoice">
+                        <input type="hidden" name="travel_id" value="${travel_id}"/>
                     <table class="table">
                         <tr>
                             <th class="title" scope="col">아이디</th>
-                            <th scope="col"><input type="text" id="userId" name="userId" class="form-control"/></th>
+                            <th scope="col"><input type="text" id="userId" class="form-control"/></th>
                         </tr>
                         <tr>
                             <th class="title" scope="row">성명</th>
-                            <td colspan="3"><input type="text" id="userName" name="userName" class="form-control" /></td>
+                            <td colspan="3"><input type="text" id="userName" class="form-control" /></td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">휴대전화</th>
-                            <td colspan="3"><input type="text" class="form-control" id="phoneNum" name="phoneNum" placeholder="-를 포함한 전체 휴대전화 번호를 입력하세요" onchange="checkNum(this.id)"/></td>
+                            <td colspan="3"><input type="text" class="form-control" id="phoneNum" placeholder="-를 포함한 전체 휴대전화 번호를 입력하세요" onchange="checkNum(this.id)"/></td>
                         </tr>
 
                     </table>
                     <div style="margin-top: 23px;left: 50%;position: absolute;">
-                        <button type="button" class="btn btn-success" onclick="submit()">로그인</button>
+                        <button type="button" class="btn btn-success" onclick="submit()">예약하기</button>
                     </div>
+                    </form>
                 </div>
 
             </div><!-- /.blog-post -->
@@ -109,7 +112,15 @@
             return false;
         }
 
+        if(phoneNum === ""){
+            alert("전화번호를 입력하세요");
+            document.getElementById("phoneNum").focus();
+            return false;
+        }
+        var reservBus = document.getElementById("reservBus");
         console.log(userId, userName, phoneNum);
+        reservBus.submit();
+
     }
 </script>
 </body>
