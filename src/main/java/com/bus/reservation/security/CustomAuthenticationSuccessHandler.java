@@ -38,4 +38,14 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
             }
         }
     }
+
+    protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response) {
+        if (this.isAlwaysUseDefaultTargetUrl()) {
+            return super.getDefaultTargetUrl();
+        } else {
+            return "/admin/findReservList";
+        }
+    }
+
+
 }

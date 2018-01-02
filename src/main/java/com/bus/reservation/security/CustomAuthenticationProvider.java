@@ -7,10 +7,13 @@ import org.springframework.security.authentication.AuthenticationServiceExceptio
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
+import org.springframework.security.core.authority.mapping.NullAuthoritiesMapper;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Component
@@ -18,6 +21,8 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
     @Autowired
     private LoginUserDetailService loginUserDetailService;
+
+    private GrantedAuthoritiesMapper authoritiesMapper = new NullAuthoritiesMapper();
 
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authenticate) throws AuthenticationException {
@@ -28,14 +33,18 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
 
         UserDetail user = (UserDetail) userDetails;
         User userData = user.getUser();
+    }
 
-
-
+    protected Authentication createSuccessAuthentication(Object principal, Authentication authentication, UserDetails user) {
+        CustomUsernamePasswordAuthenticationToken result = new CustomUsernamePasswordAuthenticationToken(principal, authentication.getCredentials(), this.authoritiesMapper.mapAuthorities(user.getAuthorities()));
+        result.setDetails(authentication.getDetails());
+        return result;
     }
 
 
 
     @Override
+    @Transactional
     protected UserDetails retrieveUser(String userId, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
         UserDetail userDetail = null;
         CustomUsernamePasswordAuthenticationToken token = (CustomUsernamePasswordAuthenticationToken) authentication;
@@ -46,16 +55,11 @@ public class CustomAuthenticationProvider extends AbstractUserDetailsAuthenticat
                     "AbstractUserDetailsAuthenticationProvider.badCredentials", "Bad credentials"));
         }
         
-        try{
-            String userNm = String.valueOf(token.getUserName());
-            String phone = String.valueOf(token.getPhone());
+        String userNm = String.valueOf(token.getUserName());
+        String phone = String.valueOf(token.getPhone());
 
-            userDetail = loginUserDetailService.loadUserByUserInfo(userId, userNm, phone );
+        userDetail = loginUserDetailService.loadUserByUserInfo(userId, userNm, phone );
 
-        }catch(UsernameNotFoundException ex){
-            log.debug("create user");
-        }
-        
         if(userDetail == null) {
             throw new AuthenticationServiceException("UserDetailsService returned null, which is an interface contract violation");
         }

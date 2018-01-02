@@ -36,5 +36,22 @@ public class MemberRepositoryTest {
         log.info(new_user.toString());
     }
 
+    @Test
+    public void findByUserId(){
+        String userId= "swlee";
+        User user = memberRepository.findByUserId(userId);
+//        log.info("user : {}",user);
+//        log.info("user : {}",user.getUserRoles());
+    }
+
+    @Test
+    public void findByUserIdAndUserNameAndUserPhone(){
+        String userId="swlee";
+        String userName="이세왕";
+        String phone = "010-1111-1111";
+        User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phone);
+        log.info("user {}",user);
+    }
+
 
 }

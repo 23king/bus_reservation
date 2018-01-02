@@ -37,10 +37,11 @@
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
+                    <form name="admin" method="post" action="/login">
                     <table class="table">
                         <tr>
                             <th class="title" scope="col">아이디</th>
-                            <th scope="col"><input type="text" id="userId" name="userId" class="form-control"/></th>
+                            <th scope="col"><input type="text" id="userId" name="username" class="form-control"/></th>
                         </tr>
                         <tr>
                             <th class="title" scope="row">성명</th>
@@ -56,7 +57,7 @@
                         <button type="button" class="btn btn-success" onclick="submit()">로그인</button>
                     </div>
                 </div>
-
+                </form>
             </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
 
@@ -99,7 +100,7 @@
 
         if(userId==="") {
             alert("아이디를 입력하세요");
-            document.getElementById("userId").focus();
+            document.getElementById("username").focus();
             return false;
         }
 
@@ -108,6 +109,15 @@
             document.getElementById("userName").focus();
             return false;
         }
+
+        if(phoneNum==="") {
+            alert("전화번호를 입력하세요");
+            document.getElementById("phoneNum").focus();
+            return false;
+        }
+
+        var admin = document.getElementById("admin");
+        admin.submit();
 
         console.log(userId, userName, phoneNum);
     }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class BusReservationController {
         return "checkAccount";
     }
 
-    @RequestMapping(value="/busReservCheckList")
+    @RequestMapping(value="/busReservCheckList", method = RequestMethod.POST)
     public String busReservCheckList(ModelMap model, @RequestParam String userId,
                                      @RequestParam String userName,
                                      @RequestParam String phoneNum){

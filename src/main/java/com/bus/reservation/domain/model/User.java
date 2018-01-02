@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Data
-@ToString
+@ToString(exclude = {"userRoles", "busReservationDetail"})
 public class User implements Serializable {
 
     @Id
@@ -36,11 +36,10 @@ public class User implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastLoginDate;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="user_role", referencedColumnName = "userId")
-    private UserRole userRole;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "user")
+    private List<UserRole> userRoles;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
     private List<BusReservationDetail> busReservationDetail;
 
 

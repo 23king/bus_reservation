@@ -25,8 +25,8 @@ public class CustomUsernamePasswordAuthenticationFilter extends AbstractAuthenti
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         } else {
             String username = this.obtainUsername(request);
-            String userNm = request.getParameter("usernm");
-            String phone = request.getParameter("phone");
+            String userNm = request.getParameter("userName");
+            String phone = request.getParameter("phoneNum");
             if (username == null) {
                 username = "";
             }
@@ -34,7 +34,8 @@ public class CustomUsernamePasswordAuthenticationFilter extends AbstractAuthenti
             username = username.trim();
             CustomUsernamePasswordAuthenticationToken authRequest = new CustomUsernamePasswordAuthenticationToken(username, userNm, phone);
             this.setDetails(request, authRequest);
-            return this.getAuthenticationManager().authenticate(authRequest);
+            Authentication authentication = this.getAuthenticationManager().authenticate(authRequest);
+            return authentication;
         }
     }
 
