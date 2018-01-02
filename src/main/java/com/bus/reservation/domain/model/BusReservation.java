@@ -22,7 +22,8 @@ public class BusReservation implements Serializable {
     private long status;
     private boolean isTwinSeat;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="travel_seq")
     private Travel travel;
 
 }

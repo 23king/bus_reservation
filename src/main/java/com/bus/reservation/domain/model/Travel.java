@@ -17,8 +17,11 @@ public class Travel implements Serializable {
     private long seq;
     private String destination;
     private long price;
-    private String notice;
+    private String leader;
+    private String notice1;
+    private String notice2;
     private Date departureDate;
+    private int busNum;
 
     @Transient
     private long reserv_cnt;

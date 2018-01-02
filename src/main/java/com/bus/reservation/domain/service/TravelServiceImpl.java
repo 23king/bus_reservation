@@ -32,13 +32,17 @@ public class TravelServiceImpl implements TravelService {
 
         List<BusReservation> reservations = new ArrayList<>();
 
+        int busNum = Integer.parseInt(String.valueOf(travelInfo.get("busNum")));
+
+
         travel.setDepartureDate(covertToDate(String.valueOf(travelInfo.get("date"))));
         travel.setPrice(Long.parseLong(String.valueOf(travelInfo.get("price"))));
-        travel.setNotice(String.valueOf(travelInfo.get("leader")));
+        travel.setLeader(String.valueOf(travelInfo.get("leader")));
+        travel.setNotice1(String.valueOf(travelInfo.get("notice1")));
+        travel.setNotice2(String.valueOf(travelInfo.get("notice2")));
         travel.setDestination(String.valueOf(travelInfo.get("dest")));
+        travel.setBusNum(busNum);
 
-
-        int busNum = Integer.parseInt(String.valueOf(travelInfo.get("busNum")));
 
         for (int i = 0; i < busNum; i++) {
 

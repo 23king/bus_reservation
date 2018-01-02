@@ -67,6 +67,7 @@ public class BusReservationController {
 
     @RequestMapping(value="/busSeatChoice")
     public String busSeatChoice(ModelMap model, @RequestParam Map<String,String> param){
+        System.out.println("param : " + param.toString());
         model.put("param", param);
         model.put("travelInfo", travelService.findTravel(Long.parseLong(param.get("travel_id"))));
         return "reservation";

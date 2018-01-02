@@ -36,35 +36,37 @@
         <table class="table">
             <tr>
                 <th class="title" scope="col">산행일자</th>
-                <td scope="col">2018.01.01(월)</td>
+                <td scope="col">${travelInfo.departureDate}</td>
                 <th class="title" scope="col">산행금액</th>
-                <td scope="col">32,000원</td>
+                <td scope="col">${travelInfo.price}</td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행지</th>
-                <td colspan="3">지리산</td>
+                <td colspan="3">${travelInfo.destination}</td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행대장/차량</th>
-                <td colspan="3">추후 공지</td>
+                <td colspan="3">${travelInfo.leader}</td>
             </tr>
             <tr>
                 <th class="title" rowspan="2" scope="row">안내사항</th>
-                <td colspan="3">아래 [필독 : 예약,취소,변경,환불 안내]를 꼭 읽어 보시기 바랍니다.</td>
+                <td colspan="3">${travelInfo.notice1}아래 [필독 : 예약,취소,변경,환불 안내]를 꼭 읽어 보시기 바랍니다.</td>
             </tr>
             <tr>
                 <td colspan="3">
-                    문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]
+                    ${travelInfo.notice2}문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]
                 </td>
             </tr>
         </table>
     </div>
     <div class="bus_area">
         <form name="reservBus" method="post">
-            <input type="hidden" name="travel_id" value="${travel_id}"/>
-            <input type="hidden" name="userId" value="${userId}"/>
-            <input type="hidden" name="userName" value="${userName}"/>
-            <input type="hidden" name="phoneNum" value="${phoneNum}"/>
+            ${param}
+            ${travelInfo}
+            <input type="hidden" name="travel_id" value="${param.travel_id}"/>
+            <input type="hidden" name="userId" value="${param.userId}"/>
+            <input type="hidden" name="userName" value="${param.userName}"/>
+            <input type="hidden" name="phoneNum" value="${param.phoneNum}"/>
         <div class="seat">
             <table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">
                 <tbody>
