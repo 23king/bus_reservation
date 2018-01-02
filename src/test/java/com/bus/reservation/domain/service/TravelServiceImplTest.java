@@ -42,4 +42,8 @@ public class TravelServiceImplTest {
         assertThat(travelService.findTravel(0));
     }
 
+    @Test
+    public void findReservListByUser() throws Exception{
+        travelService.findReservListByUser("swlee","이세왕","010-1111-1111");
+    }
 }

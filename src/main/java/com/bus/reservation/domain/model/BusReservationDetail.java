@@ -17,7 +17,6 @@ public class BusReservationDetail implements Serializable {
     @GeneratedValue
     private long seq;
 
-    private String user_id;
     private long bus_seat_no;
     private String reserv_status;
     private Date create_date;
@@ -25,5 +24,8 @@ public class BusReservationDetail implements Serializable {
 
     @ManyToOne
     private Travel travel;
+
+    @ManyToOne
+    private User user;
 
 }

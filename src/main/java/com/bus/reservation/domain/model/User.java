@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -38,6 +39,9 @@ public class User implements Serializable {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="user_role", referencedColumnName = "userId")
     private UserRole userRole;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private List<BusReservationDetail> busReservationDetail;
 
 
 }

@@ -1,8 +1,11 @@
 package com.bus.reservation.domain.service;
 
 import com.bus.reservation.domain.model.BusReservation;
+import com.bus.reservation.domain.model.BusReservationDetail;
 import com.bus.reservation.domain.model.Travel;
+import com.bus.reservation.domain.model.User;
 import com.bus.reservation.domain.repository.BusReservationDetailRepository;
+import com.bus.reservation.domain.repository.MemberRepository;
 import com.bus.reservation.domain.repository.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,8 @@ public class TravelServiceImpl implements TravelService {
     private TravelRepository travelRepository;
     @Autowired
     private BusReservationDetailRepository busReservationDetailRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
 
     @Override
@@ -88,6 +93,18 @@ public class TravelServiceImpl implements TravelService {
     @Override
     public Travel findTravel(long travel_id) {
         return travelRepository.findOne(travel_id);
+    }
+
+    @Override
+    public List<Travel> findReservListByUser(String userId, String userName, String phoneNum) {
+        User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phoneNum);
+        if(user == null)
+            throw new RuntimeException("사용자 정보가 존재하지 않습니다");
+
+        List<BusReservationDetail> reservList = busReservationDetailRepository.findAllByUser(user);
+
+        List<Travel> travels = travelRepository.findAllByReservations(reservList);
+        return travels;
     }
 
     private Date covertToDate(String date){

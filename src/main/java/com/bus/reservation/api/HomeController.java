@@ -14,7 +14,6 @@ public class HomeController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String main(ModelMap model){
-        model.put("message","Hello Sansu!!");
         return "index";
     }
 
@@ -53,26 +52,26 @@ public class HomeController {
     public String findId(ModelMap model){
         return "findId";
     }
-
-    @RequestMapping(value = "/admin/bus", method = RequestMethod.GET)
-    public String adminBus(ModelMap model){
-        return "admin_template";
-    }
-
-
-    @RequestMapping(value = "/admin/list", method = RequestMethod.GET)
-    public String adminList(ModelMap model){
-        return "admin_list";
-    }
-
-    @RequestMapping(value = "/admin/detail", method = RequestMethod.GET)
-    public String adminDetail(ModelMap model){
-        return "admin_detail";
-    }
-
-    @RequestMapping(value = "/admin/modify", method = RequestMethod.GET)
-    public String adminModify(ModelMap model){
-        return "admin_modify";
-    }
+//
+//    @RequestMapping(value = "/admin/bus", method = RequestMethod.GET)
+//    public String adminBus(ModelMap model){
+//        return "admin_template";
+//    }
+//
+//
+//    @RequestMapping(value = "/admin/list", method = RequestMethod.GET)
+//    public String adminList(ModelMap model){
+//        return "admin_list";
+//    }
+//
+//    @RequestMapping(value = "/admin/detail", method = RequestMethod.GET)
+//    public String adminDetail(ModelMap model){
+//        return "admin_detail";
+//    }
+//
+//    @RequestMapping(value = "/admin/modify", method = RequestMethod.GET)
+//    public String adminModify(ModelMap model){
+//        return "admin_modify";
+//    }
 
 }

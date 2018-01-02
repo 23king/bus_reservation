@@ -33,5 +33,10 @@ public class AdminController {
         return "admin_list";
     }
 
+    @RequestMapping(value="/findReservList")
+    public String findReservList(){
+        return "admin_list";
+    }
+
 
 }

@@ -33,8 +33,16 @@ public class BusReservationController {
     }
 
     @RequestMapping(value="/findReservations")
-    public BusReservation findBusReservations(){
-        return null;
+    public String findBusReservations(){
+        return "checkAccount";
+    }
+
+    @RequestMapping(value="/busReservCheckList")
+    public String busReservCheckList(ModelMap model, @RequestParam String userId,
+                                     @RequestParam String userName,
+                                     @RequestParam String phoneNum){
+        model.put("travels",travelService.findReservListByUser(userId, userName, phoneNum));
+        return "reservList";
     }
 
     @RequestMapping(value="/list")
