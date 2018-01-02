@@ -50,11 +50,11 @@
             </tr>
             <tr>
                 <th class="title" rowspan="2" scope="row">안내사항</th>
-                <td colspan="3">${travelInfo.notice1}아래 [필독 : 예약,취소,변경,환불 안내]를 꼭 읽어 보시기 바랍니다.</td>
+                <td colspan="3">${travelInfo.notice1} </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    ${travelInfo.notice2}문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]
+                    ${travelInfo.notice2}
                 </td>
             </tr>
         </table>

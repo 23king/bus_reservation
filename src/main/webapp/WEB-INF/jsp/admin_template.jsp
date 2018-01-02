@@ -310,8 +310,8 @@
                 price: $("#priceBox").val().replace(/[^0-9]/g,''),
                 dest : $("#dest").val(),
                 leader : $("#leaderInfo").val(),
-//                info1: $("#info1").val(),
-//                info2: $("#info2").val(),
+                notice1: $("#info1").val(),
+                notice2: $("#info2").val(),
                 emptyList : emptyList,
                 multiList : multiList,
                 busNum : busNum
