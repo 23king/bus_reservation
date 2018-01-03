@@ -4,6 +4,8 @@ import com.bus.reservation.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MemberRepository extends JpaRepository<User, Long> {
 
@@ -15,6 +17,6 @@ public interface MemberRepository extends JpaRepository<User, Long> {
 
     User findByUserIdAndUserNameAndUserPhone(String userId, String userName, String phone);
 
-    User findByUserNameAndUserPhone(String userName, String phone);
+    List<User> findAllByUserNameAndUserPhone(String userName, String phone);
 
 }

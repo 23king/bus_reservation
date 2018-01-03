@@ -33,7 +33,7 @@
 
         <div class="col-sm-10 blog-main">
             <div class="blog-post">
-                <h3 class="blog-post-title">로그인</h3>
+                <h3 class="blog-post-title">사용자 정보를 입력하세요.</h3>
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>

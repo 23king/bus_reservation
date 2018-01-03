@@ -62,7 +62,7 @@
     <div class="bus_area">
         <form name="reservBus" method="post">
             ${param}
-            ${travelInfo}
+            ${travelInfo.buses}
             <input type="hidden" name="travel_id" value="${param.travel_id}"/>
             <input type="hidden" name="userId" value="${param.userId}"/>
             <input type="hidden" name="userName" value="${param.userName}"/>

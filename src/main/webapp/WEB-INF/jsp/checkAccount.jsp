@@ -33,7 +33,7 @@
 
         <div class="col-sm-10 blog-main">
             <div class="blog-post">
-                <h3 class="blog-post-title">로그인</h3>
+                <%--<h3 class="blog-post-title">로그인</h3>--%>
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
@@ -54,7 +54,7 @@
 
                     </table>
                     <div style="margin-top: 23px;left: 50%;position: absolute;">
-                        <button type="button" class="btn btn-success" onclick="submit()">예약하기</button>
+                        <button type="button" class="btn btn-success" onclick="submit()">조회하기</button>
                     </div>
                     </form>
                 </div>

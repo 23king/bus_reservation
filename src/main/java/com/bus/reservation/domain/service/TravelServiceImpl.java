@@ -46,8 +46,8 @@ public class TravelServiceImpl implements TravelService {
 
         for (int i = 0; i < busNum; i++) {
 
-            List<String> emptySeats = Arrays.asList((String[])params.get("emptyList["+(i+1)+"][]"));
-            List<String> multiSeats = Arrays.asList((String[])params.get("multiList["+(i+1)+"][]"));
+            List<String> emptySeats = Optional.ofNullable(Arrays.asList((String[])params.get("emptyList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
+            List<String> multiSeats = Optional.ofNullable(Arrays.asList((String[])params.get("multiList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
 
             for(int k = 1; k <= 45; k ++){
                 BusReservation busReservation = new BusReservation();
@@ -59,7 +59,7 @@ public class TravelServiceImpl implements TravelService {
 
                 if(multiSeats.contains(String.valueOf(k)))
                     busReservation.setTwinSeat(true);
-
+                busReservation.setTravel(travel);
                 reservations.add(busReservation);
             }
         }

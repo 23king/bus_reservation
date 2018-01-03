@@ -1,16 +1,20 @@
 package com.bus.reservation.api;
 
+import com.bus.reservation.domain.model.User;
+import com.bus.reservation.domain.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private MemberRepository memberRepository;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String main(ModelMap model){
@@ -51,6 +55,14 @@ public class HomeController {
     @RequestMapping(value = "/findId", method = RequestMethod.GET)
     public String findId(ModelMap model){
         return "findId";
+    }
+
+    @RequestMapping(value = "/findByUserNameAndPhone", method = RequestMethod.POST)
+    @ResponseBody
+    public List<String> findByUserNameAndPhone(ModelMap model, @RequestParam String userName, @RequestParam String phoneNum){
+        List<User> users = memberRepository.findAllByUserNameAndUserPhone(userName, phoneNum);
+        List<String> ids = users.stream().map(user -> user.getUserId()).collect(Collectors.toList());
+        return ids;
     }
 //
 //    @RequestMapping(value = "/admin/bus", method = RequestMethod.GET)

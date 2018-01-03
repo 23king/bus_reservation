@@ -29,8 +29,8 @@ public class BusReservationController {
     private MemberRepository memberRepository;
 
     @RequestMapping(value="/findUser")
-    public User findUser(@RequestParam String user_name,@RequestParam String user_phone){
-        return memberRepository.findByUserNameAndUserPhone(user_name, user_phone);
+    public List<User> findUser(@RequestParam String user_name,@RequestParam String user_phone){
+        return memberRepository.findAllByUserNameAndUserPhone(user_name, user_phone);
     }
 
     @RequestMapping(value="/findReservations")

@@ -33,7 +33,7 @@
 
         <div class="col-sm-10 blog-main">
             <div class="blog-post">
-                <h3 class="blog-post-title">로그인</h3>
+                <h3 class="blog-post-title">성명과 휴대전화를 입력하세요.</h3>
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
@@ -98,7 +98,30 @@
             return false;
         }
 
-        console.log(userName, phoneNum);
+        if(phoneNum==="") {
+            alert("휴대전화를 입력하세요");
+            document.getElementById("phoneNum").focus();
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/findByUserNameAndPhone",
+            data: {
+                userName : $("#userName").val(),
+                phoneNum : $("#phoneNum").val()
+            },
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                alert("등록된 ID는 "+data+"입니다.");
+            },
+            error:function(request,status,error){
+                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+            }
+        });
+
+//        console.log(userName, phoneNum);
     }
 </script>
 </body>

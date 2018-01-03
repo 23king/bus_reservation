@@ -15,15 +15,13 @@ public class BusReservation implements Serializable {
     @GeneratedValue
     private long seq;
 
-//    private long travelSeq;
-
     private long busNum;
     private long seatNum;
     private long status;
     private boolean isTwinSeat;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="travel_seq")
+    @JoinColumn(name="travel_seq", nullable = false)
     private Travel travel;
 
 }
