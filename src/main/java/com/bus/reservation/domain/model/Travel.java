@@ -23,7 +23,7 @@ public class Travel implements Serializable {
     private String notice1;
     private String notice2;
     private Date departureDate;
-    private int busNum;
+    private int busCount;
 
     @Transient
     private long reserv_cnt;

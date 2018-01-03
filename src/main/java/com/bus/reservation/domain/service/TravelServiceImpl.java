@@ -40,7 +40,7 @@ public class TravelServiceImpl implements TravelService {
         travel.setNotice1(String.valueOf(travelInfo.get("notice1")));
         travel.setNotice2(String.valueOf(travelInfo.get("notice2")));
         travel.setDestination(String.valueOf(travelInfo.get("dest")));
-        travel.setBusNum(busNum);
+        travel.setBusCount(busNum);
 
 
         for (int i = 0; i < busNum; i++) {
@@ -52,7 +52,7 @@ public class TravelServiceImpl implements TravelService {
                 BusReservation busReservation = new BusReservation();
                 busReservation.setBusNum(i);
                 busReservation.setSeatNum(k);
-                busReservation.setStatus(0);
+                busReservation.setStatus(1);
                 if(emptySeats.contains(String.valueOf(k)))
                     busReservation.setStatus(9);
 
@@ -94,8 +94,47 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public Travel findTravel(long travel_id) {
-        return travelRepository.findOne(travel_id);
+    public Map<String, Object> findTravel(long travel_id) {
+        Travel travel = travelRepository.findOne(travel_id);
+
+
+        Map<String, Object> result = new HashMap<>();
+        List<List<String>> busMap = new ArrayList<>();
+
+
+        /*
+              9 - 선택 불가
+              3 - 예약완료
+              2 - 2인좌석
+              1 - 선택가능
+         */
+
+        for(BusReservation busReservation: travel.getBuses()) {
+            int busNum = busReservation.getBusNum();
+            List<String> busArray;
+
+            try {
+                busArray = busMap.get(busNum);
+                busMap.remove(busNum);
+            } catch (Exception e) {
+                busArray = new ArrayList<>();
+            }
+
+            if(busReservation.isTwinSeat() && busReservation.getStatus()!=3) {
+                busArray.add(busReservation.getSeatNum()-1, "seat_2");
+            } else {
+                int status = busReservation.getStatus() > 3 ? 3 : busReservation.getStatus();
+                busArray.add(busReservation.getSeatNum()-1, "seat_"+String.valueOf(status));
+            }
+            busMap.add(busNum, busArray);
+        }
+
+        travel.setBuses(null);
+
+        result.put("info", travel);
+        result.put("busInfo", busMap);
+
+        return result;
     }
 
     @Override
