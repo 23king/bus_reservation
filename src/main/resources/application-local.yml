@@ -1,7 +1,10 @@
 server:
   port: 8080
 
+
 spring:
+  profiles:
+      active: local
   datasource:
     url: jdbc:log4jdbc:mysql://121.137.131.159:3306/reservation_dev?useUnicode=true
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
