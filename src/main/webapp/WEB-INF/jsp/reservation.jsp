@@ -36,207 +36,208 @@
         <table class="table">
             <tr>
                 <th class="title" scope="col">산행일자</th>
-                <td scope="col">${travelInfo.departureDate}</td>
+                <td scope="col">${travelInfo.info.departureDate}</td>
                 <th class="title" scope="col">산행금액</th>
-                <td scope="col">${travelInfo.price}</td>
+                <td scope="col">${travelInfo.info.price}</td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행지</th>
-                <td colspan="3">${travelInfo.destination}</td>
+                <td colspan="3">${travelInfo.info.destination}</td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행대장/차량</th>
-                <td colspan="3">${travelInfo.leader}</td>
+                <td colspan="3">${travelInfo.info.leader}</td>
             </tr>
             <tr>
                 <th class="title" rowspan="2" scope="row">안내사항</th>
-                <td colspan="3">${travelInfo.notice1} </td>
+                <td colspan="3">${travelInfo.info.notice1} </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    ${travelInfo.notice2}
+                    ${travelInfo.info.notice2}
                 </td>
             </tr>
         </table>
     </div>
-    <div class="bus_area">
-        <form name="reservBus" method="post">
-            ${param}
-            ${travelInfo.buses}
-            <input type="hidden" name="travel_id" value="${param.travel_id}"/>
-            <input type="hidden" name="userId" value="${param.userId}"/>
-            <input type="hidden" name="userName" value="${param.userName}"/>
-            <input type="hidden" name="phoneNum" value="${param.phoneNum}"/>
-        <div class="seat">
-            <table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">
-                <tbody>
-                <tr>
-                    <td style="width:29px;" rowspan="2"><img src="/asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>
-                    <td></td>
-                    <td class="td_2">
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_4">4</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_8">8</div>
-                    </td>
-                    <td>
-                        <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="1_12">12</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_16">16</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_20">20</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_24">24</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_28">28</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_32">32</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_36">36</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_40">40</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_44">44</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="td_2">
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_3">3</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_7">7</div>
-                    </td>
-                    <td>
-                        <div class="seat_2" onclick="setSeat41(1, this.id, true, this);" id="1_11">11</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_15">15</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_19">19</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id,false, this);" id="1_23">23</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_27">27</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_31">31</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_35">35</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_39">39</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_43">43</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td class="td_2"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_45">45</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td rowspan="2"><img src="/asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>
+    <form name="reservBus" method="post">
+        <input type="hidden" name="travel_id" value="${param.travel_id}"/>
+        <input type="hidden" name="userId" value="${param.userId}"/>
+        <input type="hidden" name="userName" value="${param.userName}"/>
+        <input type="hidden" name="phoneNum" value="${param.phoneNum}"/>
+        <c:forEach var="list" varStatus="status" items="${travelInfo.get('busInfo')}">
+        <div class="bus_area">
+            <div class="seat">
+                <table style="border:#a7a7a7 solid 0px;cellpadding:0;cellspacing:0;">
+                    <tbody>
+                    <tr>
+                        <td style="width:29px;" rowspan="2"><img src="/asset/img/seat/seat_st01.gif" style="width:26px;height:53px;border:2px;"></td>
+                        <td></td>
+                        <td class="td_2">
+                            <div class="${list[3]}" onclick="setSeat41(${status.count}, this.id, ${list[3] eq 'seat_2'?true:false}, this);" id="${status.count}_4">4</div>
+                        </td>
+                        <td>
+                            <div class="${list[7]}" onclick="setSeat41(${status.count}, this.id, ${list[7] eq 'seat_2'?true:false}, this);" id="${status.count}_8">8</div>
+                        </td>
+                        <td>
+                            <div class="${list[11]}" onclick="setSeat41(${status.count}, this.id, ${list[11] eq 'seat_2'?true:false}, this);" id="${status.count}_12">12</div>
+                        </td>
+                        <td>
+                            <div class="${list[15]}" onclick="setSeat41(${status.count}, this.id, ${list[15] eq 'seat_2'?true:false}, this);" id="${status.count}_16">16</div>
+                        </td>
+                        <td>
+                            <div class="${list[19]}" onclick="setSeat41(${status.count}, this.id, ${list[19] eq 'seat_2'?true:false}, this);" id="${status.count}_20">20</div>
+                        </td>
+                        <td>
+                            <div class="${list[23]}" onclick="setSeat41(${status.count}, this.id, ${list[23] eq 'seat_2'?true:false}, this);" id="${status.count}_24">24</div>
+                        </td>
+                        <td>
+                            <div class="${list[27]}" onclick="setSeat41(${status.count}, this.id, ${list[27] eq 'seat_2'?true:false}, this);" id="${status.count}_28">28</div>
+                        </td>
+                        <td>
+                            <div class="${list[31]}" onclick="setSeat41(${status.count}, this.id, ${list[31] eq 'seat_2'?true:false}, this);" id="${status.count}_32">32</div>
+                        </td>
+                        <td>
+                            <div class="${list[35]}" onclick="setSeat41(${status.count}, this.id, ${list[35] eq 'seat_2'?true:false}, this);" id="${status.count}_36">36</div>
+                        </td>
+                        <td>
+                            <div class="${list[39]}" onclick="setSeat41(${status.count}, this.id, ${list[39] eq 'seat_2'?true:false}, this);" id="${status.count}_40">40</div>
+                        </td>
+                        <td>
+                            <div class="${list[43]}" onclick="setSeat41(${status.count}, this.id, ${list[43] eq 'seat_2'?true:false}, this);" id="${status.count}_44">44</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="td_2">
+                            <div class="${list[2]}" onclick="setSeat41(${status.count}, this.id, ${list[2] eq 'seat_2'?true:false}, this);" id="${status.count}_3">3</div>
+                        </td>
+                        <td>
+                            <div class="${list[6]}" onclick="setSeat41(${status.count}, this.id, ${list[6] eq 'seat_2'?true:false}, this);" id="${status.count}_7">7</div>
+                        </td>
+                        <td>
+                            <div class="${list[10]}" onclick="setSeat41(${status.count}, this.id, ${list[10] eq 'seat_2'?true:false}, this);" id="${status.count}_11">11</div>
+                        </td>
+                        <td>
+                            <div class="${list[14]}" onclick="setSeat41(${status.count}, this.id, ${list[14] eq 'seat_2'?true:false}, this);" id="${status.count}_15">15</div>
+                        </td>
+                        <td>
+                            <div class="${list[18]}" onclick="setSeat41(${status.count}, this.id, ${list[18] eq 'seat_2'?true:false}, this);" id="${status.count}_19">19</div>
+                        </td>
+                        <td>
+                            <div class="${list[22]}" onclick="setSeat41(${status.count}, this.id, ${list[22] eq 'seat_2'?true:false}, this);" id="${status.count}_23">23</div>
+                        </td>
+                        <td>
+                            <div class="${list[26]}" onclick="setSeat41(${status.count}, this.id, ${list[26] eq 'seat_2'?true:false}, this);" id="${status.count}_27">27</div>
+                        </td>
+                        <td>
+                            <div class="${list[30]}" onclick="setSeat41(${status.count}, this.id, ${list[30] eq 'seat_2'?true:false}, this);" id="${status.count}_31">31</div>
+                        </td>
+                        <td>
+                            <div class="${list[34]}" onclick="setSeat41(${status.count}, this.id, ${list[34] eq 'seat_2'?true:false}, this);" id="${status.count}_35">35</div>
+                        </td>
+                        <td>
+                            <div class="${list[38]}" onclick="setSeat41(${status.count}, this.id, ${list[38] eq 'seat_2'?true:false}, this);" id="${status.count}_39">39</div>
+                        </td>
+                        <td>
+                            <div class="${list[42]}" onclick="setSeat41(${status.count}, this.id, ${list[42] eq 'seat_2'?true:false}, this);" id="${status.count}_43">43</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="td_2"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <div class="${list[44]}" onclick="setSeat41(${status.count}, this.id, ${list[44] eq 'seat_2'?true:false}, this);" id="${status.count}_45">45</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><img src="/asset/img/seat/seat_st02.gif" style="width:24px;height:49px;"></td>
 
-                    <td></td>
-                    <td class="td_2">
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_2">2</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_6">6</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, true, this);" id="1_10">10</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_14">14</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_18">18</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_22">22</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_26">26</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_30">30</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_34">34</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_38">38</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_42">42</div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_1">1</div>
-                    </td>
-                    <td class="td_2">
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_5">5</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, true, this);" id="1_9">9</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_13">13</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_17">17</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_21">21</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_25">25</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_29">29</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_33">33</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_37">37</div>
-                    </td>
-                    <td>
-                        <div class="seat_1" onclick="setSeat41(1, this.id, false, this);" id="1_41">41</div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                        <td></td>
+                        <td class="td_2">
+                            <div class="${list[1]}" onclick="setSeat41(${status.count}, this.id, ${list[1] eq 'seat_2'?true:false}, this);" id="${status.count}_2">2</div>
+                        </td>
+                        <td>
+                            <div class="${list[5]}" onclick="setSeat41(${status.count}, this.id, ${list[5] eq 'seat_2'?true:false}, this);" id="${status.count}_6">6</div>
+                        </td>
+                        <td>
+                            <div class="${list[9]}" onclick="setSeat41(${status.count}, this.id, ${list[9] eq 'seat_2'?true:false}, this);" id="${status.count}_10">10</div>
+                        </td>
+                        <td>
+                            <div class="${list[13]}" onclick="setSeat41(${status.count}, this.id, ${list[13] eq 'seat_2'?true:false}, this);" id="${status.count}_14">14</div>
+                        </td>
+                        <td>
+                            <div class="${list[17]}" onclick="setSeat41(${status.count}, this.id, ${list[17] eq 'seat_2'?true:false}, this);" id="${status.count}_18">18</div>
+                        </td>
+                        <td>
+                            <div class="${list[21]}" onclick="setSeat41(${status.count}, this.id, ${list[21] eq 'seat_2'?true:false}, this);" id="${status.count}_22">22</div>
+                        </td>
+                        <td>
+                            <div class="${list[25]}" onclick="setSeat41(${status.count}, this.id, ${list[25] eq 'seat_2'?true:false}, this);" id="${status.count}_26">26</div>
+                        </td>
+                        <td>
+                            <div class="${list[29]}" onclick="setSeat41(${status.count}, this.id, ${list[29] eq 'seat_2'?true:false}, this);" id="${status.count}_30">30</div>
+                        </td>
+                        <td>
+                            <div class="${list[33]}" onclick="setSeat41(${status.count}, this.id, ${list[33] eq 'seat_2'?true:false}, this);" id="${status.count}_34">34</div>
+                        </td>
+                        <td>
+                            <div class="${list[37]}" onclick="setSeat41(${status.count}, this.id, ${list[37] eq 'seat_2'?true:false}, this);" id="${status.count}_38">38</div>
+                        </td>
+                        <td>
+                            <div class="${list[41]}" onclick="setSeat41(${status.count}, this.id, ${list[41] eq 'seat_2'?true:false}, this);" id="${status.count}_42">42</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <div class="${list[0]}" onclick="setSeat41(${status.count}, this.id, ${list[0] eq 'seat_2'?true:false}, this);" id="${status.count}_1">1</div>
+                        </td>
+                        <td class="td_2">
+                            <div class="${list[4]}" onclick="setSeat41(${status.count}, this.id, ${list[4] eq 'seat_2'?true:false}, this);" id="${status.count}_5">5</div>
+                        </td>
+                        <td>
+                            <div class="${list[8]}" onclick="setSeat41(${status.count}, this.id, ${list[8] eq 'seat_2'?true:false}, this);" id="${status.count}_9">9</div>
+                        </td>
+                        <td>
+                            <div class="${list[12]}" onclick="setSeat41(${status.count}, this.id, ${list[12] eq 'seat_2'?true:false}, this);" id="${status.count}_13">13</div>
+                        </td>
+                        <td>
+                            <div class="${list[16]}" onclick="setSeat41(${status.count}, this.id, ${list[16] eq 'seat_2'?true:false}, this);" id="${status.count}_17">17</div>
+                        </td>
+                        <td>
+                            <div class="${list[20]}" onclick="setSeat41(${status.count}, this.id, ${list[20] eq 'seat_2'?true:false}, this);" id="${status.count}_21">21</div>
+                        </td>
+                        <td>
+                            <div class="${list[24]}" onclick="setSeat41(${status.count}, this.id, ${list[24] eq 'seat_2'?true:false}, this);" id="${status.count}_25">25</div>
+                        </td>
+                        <td>
+                            <div class="${list[28]}" onclick="setSeat41(${status.count}, this.id, ${list[28] eq 'seat_2'?true:false}, this);" id="${status.count}_29">29</div>
+                        </td>
+                        <td>
+                            <div class="${list[32]}" onclick="setSeat41(${status.count}, this.id, ${list[32] eq 'seat_2'?true:false}, this);" id="${status.count}_33">33</div>
+                        </td>
+                        <td>
+                            <div class="${list[36]}" onclick="setSeat41(${status.count}, this.id, ${list[36] eq 'seat_2'?true:false}, this);" id="${status.count}_37">37</div>
+                        </td>
+                        <td>
+                            <div class="${list[40]}" onclick="setSeat41(${status.count}, this.id, ${list[40] eq 'seat_2'?true:false}, this);" id="${status.count}_41">41</div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        </c:forEach>
         <div class="bus_info">
             <table class="bus_info" style="width:618px;border:0;cellspacing:0;cellpadding:0;margin-top:5px;">
                 <tbody><tr>
@@ -258,8 +259,7 @@
         <div style="margin-top: 23px;left: 45%;position: absolute;">
             <button type="button" class="btn btn-success">예약하기</button>
         </div>
-        </form>
-    </div>
+    </form>
 </main>
 
 <!--<footer class="blog-footer">-->

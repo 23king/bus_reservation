@@ -15,9 +15,9 @@ public class BusReservation implements Serializable {
     @GeneratedValue
     private long seq;
 
-    private long busNum;
-    private long seatNum;
-    private long status;
+    private int busNum;
+    private int seatNum;
+    private int status;
     private boolean isTwinSeat;
 
     @ManyToOne(cascade = CascadeType.ALL)

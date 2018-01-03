@@ -14,7 +14,7 @@ public interface TravelService {
 
     void checkSeat(long travel_id);
 
-    Travel findTravel(long travel_id);
+    Map<String, Object> findTravel(long travel_id);
 
     List<Travel> findReservListByUser(String userId, String userName, String phoneNum);
 }
