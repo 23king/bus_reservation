@@ -7,8 +7,7 @@ import java.util.Map;
 
 public interface TravelService {
     void saveTravel(Map<String, Object> travelInfo, Map<String,String[]> params);
-
-    Travel reserveTravel(Map<String, Object> travelInfo);
+    long reserveTravel(Map<String, Object> travelInfo, Map<String,String[]> params);
 
     List<Travel> findTravelAll();
 

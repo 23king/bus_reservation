@@ -5,11 +5,13 @@ import com.bus.reservation.domain.model.BusReservationDetail;
 import com.bus.reservation.domain.model.Travel;
 import com.bus.reservation.domain.model.User;
 import com.bus.reservation.domain.repository.BusReservationDetailRepository;
+import com.bus.reservation.domain.repository.BusReservationRepository;
 import com.bus.reservation.domain.repository.MemberRepository;
 import com.bus.reservation.domain.repository.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -21,6 +23,8 @@ public class TravelServiceImpl implements TravelService {
     private TravelRepository travelRepository;
     @Autowired
     private BusReservationDetailRepository busReservationDetailRepository;
+    @Autowired
+    private BusReservationRepository busReservationRepository;
     @Autowired
     private MemberRepository memberRepository;
 
@@ -44,9 +48,19 @@ public class TravelServiceImpl implements TravelService {
 
 
         for (int i = 0; i < busNum; i++) {
+            List<String> emptySeats; List<String> multiSeats;
+            try {
+                emptySeats = Optional.ofNullable(Arrays.asList((String[])params.get("emptyList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
+            } catch(Exception e) {
+                emptySeats = Collections.EMPTY_LIST;
+            }
 
-            List<String> emptySeats = Optional.ofNullable(Arrays.asList((String[])params.get("emptyList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
-            List<String> multiSeats = Optional.ofNullable(Arrays.asList((String[])params.get("multiList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
+            try {
+                multiSeats = Optional.ofNullable(Arrays.asList((String[])params.get("multiList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
+            } catch(Exception e) {
+                multiSeats = Collections.EMPTY_LIST;
+            }
+
 
             for(int k = 1; k <= 45; k ++){
                 BusReservation busReservation = new BusReservation();
@@ -69,24 +83,86 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public Travel reserveTravel(Map<String, Object> travelInfo) {
+    public long reserveTravel(Map<String, Object> travelInfo, Map<String,String[]> params) {
+        /**
+         *  1. 회원검색
+         *   - > 없으면 insert
+         *  2. ReservationDetail 세팅
+         *  3. Bus 좌석 수정
+         */
+
+        Travel travel = travelRepository.findOne(Long.parseLong(String.valueOf(travelInfo.get("travel_id"))));
 
 
-        return null;
+        User user;
+        user = memberRepository.findByUserIdAndUserNameAndUserPhone(
+                String.valueOf(travelInfo.get("userId")),
+                String.valueOf(travelInfo.get("userName")),
+                String.valueOf(travelInfo.get("phoneNum")));
+        if(user == null) {
+            user = new User();
+            user.setUserId(String.valueOf(travelInfo.get("userId")));
+            user.setUserName(String.valueOf(travelInfo.get("userName")));
+            user.setUserPhone(String.valueOf(travelInfo.get("phoneNum")));
+
+            user = memberRepository.save(user);
+        }
+
+
+        BusReservationDetail insertDetail = new BusReservationDetail();
+        insertDetail.setBusSeatNo(Integer.parseInt(String.valueOf(travelInfo.get("selectCount"))));
+        insertDetail.setReservStatus("입금 대기중");
+        insertDetail.setTravel(travel);
+        insertDetail.setUser(user);
+        insertDetail.setCreateDate(new Date());
+        insertDetail.setUpdateDate(new Date());
+
+
+
+        BusReservationDetail reservationDetail = busReservationDetailRepository.save(insertDetail);
+
+        List<BusReservation> saveList = new ArrayList<>();
+        for (int i = 0; i < travel.getBusCount(); i++) {
+            List<String> selectSeats;
+            try {
+                selectSeats = Optional.ofNullable(Arrays.asList((String[])params.get("selectList["+(i+1)+"][]"))).orElse(Collections.EMPTY_LIST);
+            } catch (Exception e) {
+                selectSeats = Collections.EMPTY_LIST;
+            }
+
+
+            for(String seat : selectSeats) {
+                BusReservation reservation = busReservationRepository.findAllByTravelAndBusNumAndSeatNum(travel, i, Integer.parseInt(seat));
+                if(reservation.getStatus() == 3) {
+                    busReservationDetailRepository.delete(reservationDetail.getSeq());
+                    throw new RuntimeException("이미 예약된 좌석");
+                }
+                reservation.setStatus(3);
+                reservation.setResrvSeq(reservationDetail.getSeq());
+                saveList.add(reservation);
+            }
+        }
+
+        for(BusReservation saveData : saveList) {
+            System.out.println("--reservation : "+ saveData.toString());
+            busReservationRepository.save(saveData);
+        }
+
+        return reservationDetail.getSeq();
     }
 
     @Override
     public List<Travel> findTravelAll() {
         List<Travel> travels = travelRepository.findAll();
         travels.stream().forEach( v -> {
-            v.setReserv_cnt(busReservationDetailRepository.findAllByTravelSeq(v.getSeq()).size());
+            v.setReserv_cnt(busReservationRepository.countByTravelAndAndStatusEquals(v, 3));
         });
         return travels;
     }
 
     @Override
     public void checkSeat(long travel_id) {
-        long reserv_cnt = busReservationDetailRepository.countByTravelSeq(travel_id);
+        long reserv_cnt = busReservationRepository.countBySeqAndAndStatusEquals(travel_id, 3);
 
         if(reserv_cnt >= 45)
             throw new RuntimeException("이미 좌석예약이 완료되었습니다");

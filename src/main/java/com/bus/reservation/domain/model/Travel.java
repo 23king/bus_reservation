@@ -26,7 +26,7 @@ public class Travel implements Serializable {
     private int busCount;
 
     @Transient
-    private long reserv_cnt;
+    private int reserv_cnt;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "travel", orphanRemoval=true)
     private List<BusReservation> buses;

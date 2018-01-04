@@ -17,10 +17,10 @@ public class BusReservationDetail implements Serializable {
     @GeneratedValue
     private long seq;
 
-    private long bus_seat_no;
-    private String reserv_status;
-    private Date create_date;
-    private Date update_date;
+    private int busSeatNo;
+    private String reservStatus;
+    private Date createDate;
+    private Date updateDate;
 
     @ManyToOne
     private Travel travel;
