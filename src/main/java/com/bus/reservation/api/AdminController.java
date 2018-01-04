@@ -30,12 +30,7 @@ public class AdminController {
         return "admin_template";
     }
 
-    @RequestMapping(value="/saveBusReservationApply", method= RequestMethod.POST)
-    public String saveTravelApply(@RequestParam Map<String, Object> travelInfo, HttpServletRequest request){
-        Map<String,String[]> params = request.getParameterMap();
-        travelService.saveTravel(travelInfo, params);
-        return "admin_list";
-    }
+
 
     @RequestMapping(value="/findReservList")
     public String findReservList(ModelMap model,

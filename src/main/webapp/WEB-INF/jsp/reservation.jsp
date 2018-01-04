@@ -59,11 +59,11 @@
             </tr>
         </table>
     </div>
-    <form name="reservBus" method="post">
-        <input type="hidden" name="travel_id" value="${param.travel_id}"/>
-        <input type="hidden" name="userId" value="${param.userId}"/>
-        <input type="hidden" name="userName" value="${param.userName}"/>
-        <input type="hidden" name="phoneNum" value="${param.phoneNum}"/>
+    <%--<form method="post">--%>
+        <input type="hidden" id="travel_id" value="${param.travel_id}"/>
+        <input type="hidden" id="userId" value="${param.userId}"/>
+        <input type="hidden" id="userName" value="${param.userName}"/>
+        <input type="hidden" id="phoneNum" value="${param.phoneNum}"/>
         <c:forEach var="list" varStatus="status" items="${travelInfo.get('busInfo')}">
         <div class="bus_area">
             <div class="seat">
@@ -257,9 +257,9 @@
             <p>*일부 실제 좌석배치와 다를 수 있습니다.</p>
         </div>
         <div style="margin-top: 23px;left: 45%;position: absolute;">
-            <button type="button" class="btn btn-success">예약하기</button>
+            <button type="button" class="btn btn-success" onclick="submit()">예약하기</button>
         </div>
-    </form>
+    <%--</form>--%>
 </main>
 
 <!--<footer class="blog-footer">-->
@@ -275,7 +275,7 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
-    var list ={};
+    var list ={}, count =0;
     function setSeat41(busNum, seatNum, multiFlag) {
         list[busNum] = list[busNum] === undefined ? []: list[busNum];
 
@@ -284,7 +284,8 @@
             return ;
         } else if(seatEl.className === "seat_1") {
             seatEl.className = "seat_4";
-            list[busNum].push(parseInt(seatNum));
+            list[busNum].push(seatNum.split("_")[1]);
+            count ++;
         } else if(seatEl.className === "seat_2" && multiFlag == true) {
             var seatNum2 = (parseInt(seatNum.split("_")[1]) % 2 == 0)?parseInt(seatNum.split("_")[1])-1 : parseInt(seatNum.split("_")[1])+1;
 
@@ -293,9 +294,11 @@
 
             list[busNum].push(seatNum.split("_")[1]);
             list[busNum].push(seatNum2.toString());
+            count += 2;
         } else if(seatEl.className === "seat_4"){
             if(multiFlag == true) {
                 var seatNum2 = (parseInt(seatNum.split("_")[1]) % 2 == 0)?parseInt(seatNum.split("_")[1])-1 : parseInt(seatNum.split("_")[1])+1;
+                count --;
 
                 seatEl.className = "seat_2";
                 document.getElementById(busNum+"_"+seatNum2).className = "seat_2";
@@ -304,11 +307,49 @@
                 seatEl.className = "seat_1";
             }
 
+            count --;
             list[busNum].splice(list[busNum].indexOf(seatNum.split("_")[1]),1);
         }
-
-        console.log(list);
     }
+
+    function submit() {
+        var data = {
+            travel_id : $("#travel_id").val(),
+            userId: $("#userId").val(),
+            userName : $("#userName").val(),
+            phoneNum : $("#phoneNum").val(),
+            selectCount : count,
+            selectList : list
+        };
+
+        if(data.travel_id == "" || data.userId == ""
+            || data.userName == "" || data.phoneNum == "") {
+            alert("비정상적인 접근입니다.");
+            location.href = "/index";
+        } else if(data.selectList == {}) {
+            alert("좌석이 선택되지 않았습니다");
+            return false;
+        }
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "/api/v1/reservation/seat",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: data,
+            dataType: "json"
+        }).done(function (result) {
+            if(result.status == "success") {
+                alert("등록에 성공하였습니다");
+                location.href="/reservation/complete?revc_id="+result.resrv_code;
+            } else {
+                alert(result.message);
+            }
+        });
+    }
+
+
 </script>
 </body>
 </html>

@@ -10,9 +10,10 @@ import java.util.List;
 @Repository
 public interface BusReservationDetailRepository extends JpaRepository<BusReservationDetail,Long> {
 
-    List<BusReservationDetail> findAllByTravelSeq(long travelSeq);
+    BusReservationDetail findAllByTravelSeq(long travelSeq);
 
     List<BusReservationDetail> findAllByUser(User user);
 
     Long countByTravelSeq(long travelSeq);
+
 }

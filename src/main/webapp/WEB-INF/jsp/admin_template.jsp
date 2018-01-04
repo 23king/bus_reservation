@@ -62,7 +62,7 @@
                         </tr>
                         <tr>
                             <td colspan="3">
-                                <input type="text" class="form-control" value="문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]" id="indfo2" />
+                                <input type="text" class="form-control" value="문의 [예약/환불 : 010-5337-9800] [좌석관련 : 010-4739-1374]" id="info2" />
                             </td>
                         </tr>
                     </table>
@@ -303,7 +303,7 @@
 
         $.ajax({
             type: "POST",
-            url: "/admin/saveBusReservationApply",
+            url: "/api/v1/admin/bus",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: {
                 date : $("#datepicker").val(),
@@ -316,11 +316,10 @@
                 multiList : multiList,
                 busNum : busNum
             },
-            success: function(data) {
-                alert("등록에 성공하였습니다");
-                location.href="/admin/list";
-            },
-            dataType: "application/json"
+            dataType: "json"
+        }).done(function (result) {
+            alert("등록에 성공하였습니다");
+            location.href="/admin/findReservList";
         });
     }
 
