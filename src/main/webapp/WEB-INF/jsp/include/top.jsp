@@ -15,7 +15,7 @@
             <security:authorize access="hasRole('ROLE_ADMIN')"><a class="nav-link" href="/logout"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;Logout</a>
             <a class="nav-link" href="/admin/findReservList"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 예약리스트 </a>
             <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 취소리스트</a>
-            <a class="nav-link" href="#"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 회원정보</a>
+            <a class="nav-link" href="/admin/findUser"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 회원정보</a>
             <a class="nav-link" href="/admin/saveBusReservation"><span class="oi oi-cog" title="icon home" aria-hidden="false"></span>&nbsp;[ADMIN] 배차</a>
             </security:authorize>
         </nav>

@@ -17,4 +17,6 @@ public interface TravelService {
     Map<String, Object> findTravel(long travel_id);
 
     List<Travel> findReservListByUser(String userId, String userName, String phoneNum);
+
+    List<Travel> findReservList(Map<String, String> param);
 }

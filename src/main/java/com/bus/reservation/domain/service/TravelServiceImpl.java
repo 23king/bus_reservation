@@ -149,6 +149,12 @@ public class TravelServiceImpl implements TravelService {
         return travels;
     }
 
+    @Override
+    public List<Travel> findReservList(Map<String, String> param) {
+
+        return null;
+    }
+
     private Date covertToDate(String date){
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         try {

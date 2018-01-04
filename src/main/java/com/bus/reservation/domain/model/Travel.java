@@ -33,4 +33,6 @@ public class Travel implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "travel")
     private List<BusReservationDetail> reservations;
+
+
 }
