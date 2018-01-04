@@ -316,11 +316,10 @@
                 multiList : multiList,
                 busNum : busNum
             },
-            success: function(data) {
-                alert("등록에 성공하였습니다");
-                location.href="/admin/findReservList";
-            },
             dataType: "json"
+        }).done(function (result) {
+            alert("등록에 성공하였습니다");
+            location.href="/admin/findReservList";
         });
     }
 

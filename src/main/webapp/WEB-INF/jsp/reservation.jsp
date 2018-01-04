@@ -340,7 +340,6 @@
             data: data,
             dataType: "json"
         }).done(function (result) {
-            console.log(result);
             if(result.status == "success") {
                 alert("등록에 성공하였습니다");
                 location.href="/reservation/complete?revc_id="+result.resrv_code;
