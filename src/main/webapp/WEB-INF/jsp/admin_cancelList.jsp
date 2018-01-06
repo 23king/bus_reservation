@@ -33,7 +33,7 @@
     <div id="list">
         <table class="table">
             <tr>
-                <%--<th class="title" scope="col">성명</th>--%>
+                <th class="title" scope="col">Id</th>
                 <th class="title" scope="col">성명</th>
                 <th class="title" scope="col">예약일자</th>
                 <th class="title" scope="col">입금자명</th>
@@ -46,13 +46,20 @@
             </tr>
             <c:forEach var="list" items="${refundList}">
             <tr>
-                <td scope="col">2018.01.02(수)</td>
-                <td scope="col">지리산</td>
-                <td scope="col">30명</td>
-                <td scope="col">10명</td>
-                <td scope="col">5명</td>
-                <td scope="col"><button type="button" class="btn btn-success">자세히</button></td>
-                <td scope="col"><button type="button" class="btn btn-danger">수정</button></td>
+                <td scope="col">${list.reservationDetail.user.userId}</td>
+                <td scope="col">${list.reservationDetail.user.userName}</td>
+                <td scope="col">${list.reservationDetail.createDate}</td>
+                <td scope="col">${list.reservationDetail.bankAccountName}</td>
+                <td scope="col">${list.travel.departureDate}</td>
+                <td scope="col">${list.travel.destination}</td>
+                <td scope="col">${list.refundRequestDate}</td>
+                <td scope="col">${list.refundBankName}</td>
+                <td scope="col">${list.refundBankNo}</td>
+                <td scope="col">
+                    <c:if test="${list.refundStatus == 1}">환불 신청</c:if>
+                    <c:if test="${list.refundStatus == 2}">환불 진행중</c:if>
+                    <c:if test="${list.refundStatus == 3}">환불 완료</c:if>
+                </td>
             </tr>
             </c:forEach>
         </table>

@@ -7,17 +7,17 @@ import com.bus.reservation.domain.repository.BusReservationRepository;
 import com.bus.reservation.domain.repository.MemberRepository;
 import com.bus.reservation.domain.service.BusReservationService;
 import com.bus.reservation.domain.service.TravelService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @Controller
 @RequestMapping(path = "/reservation")
 public class BusReservationController {
@@ -75,20 +75,11 @@ public class BusReservationController {
 
 
 
+
     @RequestMapping(value="/complete")
-    public String resrvComplete(ModelMap model, @RequestParam Map<String,String> param){
-//        System.out.println("param : " + param.toString());
-//        model.put("param", param);
-//        model.put("travelInfo", travelService.findTravel(Long.parseLong(param.get("travel_id"))));
+    public String resrvComplete(ModelMap model, @RequestParam String reservId){
+//        model.put("reservInfo", re)
         return "complete";
     }
-
-//    @RequestMapping(value="/reserveTravel", method= RequestMethod.POST)
-//    public String reservation(@RequestBody Map<String, Object> travelInfo, ModelMap model){
-//        travelService.reserveTravel(travelInfo);
-//
-//        return "";
-//    }
-
 
 }

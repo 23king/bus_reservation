@@ -1,5 +1,9 @@
 package com.bus.reservation.api;
 
+import com.bus.reservation.domain.model.BusReservationDetail;
+import com.bus.reservation.domain.model.BusReservationRefund;
+import com.bus.reservation.domain.repository.BusReservationDetailRepository;
+import com.bus.reservation.domain.repository.BusReservationRefundRepository;
 import com.bus.reservation.domain.service.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,10 @@ import java.util.Map;
 public class ApiController {
     @Autowired
     private TravelService travelService;
+    @Autowired
+    private BusReservationDetailRepository busReservationDetailRepository;
+    @Autowired
+    private BusReservationRefundRepository busReservationRefundRepository;
 
     @RequestMapping(value="/admin/bus", method= RequestMethod.POST)
     public String saveTravelApply(@RequestParam Map<String, Object> travelInfo, HttpServletRequest request){
@@ -53,5 +61,35 @@ public class ApiController {
 
         return result;
 
+    }
+
+    @RequestMapping(value="/admin/changeReservStatus", method= RequestMethod.POST)
+    public String saveReservStatusApply(@RequestParam Map<String, String> params){
+        try {
+            BusReservationDetail busReservationDetail =
+                    busReservationDetailRepository.findOne(Long.parseLong(params.get("seq")));
+
+            busReservationDetail.setReservStatus(params.get("status"));
+            busReservationDetailRepository.save(busReservationDetail);
+        } catch(Exception e) {
+            return "fail";
+        }
+
+        return "success";
+    }
+
+    @RequestMapping(value="/admin/changeRefundStatus", method= RequestMethod.POST)
+    public String saveRefundStatusApply(@RequestParam Map<String, String> params){
+        try {
+            BusReservationRefund busReservationRefund =
+                    busReservationRefundRepository.findOne(Long.parseLong(params.get("seq")));
+
+            busReservationRefund.setRefundStatus(params.get("status"));
+            busReservationRefundRepository.save(busReservationRefund);
+        } catch(Exception e) {
+            return "fail";
+        }
+
+        return "success";
     }
 }

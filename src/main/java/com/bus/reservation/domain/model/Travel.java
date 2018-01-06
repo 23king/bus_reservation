@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "travel")
-@ToString(exclude = {"buses", "reservations"})
+@ToString(exclude = {"buses", "reservations", "refunds"})
 public class Travel implements Serializable {
 
     @Id
@@ -33,6 +33,9 @@ public class Travel implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "travel")
     private List<BusReservationDetail> reservations;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "travel")
+    private List<BusReservationRefund> refunds;
 
 
 }

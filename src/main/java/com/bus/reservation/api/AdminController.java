@@ -1,7 +1,10 @@
 package com.bus.reservation.api;
 
+import com.bus.reservation.domain.model.BusReservationDetail;
+import com.bus.reservation.domain.repository.BusReservationDetailRepository;
 import com.bus.reservation.domain.repository.BusReservationRefundRepository;
 import com.bus.reservation.domain.repository.MemberRepository;
+import com.bus.reservation.domain.service.BusReservationDetailServiceImpl;
 import com.bus.reservation.domain.service.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +23,11 @@ public class AdminController {
     @Autowired
     private BusReservationRefundRepository busReservationRefundRepository;
     @Autowired
+    private BusReservationDetailRepository busReservationDetailRepository;
+    @Autowired
     private TravelService travelService;
+    @Autowired
+    private BusReservationDetailServiceImpl busReservationDetailService;
     @Autowired
     private MemberRepository memberRepository;
 
@@ -36,9 +43,17 @@ public class AdminController {
     public String findReservList(ModelMap model,
                                  @RequestParam Map<String, String> param){
 
-        model.put("reservList", travelService.findReservList(param));
+        model.put("reservList", busReservationDetailService.findReservList(param));
 
         return "admin_reservList";
+    }
+
+    @RequestMapping(value="/updateReserv")
+    public String updateReserv(ModelMap model,@RequestParam long reservSeq,
+                               @RequestParam String status){
+
+        busReservationDetailService.updateReserv(reservSeq, status);
+        return "";
     }
 
     @RequestMapping(value="cancelReservList")
@@ -51,5 +66,12 @@ public class AdminController {
     public String findUser(ModelMap model){
         model.put("userList",memberRepository.findAll());
         return "admin_userList";
+    }
+
+    @RequestMapping(value="/reservDetail")
+    public String reservDetail(ModelMap model, @RequestParam Map<String, String> params){
+        model.put("params", params);
+        model.put("reservInfo", busReservationDetailRepository.findOne(Long.parseLong(params.get("reservSeq"))));
+        return "admin_detail";
     }
 }

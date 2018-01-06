@@ -83,6 +83,7 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
+    @Transactional
     public long reserveTravel(Map<String, Object> travelInfo, Map<String,String[]> params) {
         /**
          *  1. 회원검색
@@ -110,16 +111,13 @@ public class TravelServiceImpl implements TravelService {
 
 
         BusReservationDetail insertDetail = new BusReservationDetail();
-        insertDetail.setBusSeatNo(Integer.parseInt(String.valueOf(travelInfo.get("selectCount"))));
-        insertDetail.setReservStatus("입금 대기중");
+        insertDetail.setBusSeatCnt(Integer.parseInt(String.valueOf(travelInfo.get("selectCount"))));
+        insertDetail.setReservStatus("0");//입금대기
         insertDetail.setTravel(travel);
         insertDetail.setUser(user);
         insertDetail.setCreateDate(new Date());
         insertDetail.setUpdateDate(new Date());
 
-
-
-        BusReservationDetail reservationDetail = busReservationDetailRepository.save(insertDetail);
 
         List<BusReservation> saveList = new ArrayList<>();
         for (int i = 0; i < travel.getBusCount(); i++) {
@@ -134,19 +132,15 @@ public class TravelServiceImpl implements TravelService {
             for(String seat : selectSeats) {
                 BusReservation reservation = busReservationRepository.findAllByTravelAndBusNumAndSeatNum(travel, i, Integer.parseInt(seat));
                 if(reservation.getStatus() == 3) {
-                    busReservationDetailRepository.delete(reservationDetail.getSeq());
                     throw new RuntimeException("이미 예약된 좌석");
                 }
                 reservation.setStatus(3);
-                reservation.setResrvSeq(reservationDetail.getSeq());
                 saveList.add(reservation);
             }
         }
 
-        for(BusReservation saveData : saveList) {
-            System.out.println("--reservation : "+ saveData.toString());
-            busReservationRepository.save(saveData);
-        }
+        insertDetail.setBusReservationList(saveList);
+        BusReservationDetail reservationDetail = busReservationDetailRepository.save(insertDetail);
 
         return reservationDetail.getSeq();
     }

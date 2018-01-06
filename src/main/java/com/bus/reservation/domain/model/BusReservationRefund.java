@@ -11,24 +11,28 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "bus_reservation_refund")
-@ToString(exclude = {"reservationDetail"})
+@ToString(exclude = {"reservationDetail" ,"travel"})
 public class BusReservationRefund implements Serializable {
 
     @Id
     @GeneratedValue
     private long seq;
 
-//    private long travelSeq;
     private Date refundRequestDate;
     private Date refundCompleteDate;
     private String refundBankName;
     private String refundBankAccount;
     private String refundBankNo;
     private long refundAmount;
+    /**
+     * 1 : 환불신청
+     * 2 : 환불 진행중
+     * 3 : 환불 완료
+     */
     private String refundStatus;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "refund")
-    private List<BusReservationDetail> reservationDetail;
+    @OneToOne(fetch = FetchType.LAZY)
+    private BusReservationDetail reservationDetail;
 
     @ManyToOne
     @JoinColumn(name="travelSeq")
