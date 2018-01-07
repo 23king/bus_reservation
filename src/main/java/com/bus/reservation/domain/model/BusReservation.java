@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "bus_reservation")
 @ToString(exclude = {"busReservationDetail", "travel"})
-public class BusReservation implements Serializable {
+public class BusReservation implements Serializable, Comparable<BusReservation> {
 
     @Id
     @GeneratedValue
@@ -30,4 +30,8 @@ public class BusReservation implements Serializable {
     @JoinColumn(name="travel_seq", nullable = false)
     private Travel travel;
 
+    @Override
+    public int compareTo(BusReservation o) {
+        return Long.compare(seq, o.getSeq());
+    }
 }

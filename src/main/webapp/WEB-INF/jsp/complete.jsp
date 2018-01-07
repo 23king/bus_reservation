@@ -40,30 +40,30 @@
                     <table class="table">
                         <tr>
                             <th class="title" scope="col">산행일자</th>
-                            <td scope="col">2018.1.1 (월)</td>
+                            <td scope="col">${data.date}</td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">산행지역</th>
-                            <td colspan="3">지리산</td>
+                            <td colspan="3">${data.destination}</td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">산행금액</th>
-                            <td colspan="3">34,000원</td>
+                            <td colspan="3">${data.price}원</td>
                         </tr>
                         <tr>
-                            <th class="title" scope="row">산행자명</th>
-                            <td colspan="3">홍길동</td>
+                            <th class="title" scope="row">입금자명</th>
+                            <td colspan="3">${data.accountName}</td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">좌석번호</th>
-                            <td colspan="3">1호차 1번, 1호차 2번, 1호차 3번</td>
+                            <td colspan="3">${data.seatNum}</td>
                         </tr>
 
                     </table>
 
                 </div>
                 <div style="margin-top: 23px;left: 50%;position: absolute;">
-                    <button type="button" class="btn btn-success">홈</button>
+                    <button type="button" class="btn btn-success" onclick="">홈</button>
                     <button type="button" class="btn btn-primary">나의 예약 확인</button>
                 </div>
         </div><!-- /.blog-main -->

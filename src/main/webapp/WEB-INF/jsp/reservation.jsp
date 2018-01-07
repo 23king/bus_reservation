@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +40,10 @@
                 <th class="title" scope="col">산행일자</th>
                 <td scope="col">${travelInfo.info.departureDate}</td>
                 <th class="title" scope="col">산행금액</th>
-                <td scope="col">${travelInfo.info.price}</td>
+                <td scope="col">
+                    <fmt:formatNumber value="${travelInfo.info.price}" pattern="#,###" />원
+
+                </td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행지</th>
@@ -256,7 +261,15 @@
             </table>
             <p>*일부 실제 좌석배치와 다를 수 있습니다.</p>
         </div>
+        <table class="table">
+            <tr>
+                <th class="title" scope="row">입금자명</th>
+                <td colspan="3"><input type="text" class="form-control" id="accountName"/></td>
+            </tr>
+
+        </table>
         <div style="margin-top: 23px;left: 45%;position: absolute;">
+
             <button type="button" class="btn btn-success" onclick="submit()">예약하기</button>
         </div>
     <%--</form>--%>
@@ -319,6 +332,7 @@
             userName : $("#userName").val(),
             phoneNum : $("#phoneNum").val(),
             selectCount : count,
+            accountName: $("#accountName").val(),
             selectList : list
         };
 
@@ -326,6 +340,9 @@
             || data.userName == "" || data.phoneNum == "") {
             alert("비정상적인 접근입니다.");
             location.href = "/index";
+        } else if(data.accountName == "") {
+            alert("입금자명이 입력되지 않았습니다");
+            return false;
         } else if(data.selectList == {}) {
             alert("좌석이 선택되지 않았습니다");
             return false;
@@ -341,7 +358,7 @@
             dataType: "json"
         }).done(function (result) {
             if(result.status == "success") {
-                alert("등록에 성공하였습니다");
+//                alert("예약에 성공하였습니다");
                 location.href="/reservation/complete?revc_id="+result.resrv_code;
             } else {
                 alert(result.message);

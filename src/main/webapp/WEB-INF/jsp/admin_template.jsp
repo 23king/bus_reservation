@@ -318,8 +318,13 @@
             },
             dataType: "json"
         }).done(function (result) {
-            alert("등록에 성공하였습니다");
-            location.href="/admin/findReservList";
+            if(result.status == "success") {
+                alert("등록에 성공하였습니다");
+                location.href="/admin/findReservList";
+            } else {
+                alert(result.message);
+            }
+
         });
     }
 

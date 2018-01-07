@@ -15,6 +15,7 @@ import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class TravelServiceImpl implements TravelService {
@@ -112,11 +113,13 @@ public class TravelServiceImpl implements TravelService {
 
         BusReservationDetail insertDetail = new BusReservationDetail();
         insertDetail.setBusSeatCnt(Integer.parseInt(String.valueOf(travelInfo.get("selectCount"))));
+        insertDetail.setBankAccountName(String.valueOf(travelInfo.get("accountName")));
         insertDetail.setReservStatus("0");//입금대기
         insertDetail.setTravel(travel);
         insertDetail.setUser(user);
         insertDetail.setCreateDate(new Date());
         insertDetail.setUpdateDate(new Date());
+        BusReservationDetail reservationDetail = busReservationDetailRepository.save(insertDetail);
 
 
         List<BusReservation> saveList = new ArrayList<>();
@@ -135,12 +138,15 @@ public class TravelServiceImpl implements TravelService {
                     throw new RuntimeException("이미 예약된 좌석");
                 }
                 reservation.setStatus(3);
+                reservation.setBusReservationDetail(reservationDetail);
                 saveList.add(reservation);
             }
         }
 
-        insertDetail.setBusReservationList(saveList);
-        BusReservationDetail reservationDetail = busReservationDetailRepository.save(insertDetail);
+        for(BusReservation bus : saveList) {
+            busReservationRepository.save(bus);
+        }
+
 
         return reservationDetail.getSeq();
     }
@@ -172,6 +178,9 @@ public class TravelServiceImpl implements TravelService {
         List<List<String>> busMap = new ArrayList<>();
 
 
+        List<BusReservation> busSeat
+                = travel.getBuses().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+
         /*
               9 - 선택 불가
               3 - 예약완료
@@ -179,7 +188,7 @@ public class TravelServiceImpl implements TravelService {
               1 - 선택가능
          */
 
-        for(BusReservation busReservation: travel.getBuses()) {
+        for(BusReservation busReservation: busSeat) {
             int busNum = busReservation.getBusNum();
             List<String> busArray;
 
@@ -233,6 +242,38 @@ public class TravelServiceImpl implements TravelService {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    public Map<String,String> getCompleteData(String revcId) {
+
+        Map<String, String> result = new HashMap<>();
+
+        BusReservationDetail detail = busReservationDetailRepository.findOne(Long.valueOf(revcId));
+
+
+
+        Travel travel = detail.getTravel();
+
+
+        result.put("date", String.valueOf(travel.getDepartureDate()));
+        result.put("destination", travel.getDestination());
+        result.put("price", String.format("%,d", (travel.getPrice() * detail.getBusSeatCnt())));
+        result.put("accountName", detail.getBankAccountName());
+
+        String seatNum = "";
+        List<BusReservation> reservation = busReservationRepository.findAllByBusReservationDetail(detail);
+        for(BusReservation bus: reservation) {
+            seatNum += ((bus.getBusNum()+1)+"호차 "+ bus.getSeatNum());
+            if (reservation.indexOf(bus) != reservation.size()-1) {
+                seatNum += " / ";
+            }
+        }
+
+        result.put("seatNum", seatNum);
+
+        return result;
+
     }
 
 

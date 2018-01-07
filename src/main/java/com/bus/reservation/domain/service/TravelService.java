@@ -18,4 +18,6 @@ public interface TravelService {
     List<Travel> findReservListByUser(String userId, String userName, String phoneNum);
 
     List<Travel> findReservList(Map<String, String> param);
+
+    Map<String,String> getCompleteData(String revcId);
 }

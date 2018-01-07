@@ -77,8 +77,8 @@ public class BusReservationController {
 
 
     @RequestMapping(value="/complete")
-    public String resrvComplete(ModelMap model, @RequestParam String reservId){
-//        model.put("reservInfo", re)
+    public String resrvComplete(ModelMap model, @RequestParam String revc_id){
+        model.put("data", travelService.getCompleteData(revc_id));
         return "complete";
     }
 
