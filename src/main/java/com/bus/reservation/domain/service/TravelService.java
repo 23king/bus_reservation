@@ -1,5 +1,6 @@
 package com.bus.reservation.domain.service;
 
+import com.bus.reservation.domain.model.BusReservationDetail;
 import com.bus.reservation.domain.model.Travel;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public interface TravelService {
 
     Map<String, Object> findTravel(long travel_id);
 
-    List<Travel> findReservListByUser(String userId, String userName, String phoneNum);
+    List<BusReservationDetail> findReservListByUser(String userId, String userName, String phoneNum);
 
     List<Travel> findReservList(Map<String, String> param);
 

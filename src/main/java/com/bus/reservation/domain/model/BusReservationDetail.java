@@ -34,6 +34,12 @@ public class BusReservationDetail implements Serializable {
     private Date updateDate;
     private String bankAccountName;
 
+    @Transient
+    private Travel travelInfo;
+
+    @Transient
+    private String seatNum;
+
     @ManyToOne
     private Travel travel;
 

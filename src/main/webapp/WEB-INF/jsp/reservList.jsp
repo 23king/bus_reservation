@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,16 +44,41 @@
                 <th class="title" scope="col">산행일자</th>
                 <th class="title" scope="col">산행지</th>
                 <th class="title" scope="col">예약현황</th>
-                <th class="title" scope="col">예약</th>
+                <th class="title" scope="col">입금자명</th>
+                <th class="title" scope="col">입금금액</th>
+                <th class="title" scope="col">좌석번호</th>
+                <th class="title" scope="col">예약취소</th>
             </tr>
             <c:forEach var="list" items="${travels}">
             <tr>
                     <%--<td scope="col">홍길동</td>--%>
-                <td scope="col"><c:out value="${list.departureDate}"/></td>
-                <td scope="col"><c:out value="${list.destination}"/></td>
-                <td scope="col"><c:out value="${list.reserv_cnt}"/></td>
-
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="reserv(${list.seq})">예약</button></td>
+                <td scope="col"><c:out value="${list.travel.departureDate}"/></td>
+                <td scope="col"><c:out value="${list.travel.destination}"/></td>
+                <td scope="col">
+                    <c:choose>
+                        <c:when test="${list.reservStatus eq '0'}">
+                            예약대기 (입금대기)
+                        </c:when>
+                        <c:when test="${list.reservStatus eq '1'}">
+                            예약완료 (입금완료)
+                        </c:when>
+                        <c:when test="${list.reservStatus eq '2'}">
+                            취소요청
+                        </c:when>
+                        <c:when test="${list.reservStatus eq '4'}">
+                            취소완료
+                        </c:when>
+                        <c:otherwise>
+                            비정상 상태
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td scope="col"><c:out value="${list.bankAccountName}"/></td>
+                <td scope="col">
+                    <fmt:formatNumber value="${list.busSeatCnt * list.travel.price}" pattern="#,###" />원
+                </td>
+                <td scope="col"><c:out value="${list.seatNum}"/></td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="reserv(${list.seq})">취소하기</button></td>
             </tr>
             </c:forEach>
         </table>

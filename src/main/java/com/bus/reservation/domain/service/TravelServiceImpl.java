@@ -217,15 +217,36 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public List<Travel> findReservListByUser(String userId, String userName, String phoneNum) {
+    public List<BusReservationDetail> findReservListByUser(String userId, String userName, String phoneNum) {
         User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phoneNum);
         if(user == null)
             throw new RuntimeException("사용자 정보가 존재하지 않습니다");
 
         List<BusReservationDetail> reservList = busReservationDetailRepository.findAllByUser(user);
 
-        List<Travel> travels = travelRepository.findAllByReservations(reservList);
-        return travels;
+        for(BusReservationDetail reservation: reservList) {
+            List<BusReservation> tempResrv = busReservationRepository.findAllByBusReservationDetail(reservation);
+            String seatNum = "";
+            int tempBusNum=0;
+            for(BusReservation bus: tempResrv) {
+                if(bus.getBusNum() == tempBusNum) {
+                    if(tempBusNum != 0) {
+                        seatNum += ",";
+                    }
+                    seatNum += ((bus.getBusNum()+1)+"호차 ");
+                    tempBusNum++;
+                }
+                seatNum += bus.getSeatNum();
+                if (tempResrv.indexOf(bus) != tempResrv.size()-1) {
+                    seatNum += " / ";
+                }
+            }
+            reservation.setSeatNum(seatNum);
+            reservation.setTravelInfo(reservation.getTravel());
+        }
+
+
+        return reservList;
     }
 
     @Override
