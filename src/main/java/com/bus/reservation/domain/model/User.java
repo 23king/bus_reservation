@@ -1,6 +1,7 @@
 package com.bus.reservation.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 

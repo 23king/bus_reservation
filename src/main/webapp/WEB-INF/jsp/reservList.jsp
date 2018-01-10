@@ -39,6 +39,12 @@
     <p>산수산악회 버스 예약 시스템입니다.</p>
     <hr>
     <div id="list">
+        <form name="reservCheck" id="reservCheck" method="post" action="/reservation/cancelReserv">
+            <input type="hidden" name="userId" id="userId" value="${userId}"/>
+            <input type="hidden" name="userName" id="userName" value="${userName}"/>
+            <input type="hidden" name="phoneNum" id="phoneNum" value="${phoneNum}"/>
+            <input type="hidden" name="reserv_id" id="reserv_id" value=""/>
+        </form>
         <table class="table">
             <tr>
                 <th class="title" scope="col">산행일자</th>
@@ -78,7 +84,7 @@
                     <fmt:formatNumber value="${list.busSeatCnt * list.travel.price}" pattern="#,###" />원
                 </td>
                 <td scope="col"><c:out value="${list.seatNum}"/></td>
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="reserv(${list.seq})">취소하기</button></td>
+                <td scope="col"><button type="button" class="btn btn-danger" onclick="cancelReserv(${list.seq})">취소하기</button></td>
             </tr>
             </c:forEach>
         </table>
@@ -100,8 +106,10 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
-    function reserv(travel_id){
-        window.location = "/reservation/bus?travel_id="+travel_id;
+    function cancelReserv(reserv_id){
+        var form = $("#reservCheck");
+        $("#reserv_id").val(reserv_id);
+        form.submit();
     }
 </script>
 </body>

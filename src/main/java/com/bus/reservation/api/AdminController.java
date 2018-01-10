@@ -56,7 +56,7 @@ public class AdminController {
         return "";
     }
 
-    @RequestMapping(value="cancelReservList")
+    @RequestMapping(value="/cancelReservList")
     public String findCancelReservList(ModelMap model){
         model.put("refundList", busReservationRefundRepository.findAll());
         return "admin_cancelList";

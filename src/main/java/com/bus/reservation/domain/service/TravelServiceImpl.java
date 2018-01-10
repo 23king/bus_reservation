@@ -216,6 +216,13 @@ public class TravelServiceImpl implements TravelService {
         return result;
     }
 
+    public List<BusReservationDetail> findReservListByUserAndReservId(String userId, String userName, String phoneNum, long reserv_id){
+
+       return findReservListByUser(userId, userName, phoneNum).stream()
+               .filter( r -> r.getSeq() == reserv_id)
+               .collect(Collectors.toList());
+    }
+
     @Override
     public List<BusReservationDetail> findReservListByUser(String userId, String userName, String phoneNum) {
         User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phoneNum);
@@ -224,8 +231,12 @@ public class TravelServiceImpl implements TravelService {
 
         List<BusReservationDetail> reservList = busReservationDetailRepository.findAllByUser(user);
 
+//        reservList.stream().forEach( r ->{
+//
+//        });
+
         for(BusReservationDetail reservation: reservList) {
-            List<BusReservation> tempResrv = busReservationRepository.findAllByBusReservationDetail(reservation);
+            List<BusReservation> tempResrv = reservation.getBusReservationList();
             String seatNum = "";
             int tempBusNum=0;
             for(BusReservation bus: tempResrv) {

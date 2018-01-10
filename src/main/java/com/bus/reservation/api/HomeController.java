@@ -31,10 +31,10 @@ public class HomeController {
         return "reservation";
     }
 
-    @RequestMapping(value = "/reservationList", method = RequestMethod.GET)
-    public String reservationList(ModelMap model){
-        return "reservationList";
-    }
+//    @RequestMapping(value = "/reservationList", method = RequestMethod.GET)
+//    public String reservationList(ModelMap model){
+//        return "reservationList";
+//    }
 
     @RequestMapping(value = "/reservationCancel", method = RequestMethod.GET)
     public String reservationCancel(ModelMap model){
