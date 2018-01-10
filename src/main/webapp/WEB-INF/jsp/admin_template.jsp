@@ -42,7 +42,10 @@
                     <table class="table">
                         <tr>
                             <th class="title" scope="col">산행일자</th>
-                            <td scope="col"><input type="text" class="form-control" id="datepicker" /></td>
+                            <td scope="col">
+                                <input type="text" class="form-control" id="datepicker" />
+                                <input type="text" class="form-control" id="time" placeholder="ex) 11:30" />
+                            </td>
                             <th class="title" scope="col">산행금액</th>
                             <td scope="col"><input type="text" class="form-control" id="priceBox" onclick="clearBox(this.id)" onchange="numberWithCommas(this.id)" /></td>
                         </tr>
@@ -297,16 +300,15 @@
     }
 
     function submit() {
-        console.log("emptyList", emptyList);
-        console.log("multiList", multiList);
-
+//        console.log("emptyList", emptyList);
+//        console.log("multiList", multiList);
 
         $.ajax({
             type: "POST",
             url: "/api/v1/admin/bus",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: {
-                date : $("#datepicker").val(),
+                date : $("#datepicker").val()+" "+$("#time").val(),
                 price: $("#priceBox").val().replace(/[^0-9]/g,''),
                 dest : $("#dest").val(),
                 leader : $("#leaderInfo").val(),

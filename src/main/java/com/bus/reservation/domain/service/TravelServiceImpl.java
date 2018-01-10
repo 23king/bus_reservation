@@ -267,7 +267,7 @@ public class TravelServiceImpl implements TravelService {
     }
 
     private Date covertToDate(String date){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd kk:mm");
         try {
             return format.parse(date);
         } catch (ParseException e) {
