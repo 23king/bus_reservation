@@ -64,7 +64,7 @@
                 </div>
                 <div style="margin-top: 23px;left: 50%;position: absolute;">
                     <button type="button" class="btn btn-success" onclick="location.href='/'">홈</button>
-                    <button type="button" class="btn btn-primary" onclick="location.href='/reservation/findReservations'>나의 예약 확인</button>
+                    <button type="button" class="btn btn-primary" onclick="location.href='/reservation/findReservations'">나의 예약 확인</button>
                 </div>
         </div><!-- /.blog-main -->
 

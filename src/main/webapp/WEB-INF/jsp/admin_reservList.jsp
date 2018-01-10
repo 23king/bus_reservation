@@ -13,6 +13,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/jquery-ui/1.12.1/jquery-ui.css">
     <link rel="stylesheet" href="/asset/open-iconic-master/font/css/open-iconic-bootstrap.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="/asset/css/common.css">
@@ -39,16 +40,51 @@
     <h3 class="blog-post-title">산행 리스트 관리</h3>
     <p>산수산악회 버스 예약 시스템입니다.</p>
     <hr>
-    <div id="search">
-        <form id="searchReserv" name="searchReserv">
-            <input type="hidden" name="reservSeq" id="reservSeq" value=""/>
-            <%--<p><label for="reservDate">예약일자</label> : <input type="text" id="reservDate" name="reservDate"/></p>--%>
-            <%--<p><label for="departureDate">산행일자</label> : <input type="text" id="departureDate" name="departureDate"/></p>--%>
-            <%--<p><label for="departureDate">산행지역</label> : <input type="text" id="destination" name="destination"/></p>--%>
-            <%--<p><label for="departureDate">예약자이름</label> : <input type="text" id="userName" name="userName"/></p>--%>
-            <%--<p><label for="departureDate">입금자명</label> : <input type="text" id="bankAccountName" name="bankAccountName"/></p>--%>
-            <%--<buton type="button" onclick="search()">검색</buton>--%>
-        </form>
+    <div>
+        <table class="table">
+            <tr>
+                <th class="title" scope="col">예약일자</th>
+                <td scope="col">
+                    <input type="text" class="form-control" id="reservDate" name="reservDate"/>
+                </td>
+                <th class="title" scope="col">산행일자</th>
+                <td scope="col">
+                    <input type="text" class="form-control" id="departureDate" name="departureDate"/>
+                </td>
+            </tr>
+            <tr>
+                <th class="title" scope="col">산행지역</th>
+                <td scope="col">
+                    <input type="text" class="form-control" id="destination" name="destination"/></p>
+                </td>
+                <th class="title" scope="col">입금자명</th>
+                <td scope="col">
+                    <input type="text" class="form-control" id="bankAccountName" name="bankAccountName"/>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <button type="button" class="btn btn-primary" onclick="search()">검색</button>
+                </td>
+            </tr>
+            <%--<tr>--%>
+                <%--<th class="title" scope="row">산행지</th>--%>
+                <%--<td colspan="3">${travelInfo.info.destination}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<th class="title" scope="row">산행대장/차량</th>--%>
+                <%--<td colspan="3">${travelInfo.info.leader}</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<th class="title" rowspan="2" scope="row">안내사항</th>--%>
+                <%--<td colspan="3">${travelInfo.info.notice1} </td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td colspan="3">--%>
+                    <%--${travelInfo.info.notice2}--%>
+                <%--</td>--%>
+            <%--</tr>--%>
+        </table>
     </div>
     <div id="list">
         <table class="table">
@@ -100,7 +136,56 @@
 <script src="/asset/js/html5shiv.js"></script>
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.js"></script>
 <script>
+
+    function search() {
+        var data = {
+            reservDate : $("#reservDate").val().replace(/\./g,""),
+            departureDate: $("#departureDate").val().replace(/\./g,""),
+            destination: $("#destination").val(),
+            bankAccountName: $("#bankAccountName").val()
+        }
+        location.href="/admin/findReservList?"+$.param(data);
+    }
+
+    $( function() {
+        $( "#reservDate" ).datepicker({
+            dateFormat: 'yy.mm.dd',
+            closeText: '닫기',
+            prevText: '이전달',
+            nextText: '다음달',
+            currentText: '오늘',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            yearSuffix: '년',
+            showMonthAfterYear: true
+        });
+
+        $( "#departureDate" ).datepicker({
+            dateFormat: 'yy.mm.dd',
+            closeText: '닫기',
+            prevText: '이전달',
+            nextText: '다음달',
+            currentText: '오늘',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            yearSuffix: '년',
+            showMonthAfterYear: true
+        });
+    });
+//    function reservDetail(seq){
+//        var searchForm = $("#searchReserv");
+//        searchForm.action="/admin/reservDetail";
+//        $("#reservSeq").val(seq);
+//        searchForm.submit()
+//    }
     function changeStatus(seq){
         if(!confirm('예약정보를 변경하시겠습니까'))
             return;
