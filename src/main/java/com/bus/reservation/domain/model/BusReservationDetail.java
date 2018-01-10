@@ -4,7 +4,7 @@ package com.bus.reservation.domain.model;
 import lombok.Data;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -38,7 +38,31 @@ public class BusReservationDetail implements Serializable {
     private Travel travelInfo;
 
     @Transient
+    @Setter
     private String seatNum;
+
+    public String getSeatNum() {
+        if(StringUtils.isEmpty(seatNum)) {
+            String seatNum = "";
+            int tempBusNum = 0;
+            for (BusReservation bus : busReservationList) {
+                if (bus.getBusNum() == tempBusNum) {
+                    if (tempBusNum != 0) {
+                        seatNum += ",";
+                    }
+                    seatNum += ((bus.getBusNum() + 1) + "호차 ");
+                    tempBusNum++;
+                }
+                seatNum += bus.getSeatNum();
+                if (busReservationList.indexOf(bus) != busReservationList.size() - 1) {
+                    seatNum += " / ";
+                }
+            }
+            return seatNum;
+        }else{
+            return seatNum;
+        }
+    }
 
     @ManyToOne
     private Travel travel;
