@@ -53,23 +53,24 @@
         <table class="table">
             <tr>
                 <th class="title" scope="col">ID</th>
-                <th class="title" scope="col">성명</th>
                 <th class="title" scope="col">산행일자</th>
                 <th class="title" scope="col">산행지</th>
-                <th class="title" scope="col">예약자수</th>
+                <th class="title" scope="col">입금자명</th>
+                <th class="title" scope="col">예약금액</th>
+                <th class="title" scope="col">좌석번호</th>
                 <th class="title" scope="col">예약상태</th>
-                <th class="title" scope="col">자세히</th>
+                <%--<th class="title" scope="col">자세히</th>--%>
             </tr>
-            ${list}
+            ${reservList}
             <c:forEach var="list" items="${reservList}">
             <tr>
-                <td scope="col">${list.user.userId}</td>
-                <td scope="col">${list.user.userName}</td>
-                <td scope="col">${list.travel.departureDate}</td>
-                <td scope="col">${list.travel.destination}</td>
-                <td scope="col">${list.busSeatNo}</td>
-                <td scope="col">${list.reservStatus}</td>
-                <td scope="col"><button type="button" class="btn btn-danger" onClick="reservDetail(${list.seq})">자세히</button></td>
+                <%--<td scope="col">${list.user.userId}</td>--%>
+                <%--<td scope="col">${list.user.userName}</td>--%>
+                <%--<td scope="col">${list.travel.departureDate}</td>--%>
+                <%--<td scope="col">${list.travel.destination}</td>--%>
+                <%--<td scope="col">${list.busSeatNo}</td>--%>
+                <%--<td scope="col">${list.reservStatus}</td>--%>
+                <%--<td scope="col"><button type="button" class="btn btn-danger" onClick="reservDetail(${list.seq})">자세히</button></td>--%>
             </tr>
             </c:forEach>
         </table>
@@ -91,12 +92,12 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
-    function reservDetail(seq){
-        var searchForm = $("#searchReserv");
-        searchForm.action="/admin/reservDetail";
-        $("#reservSeq").val(seq);
-        searchForm.submit()
-    }
+//    function reservDetail(seq){
+//        var searchForm = $("#searchReserv");
+//        searchForm.action="/admin/reservDetail";
+//        $("#reservSeq").val(seq);
+//        searchForm.submit()
+//    }
 </script>
 </body>
 </html>
