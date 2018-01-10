@@ -63,19 +63,19 @@
                 <td scope="col">
                     <c:choose>
                         <c:when test="${list.reservStatus eq '0'}">
-                            예약대기 (입금대기)
+                            <p color="#1e90ff">예약대기 (입금대기)</p>
                         </c:when>
                         <c:when test="${list.reservStatus eq '1'}">
-                            예약완료 (입금완료)
+                            <p color="#1e90ff">예약완료 (입금완료)</p>
                         </c:when>
                         <c:when test="${list.reservStatus eq '2'}">
-                            취소요청
+                            <p color="red">취소요청</p>
                         </c:when>
                         <c:when test="${list.reservStatus eq '4'}">
-                            취소완료
+                            <p color="#1e90ff">취소완료</p>
                         </c:when>
                         <c:otherwise>
-                            비정상 상태
+                            <p color="red">비정상 상태</p>
                         </c:otherwise>
                     </c:choose>
                 </td>
@@ -84,7 +84,11 @@
                     <fmt:formatNumber value="${list.busSeatCnt * list.travel.price}" pattern="#,###" />원
                 </td>
                 <td scope="col"><c:out value="${list.seatNum}"/></td>
-                <td scope="col"><button type="button" class="btn btn-danger" onclick="cancelReserv(${list.seq})">취소하기</button></td>
+                <td scope="col">
+                    <c:if test="${list.reservStatus < 2}">
+                    <button type="button" class="btn btn-danger" onclick="cancelReserv(${list.seq})">취소하기</button>
+                    </c:if>
+                </td>
             </tr>
             </c:forEach>
         </table>

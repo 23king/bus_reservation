@@ -26,54 +26,56 @@
     <h3 class="blog-post-title">예약 취소</h3>
     <p>산수산악회 버스 예약 시스템입니다.</p>
     <hr>
-    <div style="margin-bottom: 50px;">
-        <h5><span class="oi oi-chevron-right"></span>&nbsp;취소 신청 내용</h5>
-        ${reservInfo}
-        <table class="table">
-            <tr>
-                <th class="title" scope="col">성명</th>
-                <th class="title" scope="col">산행일자</th>
-                <th class="title" scope="col">산행지</th>
-                <th class="title" scope="col">좌석번호</th>
-                <th class="title" scope="col">예약금액</th>
-            </tr>
-            <tr>
-                <td scope="col"></td>
-                <td scope="col">${reservInfo.travel.departureDate}</td>
-                <td scope="col">${reservInfo.travel.destination}</td>
-                <td scope="col">${reservInfo.seatNum}</td>
-                <td scope="col">
-                    ${reservInfo.busSeatCnt * reservInfo.travel.price}
-                        <%--<fmt:formatNumber value="${reservInfo.busSeatCnt * reservInfo.travel.price}" pattern="##,###,###" />--%>
-                        원
-                </td>
-            </tr>
-
-        </table>
-    </div>
-
-    <div>
-        <h5><span class="oi oi-chevron-right"></span>&nbsp;환불 신청 내용</h5>
-        <table class="table">
-            <tr>
-                <th class="title" scope="col">환불금액</th>
-                <th scope="col" colspan="5">환불 규정에 따라 환불 금액이 처리됩니다.</th>
-            </tr>
-            <tr>
-                <th class="title" scope="col">입금은행</th>
-                <th scope="col"><input type="text" class="form-control" name="refundBankName" id="refundBankName"/></th>
-                <th class="title" scope="col">입금계좌</th>
-                <th scope="col"><input type="text" class="form-control" name="refundBankNo" id="refundBankNo" /></th>
-                <th class="title" scope="col">예금주명</th>
-                <th scope="col"><input type="text" class="form-control" name="refundBankAccount" id="refundBankAccount" /></th>
-            </tr>
-
-        </table>
-    </div>
     <form name="cancelForm" id="cancelForm" method="post">
+        <div style="margin-bottom: 50px;">
+            <h5><span class="oi oi-chevron-right"></span>&nbsp;취소 신청 내용</h5>
+            <table class="table">
+                <tr>
+                    <th class="title" scope="col">ID</th>
+                    <th class="title" scope="col">성명</th>
+                    <th class="title" scope="col">산행일자</th>
+                    <th class="title" scope="col">산행지</th>
+                    <th class="title" scope="col">좌석번호</th>
+                    <th class="title" scope="col">예약금액</th>
+                </tr>
+                <tr>
+                    <td scope="col">${reservInfo.user.userId}</td>
+                    <td scope="col">${reservInfo.user.userName}</td>
+                    <td scope="col">${reservInfo.travel.departureDate}</td>
+                    <td scope="col">${reservInfo.travel.destination}</td>
+                    <td scope="col">${reservInfo.seatNum}</td>
+                    <td scope="col">
+                        ${reservInfo.busSeatCnt * reservInfo.travel.price}
+                            <%--<fmt:formatNumber value="${reservInfo.busSeatCnt * reservInfo.travel.price}" pattern="##,###,###" />--%>
+                            원
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div>
+            <h5><span class="oi oi-chevron-right"></span>&nbsp;환불 신청 내용</h5>
+            <table class="table">
+                <tr>
+                    <th class="title" scope="col">환불금액</th>
+                    <th scope="col" colspan="5">환불 규정에 따라 환불 금액이 처리됩니다.</th>
+                </tr>
+                <tr>
+                    <th class="title" scope="col">입금은행</th>
+                    <th scope="col"><input type="text" class="form-control" name="refundBankName" id="refundBankName"/></th>
+                    <th class="title" scope="col">입금계좌</th>
+                    <th scope="col"><input type="text" class="form-control" name="refundBankNo" id="refundBankNo" /></th>
+                    <th class="title" scope="col">예금주명</th>
+                    <th scope="col"><input type="text" class="form-control" name="refundBankAccount" id="refundBankAccount" /></th>
+                </tr>
+
+            </table>
+        </div>
         <input type="hidden" name="userId" value="${userId}"/>
         <input type="hidden" name="userName" value="${userName}"/>
         <input type="hidden" name="userPhone" value="${phoneNum}"/>
+        <input type="hidden" name="reserv_id" value="${reserv_id}"/>
     </form>
 
     <div style="margin-top: 23px;left: 45%;position: absolute;">
@@ -99,12 +101,14 @@
 <script>
     function back(){
         var form = $("#cancelForm");
-        form.action="/reservation/cancelReserv";
+        $(form).attr("action","/reservation/cancelReserv");
         form.submit();
     }
     function cancelReserv(){
+        if(!confirm('취소하시겠습니까'))
+            return;
         var form = $("#cancelForm");
-        form.action="/reservation/cancelReserv";
+        $(form).attr("action","/reservation/cancelApply");
         form.submit();
     }
 </script>

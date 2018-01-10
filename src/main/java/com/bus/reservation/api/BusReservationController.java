@@ -1,12 +1,14 @@
 package com.bus.reservation.api;
 
 import com.bus.reservation.domain.model.BusReservation;
+import com.bus.reservation.domain.model.BusReservationRefund;
 import com.bus.reservation.domain.model.Travel;
 import com.bus.reservation.domain.model.User;
 import com.bus.reservation.domain.repository.BusReservationDetailRepository;
 import com.bus.reservation.domain.repository.BusReservationRepository;
 import com.bus.reservation.domain.repository.MemberRepository;
 import com.bus.reservation.domain.repository.TravelRepository;
+import com.bus.reservation.domain.service.BusReservationRefundService;
 import com.bus.reservation.domain.service.BusReservationService;
 import com.bus.reservation.domain.service.TravelService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +33,8 @@ public class BusReservationController {
     private TravelRepository travelRepository;
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private BusReservationRefundService busReservationRefundService;
 
     @RequestMapping(value="/findUser")
     public List<User> findUser(@RequestParam String user_name,@RequestParam String user_phone){
@@ -86,7 +90,15 @@ public class BusReservationController {
         model.put("userId", params.get("userId"));
         model.put("userName", params.get("userName"));
         model.put("phoneNum", params.get("phoneNum"));
+        model.put("reserv_id", params.get("reserv_id"));
         return "reservationCancel";
+    }
+
+    @RequestMapping(value="/cancelApply")
+    public String cancelApply(@RequestParam Map<String, String> params){
+        busReservationRefundService.cancelReservation(params);
+
+        return "forward:/reservation/busReservCheckList";
     }
 
     @RequestMapping(value="/complete")
