@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class BusReservationDetailServiceImpl implements BusReservationDetailService{
@@ -22,15 +23,10 @@ public class BusReservationDetailServiceImpl implements BusReservationDetailServ
     private TravelRepository travelRepository;
 
     @Override
-    public List<Travel> findReservList(Map<String, String> param) {
-        if(param.isEmpty()) {
-            List<Travel> travels = travelRepository.findAll();
-            travels.stream().forEach( v -> {
-                v.setReserv_cnt(busReservationRepository.countByTravelAndAndStatusEquals(v, 3));
-            });
-            return travels;
-        }
-        return null;
+    public List<BusReservationDetail> findReservList(Map<String, String> param) {
+        return busReservationDetailRepository.findAll().stream()
+                .filter( reserv ->  Integer.parseInt(reserv.getReservStatus())<3)
+                .collect(Collectors.toList());
     }
 
     @Override

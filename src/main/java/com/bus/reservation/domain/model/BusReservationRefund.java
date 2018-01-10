@@ -18,7 +18,11 @@ public class BusReservationRefund implements Serializable {
     @GeneratedValue
     private long seq;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="refundRequestDate", insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date refundRequestDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="refundCompleteDate", insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date refundCompleteDate;
     private String refundBankName;
     private String refundBankAccount;

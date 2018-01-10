@@ -30,6 +30,7 @@ public class BusReservationRefundServiceImpl implements BusReservationRefundServ
         busReservationRefund.setRefundBankName(params.get("refundBankName"));
         busReservationRefund.setRefundBankNo(params.get("refundBankNo"));
         busReservationRefund.setReservationDetail(busReservationDetail);
+        busReservationRefund.setTravel(busReservationDetail.getTravel());
 
         busReservationRefundRepository.save(busReservationRefund);
     }

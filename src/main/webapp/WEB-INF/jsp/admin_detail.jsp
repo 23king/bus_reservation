@@ -62,13 +62,7 @@
                 <td scope="col">${reservInfo.busSeatCnt}개</td>
                 <td scope="col">${reservInfo.travel.price * reservInfo.busSeatCnt}원</td>
                 <td scope="col">
-                    <select class="custom-select" id="reservStatus">
-                        <option value="0" <c:if test="${reservStatus==0}">selected="selected"</c:if>>예약 대기</option>
-                        <option value="1" <c:if test="${reservStatus==1}">selected="selected"</c:if>>예약 완료</option>
-                        <option value="2" <c:if test="${reservStatus==2}">selected="selected"</c:if>>취소 요청</option>
-                        <option value="4" <c:if test="${reservStatus==4}">selected="selected"</c:if>>최소 완료</option>
-                    </select>
-                    <button type="button" class="btn btn-success" onclick="changeStatus(${reservInfo.seq})">변경</button>
+
                 </td>
             </tr>
         </table>
@@ -344,26 +338,7 @@
         });
     }
 
-    function changeStatus(seq){
-        if(!confirm('예약정보를 변경하시겠습니까'))
-            return;
-        $.ajax({
-            type: "POST",
-            url: "/api/v1/reservation/changeReservStatus",
-            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            data: {
-                seq : seq,
-                status : $("#reservStatus").val()
-            },
-            dataType: "json"
-        }).done(function (result) {
-            if(result.status == "success") {
-                alert("변경에 성공하였습니다");
-            } else {
-                alert(result.message);
-            }
-        });
-    }
+
 </script>
 </body>
 </html>

@@ -56,9 +56,12 @@
                 <td scope="col">${list.refundBankName}</td>
                 <td scope="col">${list.refundBankNo}</td>
                 <td scope="col">
-                    <c:if test="${list.refundStatus == 1}">환불 신청</c:if>
-                    <c:if test="${list.refundStatus == 2}">환불 진행중</c:if>
-                    <c:if test="${list.refundStatus == 3}">환불 완료</c:if>
+                    <select class="custom-select" id="refundStatus">
+                        <option value="1" <c:if test="${list.refundStatus==1}">selected="selected"</c:if>>환불 신청</option>
+                        <option value="2" <c:if test="${list.refundStatus==2}">selected="selected"</c:if>>환불 진행중</option>
+                        <option value="3" <c:if test="${list.refundStatus==3}">selected="selected"</c:if>>환불 완료</option>
+                    </select>
+                    <button type="button" class="btn btn-success" onclick="changeRefundStatus(${list.seq})">변경</button>
                 </td>
             </tr>
             </c:forEach>
@@ -81,6 +84,30 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
+    function changeRefundStatus(seq){
+        if(!confirm('환불정보를 변경하시겠습니까'))
+            return;
+        $.ajax({
+            type: "POST",
+            url: "/api/v1/admin/changeRefundStatus",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {
+                seq : seq,
+                status : $("#refundStatus").val()
+            },
+            dataType: "json",
+            success:function(result){
+                alert(result);
+            }
+        }).done(function (result) {
+            alert(result);
+            if(result.status == "success") {
+                alert("변경에 성공하였습니다");
+            } else {
+                alert(result.message);
+            }
+        });
+    }
 </script>
 </body>
 </html>

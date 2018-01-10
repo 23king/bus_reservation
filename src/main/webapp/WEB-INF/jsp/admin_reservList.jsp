@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,12 +42,12 @@
     <div id="search">
         <form id="searchReserv" name="searchReserv">
             <input type="hidden" name="reservSeq" id="reservSeq" value=""/>
-            <p><label for="reservDate">예약일자</label> : <input type="text" id="reservDate" name="reservDate"/></p>
-            <p><label for="departureDate">산행일자</label> : <input type="text" id="departureDate" name="departureDate"/></p>
-            <p><label for="departureDate">산행지역</label> : <input type="text" id="destination" name="destination"/></p>
-            <p><label for="departureDate">예약자이름</label> : <input type="text" id="userName" name="userName"/></p>
-            <p><label for="departureDate">입금자명</label> : <input type="text" id="bankAccountName" name="bankAccountName"/></p>
-            <buton type="button" onclick="search()">검색</buton>
+            <%--<p><label for="reservDate">예약일자</label> : <input type="text" id="reservDate" name="reservDate"/></p>--%>
+            <%--<p><label for="departureDate">산행일자</label> : <input type="text" id="departureDate" name="departureDate"/></p>--%>
+            <%--<p><label for="departureDate">산행지역</label> : <input type="text" id="destination" name="destination"/></p>--%>
+            <%--<p><label for="departureDate">예약자이름</label> : <input type="text" id="userName" name="userName"/></p>--%>
+            <%--<p><label for="departureDate">입금자명</label> : <input type="text" id="bankAccountName" name="bankAccountName"/></p>--%>
+            <%--<buton type="button" onclick="search()">검색</buton>--%>
         </form>
     </div>
     <div id="list">
@@ -59,18 +60,26 @@
                 <th class="title" scope="col">예약금액</th>
                 <th class="title" scope="col">좌석번호</th>
                 <th class="title" scope="col">예약상태</th>
-                <%--<th class="title" scope="col">자세히</th>--%>
             </tr>
-            ${reservList}
             <c:forEach var="list" items="${reservList}">
             <tr>
-                <%--<td scope="col">${list.user.userId}</td>--%>
-                <%--<td scope="col">${list.user.userName}</td>--%>
-                <%--<td scope="col">${list.travel.departureDate}</td>--%>
-                <%--<td scope="col">${list.travel.destination}</td>--%>
-                <%--<td scope="col">${list.busSeatNo}</td>--%>
-                <%--<td scope="col">${list.reservStatus}</td>--%>
-                <%--<td scope="col"><button type="button" class="btn btn-danger" onClick="reservDetail(${list.seq})">자세히</button></td>--%>
+                <td scope="col">${list.user.userId}</td>
+                <td scope="col">${list.travel.departureDate}</td>
+                <td scope="col">${list.travel.destination}</td>
+                <td scope="col">${list.bankAccountName}</td>
+                <td scope="col">
+                    <fmt:formatNumber value="${list.busSeatCnt * list.travel.price}" pattern="#,###" />원
+                </td>
+                <td scope="col">${list.seatNum}</td>
+                <td scope="col">
+                    <select class="custom-select" id="reservStatus">
+                        <option value="0" <c:if test="${list.reservStatus==0}">selected="selected"</c:if>>예약 대기</option>
+                        <option value="1" <c:if test="${list.reservStatus==1}">selected="selected"</c:if>>예약 완료</option>
+                        <option value="2" <c:if test="${list.reservStatus==2}">selected="selected"</c:if>>취소 요청</option>
+                        <option value="4" <c:if test="${list.reservStatus==4}">selected="selected"</c:if>>최소 완료</option>
+                    </select>
+                    <button type="button" class="btn btn-success" onclick="changeStatus(${list.seq})">변경</button>
+                </td>
             </tr>
             </c:forEach>
         </table>
@@ -92,12 +101,26 @@
 <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
 <script src="/webjars/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script>
-//    function reservDetail(seq){
-//        var searchForm = $("#searchReserv");
-//        searchForm.action="/admin/reservDetail";
-//        $("#reservSeq").val(seq);
-//        searchForm.submit()
-//    }
+    function changeStatus(seq){
+        if(!confirm('예약정보를 변경하시겠습니까'))
+            return;
+        $.ajax({
+            type: "POST",
+            url: "/api/v1/admin/changeReservStatus",
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            data: {
+                seq : seq,
+                status : $("#reservStatus").val()
+            },
+            dataType: "json"
+        }).done(function (result) {
+            if(result.status == "success") {
+                alert("변경에 성공하였습니다");
+            } else {
+                alert(result.message);
+            }
+        });
+    }
 </script>
 </body>
 </html>
