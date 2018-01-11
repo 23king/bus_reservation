@@ -12,7 +12,6 @@ spring:
     password: sansu!123
     initialize: false
     platform: all
-    p
   jpa:
     show-sql: false
     hibernate:
