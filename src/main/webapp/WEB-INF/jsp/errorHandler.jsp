@@ -10,17 +10,16 @@
 <html>
 <head>
     <title>error</title>
+    <script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
     <script>
         window.onload=function(){
-            var form = document.getElementById("error");
-            form.action="${targetUrl}";
             alert("${message}");
-            form.submit();
+            $("#error").submit();
         }
     </script>
 </head>
 <body>
-    <form name="error">
+    <form name="error" id="error" action="${targetUrl}">
         <%
             Enumeration enuma = request.getParameterNames();
             while(enuma.hasMoreElements()) {

@@ -11,6 +11,7 @@ import com.bus.reservation.domain.repository.TravelRepository;
 import com.bus.reservation.domain.service.BusReservationRefundService;
 import com.bus.reservation.domain.service.BusReservationService;
 import com.bus.reservation.domain.service.TravelService;
+import com.bus.reservation.exception.ReservationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,11 +50,12 @@ public class BusReservationController {
     @RequestMapping(value="/busReservCheckList", method = RequestMethod.POST)
     public String busReservCheckList(ModelMap model, @RequestParam String userId,
                                      @RequestParam String userName,
-                                     @RequestParam String phoneNum){
+                                     @RequestParam String phoneNum) throws Exception{
         model.put("travels",travelService.findReservListByUser(userId, userName, phoneNum));
         model.put("userId",userId);
         model.put("userName",userName);
         model.put("phoneNum",phoneNum);
+
         return "reservList";
     }
 

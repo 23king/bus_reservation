@@ -8,6 +8,7 @@ import com.bus.reservation.domain.repository.BusReservationDetailRepository;
 import com.bus.reservation.domain.repository.BusReservationRepository;
 import com.bus.reservation.domain.repository.MemberRepository;
 import com.bus.reservation.domain.repository.TravelRepository;
+import com.bus.reservation.exception.ReservationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -135,7 +136,7 @@ public class TravelServiceImpl implements TravelService {
             for(String seat : selectSeats) {
                 BusReservation reservation = busReservationRepository.findAllByTravelAndBusNumAndSeatNum(travel, i, Integer.parseInt(seat));
                 if(reservation.getStatus() == 3) {
-                    throw new RuntimeException("이미 예약된 좌석");
+                    throw new ReservationException("이미 예약된 좌석");
                 }
                 reservation.setStatus(3);
                 reservation.setBusReservationDetail(reservationDetail);
@@ -165,7 +166,7 @@ public class TravelServiceImpl implements TravelService {
         long reserv_cnt = busReservationRepository.countBySeqAndAndStatusEquals(travel_id, 3);
 
         if(reserv_cnt >= 45)
-            throw new RuntimeException("이미 좌석예약이 완료되었습니다");
+            throw new ReservationException("이미 좌석예약이 완료되었습니다");
 
     }
 
@@ -227,7 +228,7 @@ public class TravelServiceImpl implements TravelService {
     public List<BusReservationDetail> findReservListByUser(String userId, String userName, String phoneNum) {
         User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phoneNum);
         if(user == null)
-            throw new RuntimeException("사용자 정보가 존재하지 않습니다");
+            throw new ReservationException("사용자 정보가 존재하지 않습니다");
 
         List<BusReservationDetail> reservList = busReservationDetailRepository.findAllByUser(user);
 
@@ -235,26 +236,26 @@ public class TravelServiceImpl implements TravelService {
 //
 //        });
 
-        for(BusReservationDetail reservation: reservList) {
-            List<BusReservation> tempResrv = reservation.getBusReservationList();
-            String seatNum = "";
-            int tempBusNum=0;
-            for(BusReservation bus: tempResrv) {
-                if(bus.getBusNum() == tempBusNum) {
-                    if(tempBusNum != 0) {
-                        seatNum += ",";
-                    }
-                    seatNum += ((bus.getBusNum()+1)+"호차 ");
-                    tempBusNum++;
-                }
-                seatNum += bus.getSeatNum();
-                if (tempResrv.indexOf(bus) != tempResrv.size()-1) {
-                    seatNum += " / ";
-                }
-            }
-            reservation.setSeatNum(seatNum);
-            reservation.setTravelInfo(reservation.getTravel());
-        }
+//        for(BusReservationDetail reservation: reservList) {
+//            List<BusReservation> tempResrv = reservation.getBusReservationList();
+//            String seatNum = "";
+//            int tempBusNum=0;
+//            for(BusReservation bus: tempResrv) {
+//                if(bus.getBusNum() == tempBusNum) {
+//                    if(tempBusNum != 0) {
+//                        seatNum += ",";
+//                    }
+//                    seatNum += ((bus.getBusNum()+1)+"호차 ");
+//                    tempBusNum++;
+//                }
+//                seatNum += bus.getSeatNum();
+//                if (tempResrv.indexOf(bus) != tempResrv.size()-1) {
+//                    seatNum += " / ";
+//                }
+//            }
+//            reservation.setSeatNum(seatNum);
+//            reservation.setTravelInfo(reservation.getTravel());
+//        }
 
 
         return reservList;
