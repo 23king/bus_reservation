@@ -4,10 +4,13 @@ package com.bus.reservation.domain.model;
 import lombok.Data;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +36,11 @@ public class BusReservationDetail implements Serializable {
     private Date createDate;
     private Date updateDate;
     private String bankAccountName;
+
+    public String getCreateDateByYYYYMMDD(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(this.createDate);
+    }
 
     @Transient
     private Travel travelInfo;

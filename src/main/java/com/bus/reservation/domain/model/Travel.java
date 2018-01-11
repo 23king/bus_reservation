@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,11 @@ public class Travel implements Serializable {
     private String notice2;
     private Date departureDate;
     private int busCount;
+
+    public String getDepartureDateByYYYYMMDD(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        return simpleDateFormat.format(this.departureDate);
+    }
 
     @Transient
     private int reserv_cnt;

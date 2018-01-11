@@ -8,6 +8,7 @@ import com.bus.reservation.domain.repository.BusReservationRepository;
 import com.bus.reservation.domain.repository.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,46 @@ public class BusReservationDetailServiceImpl implements BusReservationDetailServ
     public List<BusReservationDetail> findReservList(Map<String, String> param) {
         return busReservationDetailRepository.findAll().stream()
                 .filter( reserv ->  Integer.parseInt(reserv.getReservStatus())<3)
+                .filter( reserv -> {
+                    if(!StringUtils.isEmpty(param.get("reservDate"))){
+                        if(reserv.getCreateDateByYYYYMMDD().equals(param.get("reservDate")))
+                            return true;
+                        else
+                            return false;
+                    }else{
+                        return true;
+                    }
+                })
+                .filter( reserv -> {
+                    if(!StringUtils.isEmpty(param.get("departureDate"))){
+                        if(reserv.getTravel().getDepartureDateByYYYYMMDD().equals(param.get("departureDate")))
+                            return true;
+                        else
+                            return false;
+                    }else{
+                        return true;
+                    }
+                })
+                .filter( reserv -> {
+                    if(!StringUtils.isEmpty(param.get("destination"))){
+                        if(reserv.getTravel().getDestination().equals(param.get("destination")))
+                            return true;
+                        else
+                            return false;
+                    }else{
+                        return true;
+                    }
+                })
+                .filter( reserv -> {
+                    if(!StringUtils.isEmpty(param.get("bankAccountName"))){
+                        if(reserv.getBankAccountName().equals(param.get("bankAccountName")))
+                            return true;
+                        else
+                            return false;
+                    }else{
+                        return true;
+                    }
+                })
                 .collect(Collectors.toList());
     }
 

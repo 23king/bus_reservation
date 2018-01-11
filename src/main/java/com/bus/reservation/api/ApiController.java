@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -89,6 +91,7 @@ public class ApiController {
                         .forEach(list -> {
                             list.setStatus(1);
                         });
+                busReservationRefund.setRefundCompleteDate(new Date());
             }
 
             busReservationRefund.setRefundStatus(params.get("status"));

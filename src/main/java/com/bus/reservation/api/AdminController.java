@@ -44,7 +44,7 @@ public class AdminController {
                                  @RequestParam Map<String, String> param){
 
         model.put("reservList", busReservationDetailService.findReservList(param));
-
+        model.put("param", param);
         return "admin_reservList";
     }
 

@@ -45,21 +45,21 @@
             <tr>
                 <th class="title" scope="col">예약일자</th>
                 <td scope="col">
-                    <input type="text" class="form-control" id="reservDate" name="reservDate"/>
+                    <input type="text" class="form-control" id="reservDate" name="reservDate" value="${param.reservDate}"/>
                 </td>
                 <th class="title" scope="col">산행일자</th>
                 <td scope="col">
-                    <input type="text" class="form-control" id="departureDate" name="departureDate"/>
+                    <input type="text" class="form-control" id="departureDate" name="departureDate" value="${param.departureDate}"/>
                 </td>
             </tr>
             <tr>
                 <th class="title" scope="col">산행지역</th>
                 <td scope="col">
-                    <input type="text" class="form-control" id="destination" name="destination"/></p>
+                    <input type="text" class="form-control" id="destination" name="destination" value="${param.destination}"/></p>
                 </td>
                 <th class="title" scope="col">입금자명</th>
                 <td scope="col">
-                    <input type="text" class="form-control" id="bankAccountName" name="bankAccountName"/>
+                    <input type="text" class="form-control" id="bankAccountName" name="bankAccountName" value="${param.bankAccountName}"/>
                 </td>
             </tr>
             <tr>
