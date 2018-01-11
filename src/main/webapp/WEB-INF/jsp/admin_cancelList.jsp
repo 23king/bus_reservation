@@ -97,14 +97,7 @@
             },
             dataType: "json",
             success:function(result){
-                alert(result);
-            }
-        }).done(function (result) {
-            alert(result);
-            if(result.status == "success") {
                 alert("변경에 성공하였습니다");
-            } else {
-                alert(result.message);
             }
         });
     }

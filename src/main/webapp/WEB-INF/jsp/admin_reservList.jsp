@@ -197,12 +197,9 @@
                 seq : seq,
                 status : $("#reservStatus").val()
             },
-            dataType: "json"
-        }).done(function (result) {
-            if(result.status == "success") {
+            dataType: "json",
+            success:function(result){
                 alert("변경에 성공하였습니다");
-            } else {
-                alert(result.message);
             }
         });
     }

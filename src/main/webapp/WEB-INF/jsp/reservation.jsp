@@ -355,13 +355,10 @@
             url: "/api/v1/reservation/seat",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: data,
-            dataType: "json"
-        }).done(function (result) {
-            if(result.status == "success") {
-//                alert("예약에 성공하였습니다");
+            dataType: "json",
+            success:function(result){
+                alert("예약에 성공하였습니다");
                 location.href="/reservation/complete?revc_id="+result.resrv_code;
-            } else {
-                alert(result.message);
             }
         });
     }
