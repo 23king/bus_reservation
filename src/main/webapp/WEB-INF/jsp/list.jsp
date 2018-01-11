@@ -35,7 +35,7 @@
 
 <main role="main" class="container">
 
-    <h3 class="blog-post-title">내 예약 확인하기</h3>
+    <h3 class="blog-post-title">산행 리스트</h3>
     <p>산수산악회 버스 예약 시스템입니다.</p>
     <hr>
     <div id="list">
