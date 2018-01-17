@@ -11,6 +11,16 @@ spring:
     password: "!bus123@"
     initialize: false
     platform: all
+    tomcat:
+      test-while-idle: true
+      time-between-eviction-runs-millis: 3600000
+      min-evictable-idle-time-millis: 7200000
+      test-on-borrow: true
+      validation-query: select 1
+      max-active: 10
+      initial-size: 2
+      max-idle: 2
+      min-idle: 1
   jpa:
     show-sql: false
     hibernate:
