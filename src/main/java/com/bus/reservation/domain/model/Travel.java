@@ -21,9 +21,11 @@ public class Travel implements Serializable {
     private String destination;
     private long price;
     private String leader;
+    private String bankAccount;
     private String notice1;
     private String notice2;
     private Date departureDate;
+    private String time;
     private int busCount;
 
     public String getDepartureDateByYYYYMMDD(){
@@ -32,7 +34,10 @@ public class Travel implements Serializable {
     }
 
     @Transient
-    private int reserv_cnt;
+    private int reserved_cnt;
+
+    @Transient
+    private int bookable_cnt;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "travel", orphanRemoval=true)
     private List<BusReservation> buses;

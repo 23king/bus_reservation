@@ -44,14 +44,23 @@
                             <th class="title" scope="col">산행일자</th>
                             <td scope="col">
                                 <input type="text" class="form-control" id="datepicker" />
-                                <input type="text" class="form-control" id="time" placeholder="ex) 11:30" />
+                                <input type="text" class="form-control" id="time" />
                             </td>
-                            <th class="title" scope="col">산행금액</th>
-                            <td scope="col"><input type="text" class="form-control" id="priceBox" onclick="clearBox(this.id)" onchange="numberWithCommas(this.id)" /></td>
+                            <th class="title" scope="row">산행지</th>
+                            <td scope="col"><input type="text" class="form-control" id="dest" /></td>
                         </tr>
                         <tr>
-                            <th class="title" scope="row">산행지</th>
-                            <td colspan="3"><input type="text" class="form-control" id="dest" /></td>
+                            <th class="title" scope="col">산행금액</th>
+                            <td scope="col"><input type="text" class="form-control" id="priceBox" onclick="clearBox(this.id)" onchange="numberWithCommas(this.id)" /></td>
+                            <th class="title" scope="col">계좌번호</th>
+                            <td scope="col">
+                                <select id="bankAccount" name="bankAccount">
+                                    <option value="" selected="selecte">선택</option>
+                                    <option value="국민은행 11-1111-1111-1111" >국민은행 11-1111-1111-1111</option>
+                                    <option value="우리은행 22-2222-2222-2222" >우리은행 22-2222-2222-2222</option>
+                                    <option value="하나은행 33-3333-3333-3333" >하나은행 33-3333-3333-3333</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <th class="title" scope="row">산행대장/차량</th>
@@ -302,13 +311,31 @@
     function submit() {
 //        console.log("emptyList", emptyList);
 //        console.log("multiList", multiList);
+        if($("#datepicker").val()===''){
+            alert('산행일자를 선택해주세요');
+            return;
+        }
+        if($("#time").val()===''){
+            alert('산행시간을 입력해주세요');
+            return;
+        }
+        if($("#priceBox").val()===''){
+            alert('산행 비용을 입력해 주세요');
+            return;
+        }
+        if($("#dest").val()===''){
+            alert('산행지를 입력해 주세요');
+            return;
+        }
+
 
         $.ajax({
             type: "POST",
             url: "/api/v1/admin/bus",
             contentType: "application/x-www-form-urlencoded; charset=UTF-8",
             data: {
-                date : $("#datepicker").val()+" "+$("#time").val(),
+                date : $("#datepicker").val(),
+                time : $("#time").val(),
                 price: $("#priceBox").val().replace(/[^0-9]/g,''),
                 dest : $("#dest").val(),
                 leader : $("#leaderInfo").val(),

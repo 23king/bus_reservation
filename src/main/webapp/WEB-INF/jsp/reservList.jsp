@@ -47,17 +47,18 @@
         </form>
         <table class="table">
             <tr>
+                <th class="title" scope="col">예약일자</th>
                 <th class="title" scope="col">산행일자</th>
                 <th class="title" scope="col">산행지</th>
                 <th class="title" scope="col">예약현황</th>
                 <th class="title" scope="col">입금자명</th>
-                <th class="title" scope="col">입금금액</th>
+                <%--<th class="title" scope="col">입금금액</th>--%>
                 <th class="title" scope="col">좌석번호</th>
                 <th class="title" scope="col">예약취소</th>
             </tr>
             <c:forEach var="list" items="${travels}">
             <tr>
-                    <%--<td scope="col">홍길동</td>--%>
+                <td scope="col">${list.createDate}</td>
                 <td scope="col"><c:out value="${list.travel.departureDate}"/></td>
                 <td scope="col"><c:out value="${list.travel.destination}"/></td>
                 <td scope="col">
@@ -80,9 +81,9 @@
                     </c:choose>
                 </td>
                 <td scope="col"><c:out value="${list.bankAccountName}"/></td>
-                <td scope="col">
-                    <fmt:formatNumber value="${list.busSeatCnt * list.travel.price}" pattern="#,###" />원
-                </td>
+                <%--<td scope="col">--%>
+                    <%--<fmt:formatNumber value="${list.busSeatCnt * list.travel.price}" pattern="#,###" />원--%>
+                <%--</td>--%>
                 <td scope="col"><c:out value="${list.seatNum}"/></td>
                 <td scope="col">
                     <c:if test="${list.reservStatus < 2}">

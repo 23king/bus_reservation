@@ -39,15 +39,16 @@
             <tr>
                 <th class="title" scope="col">산행일자</th>
                 <td scope="col">${travelInfo.info.departureDate}</td>
-                <th class="title" scope="col">산행금액</th>
+                <th class="title" scope="col">산행지</th>
                 <td scope="col">
-                    <fmt:formatNumber value="${travelInfo.info.price}" pattern="#,###" />원
-
+                    ${travelInfo.info.destination}
                 </td>
             </tr>
             <tr>
-                <th class="title" scope="row">산행지</th>
-                <td colspan="3">${travelInfo.info.destination}</td>
+                <th class="title" scope="row">산행금액</th>
+                <td scope="col"><fmt:formatNumber value="${travelInfo.info.price}" pattern="#,###" />원</td>
+                <th class="title" scope="row">계좌번호</th>
+                <td scope="col">${travelInfo.bankAccount}</td>
             </tr>
             <tr>
                 <th class="title" scope="row">산행대장/차량</th>

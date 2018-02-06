@@ -5,6 +5,7 @@ import com.bus.reservation.domain.model.Travel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -12,5 +13,7 @@ import java.util.List;
 public interface TravelRepository extends JpaRepository<Travel,Long> {
 
     List<Travel> findAllByReservations(List<BusReservationDetail> reservList);
+
+    List<Travel> findByDepartureDate(Date departureDate);
     
 }

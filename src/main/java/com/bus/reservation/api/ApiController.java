@@ -86,13 +86,11 @@ public class ApiController {
             BusReservationRefund busReservationRefund =
                     busReservationRefundRepository.findOne(Long.parseLong(params.get("seq")));
 
-            if(params.get("status").equals("3")) {
-                busReservationRefund.getReservationDetail().getBusReservationList().stream()
-                        .forEach(list -> {
-                            list.setStatus(1);
-                        });
-                busReservationRefund.setRefundCompleteDate(new Date());
-            }
+            busReservationRefund.getReservationDetail().getBusReservationList().stream()
+                    .forEach(list -> {
+                        list.setStatus(1);
+                    });
+            busReservationRefund.setRefundCompleteDate(new Date());
 
             busReservationRefund.setRefundStatus(params.get("status"));
             busReservationRefundRepository.save(busReservationRefund);

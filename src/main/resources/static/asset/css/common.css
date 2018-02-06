@@ -264,4 +264,16 @@ table tr .title {
     background-color: #e9ecef;
     border-color: #e9ecef;
 }
+.login th {
+    border:1px;
+}
+.login td {
+    border:1px;
+    background-color: #ffffff;
+}
+.login{
+    border:1px;
+    background-color: #bfc6ce;
+    border-collapse: inherit;
+}
 

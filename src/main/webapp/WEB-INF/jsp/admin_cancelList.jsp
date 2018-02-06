@@ -42,7 +42,7 @@
                 <th class="title" scope="col">취소일자</th>
                 <th class="title" scope="col">입금은행</th>
                 <th class="title" scope="col">입금계좌</th>
-                <th class="title" scope="col">지급상태</th>
+                <%--<th class="title" scope="col">지급상태</th>--%>
             </tr>
             <c:forEach var="list" items="${refundList}">
             <tr>
@@ -55,14 +55,14 @@
                 <td scope="col">${list.refundRequestDate}</td>
                 <td scope="col">${list.refundBankName}</td>
                 <td scope="col">${list.refundBankNo}</td>
-                <td scope="col">
-                    <select class="custom-select" id="refundStatus">
-                        <option value="1" <c:if test="${list.refundStatus==1}">selected="selected"</c:if>>환불 신청</option>
-                        <option value="2" <c:if test="${list.refundStatus==2}">selected="selected"</c:if>>환불 진행중</option>
-                        <option value="3" <c:if test="${list.refundStatus==3}">selected="selected"</c:if>>환불 완료</option>
-                    </select>
-                    <button type="button" class="btn btn-success" onclick="changeRefundStatus(${list.seq})">변경</button>
-                </td>
+                <%--<td scope="col">--%>
+                    <%--<select class="custom-select" id="refundStatus">--%>
+                        <%--<option value="1" <c:if test="${list.refundStatus==1}">selected="selected"</c:if>>환불 신청</option>--%>
+                        <%--<option value="2" <c:if test="${list.refundStatus==2}">selected="selected"</c:if>>환불 진행중</option>--%>
+                        <%--<option value="3" <c:if test="${list.refundStatus==3}">selected="selected"</c:if>>환불 완료</option>--%>
+                    <%--</select>--%>
+                    <%--<button type="button" class="btn btn-success" onclick="changeRefundStatus(${list.seq})">변경</button>--%>
+                <%--</td>--%>
             </tr>
             </c:forEach>
         </table>

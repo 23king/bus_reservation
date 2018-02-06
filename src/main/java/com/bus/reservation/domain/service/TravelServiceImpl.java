@@ -46,6 +46,7 @@ public class TravelServiceImpl implements TravelService {
         travel.setNotice1(String.valueOf(travelInfo.get("notice1")));
         travel.setNotice2(String.valueOf(travelInfo.get("notice2")));
         travel.setDestination(String.valueOf(travelInfo.get("dest")));
+        travel.setTime(String.valueOf(travelInfo.get("time")));
         travel.setBusCount(busNum);
 
 
@@ -153,19 +154,23 @@ public class TravelServiceImpl implements TravelService {
     }
 
     @Override
-    public List<Travel> findTravelAll() {
-        List<Travel> travels = travelRepository.findAll();
+    public List<Travel> findTravelAll(String departureDate) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMdd");
+        Date date = sdf.parse(departureDate);
+
+        List<Travel> travels = travelRepository.findByDepartureDate(date);
         travels.stream().forEach( v -> {
-            v.setReserv_cnt(busReservationRepository.countByTravelAndAndStatusEquals(v, 3));
+            v.setReserved_cnt(busReservationRepository.countByTravelAndAndStatusEquals(v, 3));
+            v.setBookable_cnt(busReservationRepository.countByTravelAndAndStatusEquals(v, 1));
         });
         return travels;
     }
 
     @Override
     public void checkSeat(long travel_id) {
-        long reserv_cnt = busReservationRepository.countBySeqAndAndStatusEquals(travel_id, 3);
+        long bookable_cnt = busReservationRepository.countBySeqAndAndStatusEquals(travel_id, 1);
 
-        if(reserv_cnt >= 45)
+        if(bookable_cnt == 0)
             throw new ReservationException("이미 좌석예약이 완료되었습니다");
 
     }

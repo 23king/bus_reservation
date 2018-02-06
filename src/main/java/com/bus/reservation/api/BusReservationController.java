@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -59,18 +60,33 @@ public class BusReservationController {
         return "reservList";
     }
 
-    @RequestMapping(value="/list")
-    public String findTravelAll(ModelMap model){
-        model.put("travels", travelService.findTravelAll());
-        return "list";
-    }
+//    @RequestMapping(value="/list")
+//    public String findTravelAll(ModelMap model){
+//        model.put("travels", travelService.findTravelAll());
+//        return "list";
+//    }
 
+    /**
+     * 산행리스트
+     * @param model
+     * @param departureDate
+     * @return
+     */
     @RequestMapping(value="/busList")
-    public String reservList(ModelMap model){
-        model.put("travels", travelService.findTravelAll());
+    public String reservList(ModelMap model, @RequestParam(defaultValue = "") String departureDate) throws ParseException {
+        if (!departureDate.equals("")){
+            model.put("travels", travelService.findTravelAll(departureDate));
+        }
+        model.put("departureDate", departureDate);
         return "list";
     }
 
+    /**
+     * 산행리스트 -> 사용자정보입력
+     * @param model
+     * @param travel_id
+     * @return
+     */
     @RequestMapping(value="/bus")
     public String reservBus(ModelMap model, @RequestParam long travel_id){
         travelService.checkSeat(travel_id);
@@ -78,6 +94,12 @@ public class BusReservationController {
         return "registerAccount";
     }
 
+    /**
+     * 좌석선택
+     * @param model
+     * @param param
+     * @return
+     */
     @RequestMapping(value="/busSeatChoice")
     public String busSeatChoice(ModelMap model, @RequestParam Map<String,String> param){
         System.out.println("param : " + param.toString());
@@ -86,6 +108,12 @@ public class BusReservationController {
         return "reservation";
     }
 
+    /**
+     * 예약취소
+     * @param model
+     * @param params
+     * @return
+     */
     @RequestMapping(value="/cancelReserv")
     public String cancelReserv(ModelMap model, @RequestParam Map<String, String> params){
         model.put("reservInfo", busReservationDetailRepository.findOne(Long.parseLong(params.get("reserv_id"))));
