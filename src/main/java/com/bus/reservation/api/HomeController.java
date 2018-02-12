@@ -31,6 +31,7 @@ public class HomeController {
         return "reservation";
     }
 
+
 //    @RequestMapping(value = "/reservationList", method = RequestMethod.GET)
 //    public String reservationList(ModelMap model){
 //        return "reservationList";

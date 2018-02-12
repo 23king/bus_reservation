@@ -155,8 +155,7 @@ public class TravelServiceImpl implements TravelService {
 
     @Override
     public List<Travel> findTravelAll(String departureDate) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMdd");
-        Date date = sdf.parse(departureDate);
+        Date date = covertToDate(departureDate);
 
         List<Travel> travels = travelRepository.findByDepartureDate(date);
         travels.stream().forEach( v -> {
@@ -168,7 +167,7 @@ public class TravelServiceImpl implements TravelService {
 
     @Override
     public void checkSeat(long travel_id) {
-        long bookable_cnt = busReservationRepository.countBySeqAndAndStatusEquals(travel_id, 1);
+        long bookable_cnt = busReservationRepository.countByTravelSeqAndStatusEquals(travel_id, 1);
 
         if(bookable_cnt == 0)
             throw new ReservationException("이미 좌석예약이 완료되었습니다");
@@ -273,7 +272,7 @@ public class TravelServiceImpl implements TravelService {
     }
 
     private Date covertToDate(String date){
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd kk:mm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
         try {
             return format.parse(date);
         } catch (ParseException e) {

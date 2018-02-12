@@ -16,5 +16,5 @@ public interface BusReservationRepository extends JpaRepository<BusReservation,L
     List<BusReservation> findAllByBusReservationDetail(BusReservationDetail busReservationDetail);
 
     int countByTravelAndAndStatusEquals(Travel travel, int status);
-    int countBySeqAndAndStatusEquals(long seq, int status);
+    int countByTravelSeqAndStatusEquals(long seq, int status);
 }

@@ -37,7 +37,7 @@
                 <p>산수산악회 버스 예약 시스템입니다.</p>
                 <hr>
                 <div>
-                    <form name="admin" method="post" action="/login">
+                    <form name="admin" id="admin" method="post" action="/login">
                     <table class="table">
                         <tr>
                             <th class="title" scope="col">아이디</th>
@@ -53,11 +53,11 @@
                         </tr>
 
                     </table>
+                    </form>
                     <div style="margin-top: 23px;left: 50%;position: absolute;">
                         <button type="button" class="btn btn-success" onclick="submit()">로그인</button>
                     </div>
                 </div>
-                </form>
             </div><!-- /.blog-post -->
         </div><!-- /.blog-main -->
 
@@ -98,19 +98,19 @@
         var userName= document.getElementById("userName").value;
         var phoneNum= document.getElementById("phoneNum").value;
 
-        if(userId==="") {
+        if(userId === "") {
             alert("아이디를 입력하세요");
-            document.getElementById("username").focus();
+            document.getElementById("userId").focus();
             return false;
         }
 
-        if(userName==="") {
+        if(userName === "") {
             alert("성명을 입력하세요");
             document.getElementById("userName").focus();
             return false;
         }
 
-        if(phoneNum==="") {
+        if(phoneNum === "") {
             alert("전화번호를 입력하세요");
             document.getElementById("phoneNum").focus();
             return false;
@@ -121,6 +121,13 @@
 
         console.log(userId, userName, phoneNum);
     }
+    <%
+    if("true".equals(request.getParameter("error"))){
+    %>
+    alert("로그인 정보가 틀렸습니다. 다시 확인해 주세요");
+    <%
+    }
+    %>
 </script>
 </body>
 </html>

@@ -25,18 +25,12 @@ public class LoginUserDetailService implements UserDetailsService {
         return userDetail;
     }
 
-    @Transactional
-    public UserDetail loadUserByUserInfo(String userId, String userName, String phone){
+    public UserDetail loadUserByUserInfo(String userId, String userName, String phone) throws UsernameNotFoundException{
         User user = memberRepository.findByUserIdAndUserNameAndUserPhone(userId, userName, phone);
 
-//        if(user == null){
-            // TODO: 사용자 정보가 없으면 join 시켜 버린다
-//            User newUser = new User();
-//            newUser.setUserId(userId);
-//            newUser.setUserName(userName);
-//            newUser.setUserPhone(phone);
-//            user = memberRepository.save(newUser);
-//        }
+        if(user == null){
+            throw new UsernameNotFoundException(userName);
+        }
 
         UserDetail userDetail = new UserDetail(user);
         return userDetail;

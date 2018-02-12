@@ -1,5 +1,6 @@
 package com.bus.reservation.config;
 
+import com.bus.reservation.security.CustomAuthenticationFailureHandler;
 import com.bus.reservation.security.CustomAuthenticationProvider;
 import com.bus.reservation.security.CustomAuthenticationSuccessHandler;
 import com.bus.reservation.security.CustomUsernamePasswordAuthenticationFilter;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -45,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         CustomUsernamePasswordAuthenticationFilter customUsernamePasswordAuthenticationFilter
                 = new CustomUsernamePasswordAuthenticationFilter();
         customUsernamePasswordAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
+        customUsernamePasswordAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler());
         return customUsernamePasswordAuthenticationFilter;
     }
 
@@ -57,18 +60,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrf()
                 .disable()
                 .authorizeRequests()
-//                .antMatchers("/login").permitAll()
+                .antMatchers("/login").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/**").permitAll()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/admin/findReservList")
+//                .failureUrl("/login?error=true")
+                .defaultSuccessUrl("/admin/saveBusReservation")
+//                .failureUrl("/login?error=true")
+//                .failureHandler(new SimpleUrlAuthenticationFailureHandler("/login?error=true"))
                 .successHandler(authenticationSuccessHandler)
-                .failureHandler(new SimpleUrlAuthenticationFailureHandler())
-                .loginPage("/login")
+                .loginPage("/login").permitAll()
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login").permitAll()
                 .invalidateHttpSession(true);
+    }
+
+    @Bean
+    public AuthenticationFailureHandler customAuthenticationFailureHandler() {
+        CustomAuthenticationFailureHandler auth = new CustomAuthenticationFailureHandler();
+        return auth;
     }
 }

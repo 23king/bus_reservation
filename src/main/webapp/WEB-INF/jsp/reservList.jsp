@@ -63,20 +63,20 @@
                 <td scope="col"><c:out value="${list.travel.destination}"/></td>
                 <td scope="col">
                     <c:choose>
-                        <c:when test="${list.reservStatus eq '0'}">
-                            <p color="#1e90ff">예약대기 (입금대기)</p>
+                        <c:when test="${list.reservStatus == 0}">
+                            <p style="color:#1e90ff">예약대기 (입금대기)</p>
                         </c:when>
-                        <c:when test="${list.reservStatus eq '1'}">
-                            <p color="#1e90ff">예약완료 (입금완료)</p>
+                        <c:when test="${list.reservStatus == 1}">
+                            <p style="color:#1e90ff">예약완료 (입금완료)</p>
                         </c:when>
-                        <c:when test="${list.reservStatus eq '2'}">
-                            <p color="red">취소요청</p>
+                        <c:when test="${list.reservStatus == 2}">
+                            <p style="color:red">취소요청</p>
                         </c:when>
-                        <c:when test="${list.reservStatus eq '4'}">
-                            <p color="#1e90ff">취소완료</p>
+                        <c:when test="${list.reservStatus == 4}">
+                            <p style="color:#1e90ff">취소완료</p>
                         </c:when>
                         <c:otherwise>
-                            <p color="red">비정상 상태</p>
+                            <p style="color:red">비정상 상태</p>
                         </c:otherwise>
                     </c:choose>
                 </td>

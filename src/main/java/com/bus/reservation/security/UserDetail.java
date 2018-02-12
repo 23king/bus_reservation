@@ -27,6 +27,8 @@ public class UserDetail implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities
                 = new ArrayList<>();
+        if(user == null)
+            return null;
         user.getUserRoles().stream().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
         });

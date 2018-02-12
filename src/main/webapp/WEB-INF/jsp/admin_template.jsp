@@ -82,6 +82,7 @@
                 <div id="busAreaBox">
                     <div style="float: right;margin-bottom: 13px;">
                         <button type="button" class="btn btn-primary" onClick="addBusTemplate()">버스추가</button>
+                        <button type="button" class="btn btn-primary" onClick="delBusTemplate()">버스삭제</button>
                     </div>
 
                     <div style="clear:both;"class="bus_area">
@@ -308,6 +309,10 @@
         $('#busAreaBox').append(getBusTemplate());
     }
 
+    function delBusTemplate() {
+        $('.bus_area div:last-child').remove();
+    }
+
     function submit() {
 //        console.log("emptyList", emptyList);
 //        console.log("multiList", multiList);
@@ -346,7 +351,7 @@
                 busNum : busNum
             },
             dataType: "json",
-            success: function(result){
+            complete: function(){
                 alert("등록에 성공하였습니다");
                 location.href="/admin/findReservList";
             }

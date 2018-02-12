@@ -70,7 +70,7 @@
                 </td>
                 <td scope="col"><c:out value="${list.destination}"/></td>
                 <td scope="col">
-                    <p style="font-color:red">예약 좌석 : ${list.reserv_cnt}</p>
+                    <p style="font-color:red">예약 좌석 : ${list.reserved_cnt}</p>
                     <p style="font-color:blue">예약 가능좌석 : ${list.bookable_cnt}</p>
                 </td>
                 <td scope="col">
@@ -107,7 +107,7 @@
         window.location = "/reservation/bus?travel_id="+travel_id;
     }
     function searchTravel(){
-        var departureDate = $("#departureDate").val().replace(/\./g,"");
+        var departureDate = $("#departureDate").val();
         if(departureDate == ''){
             alert('산행일자를 선택해주세요.');
             return;

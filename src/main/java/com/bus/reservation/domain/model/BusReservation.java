@@ -20,7 +20,7 @@ public class BusReservation implements Serializable, Comparable<BusReservation> 
     private int busNum;
     private int seatNum;
     /**
-     *
+     * 2 : 취소요청
      */
     private int status;
     private boolean isTwinSeat;

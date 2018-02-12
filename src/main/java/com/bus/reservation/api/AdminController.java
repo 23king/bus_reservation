@@ -38,7 +38,6 @@ public class AdminController {
     }
 
 
-
     @RequestMapping(value="/findReservList")
     public String findReservList(ModelMap model,
                                  @RequestParam Map<String, String> param){
