@@ -82,7 +82,7 @@
                 <div id="busAreaBox">
                     <div style="float: right;margin-bottom: 13px;">
                         <button type="button" class="btn btn-primary" onClick="addBusTemplate()">버스추가</button>
-                        <button type="button" class="btn btn-primary" onClick="delBusTemplate()">버스삭제</button>
+                        <button type="button" class="btn btn-danger" onClick="delBusTemplate()">버스삭제</button>
                     </div>
 
                     <div style="clear:both;"class="bus_area">
@@ -310,6 +310,8 @@
     }
 
     function delBusTemplate() {
+        emptyList ={}, multiList={};
+        busNum =0;
         $('.bus_area div:last-child').remove();
     }
 

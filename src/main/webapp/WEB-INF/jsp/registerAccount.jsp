@@ -41,16 +41,16 @@
                         <input type="hidden" name="travel_id" value="${travel_id}"/>
                     <table class="table">
                         <tr>
-                            <th class="title" scope="col">아이디</th>
-                            <th scope="col"><input type="text" id="userId" name="userId" class="form-control"/></th>
+                            <th class="title" scope="col" style="border: 2px #bfc6ce solid;">아이디</th>
+                            <th scope="col" style="border: 2px #bfc6ce solid;"><input type="text" id="userId" name="userId" class="form-control"/></th>
                         </tr>
                         <tr>
-                            <th class="title" scope="row">성명</th>
-                            <td colspan="3"><input type="text" id="userName" name="userName" class="form-control" /></td>
+                            <th class="title" scope="row" style="border: 2px #bfc6ce solid;">성명</th>
+                            <td colspan="3" style="border: 2px #bfc6ce solid;"><input type="text" id="userName" name="userName" class="form-control" /></td>
                         </tr>
                         <tr>
-                            <th class="title" scope="row">휴대전화</th>
-                            <td colspan="3"><input type="text" class="form-control" id="phoneNum" name="phoneNum" placeholder="-를 포함한 전체 휴대전화 번호를 입력하세요" onchange="checkNum(this.id)"/></td>
+                            <th class="title" scope="row" style="border: 2px #bfc6ce solid;">휴대전화</th>
+                            <td colspan="3" style="border: 2px #bfc6ce solid;"><input type="text" class="form-control" id="phoneNum" name="phoneNum" placeholder="-를 포함한 전체 휴대전화 번호를 입력하세요" onchange="checkNum(this.id)"/></td>
                         </tr>
 
                     </table>
