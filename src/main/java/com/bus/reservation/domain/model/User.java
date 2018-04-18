@@ -22,14 +22,13 @@ public class User implements Serializable {
     private String userName;
     private String userPhone;
 
-    @Column(name = "useYn", insertable = false, columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
+    @Column(name = "useYn", columnDefinition = "VARCHAR(1) DEFAULT 'Y'")
     private String useYn;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="createDate", insertable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @Column(name="createDate")
     private Date createDate;
 
-    @Column(name="updateDate", updatable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 

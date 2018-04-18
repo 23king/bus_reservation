@@ -310,9 +310,15 @@
     }
 
     function delBusTemplate() {
-        emptyList ={}, multiList={};
-        busNum =0;
-        $('.bus_area div:last-child').remove();
+        if(busNum === 1 ){
+            alert('하나 이상일경우에 삭제가 가능합니다')
+            return;
+        }
+        delete emptyList[busNum];
+        delete multiList[busNum];
+
+        busNum--;
+        $('.seat:last').remove();
     }
 
     function submit() {
